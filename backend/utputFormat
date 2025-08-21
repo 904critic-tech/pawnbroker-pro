@@ -1,0 +1,16 @@
+HTTP/1.1 500 No user found for dEZvcm1hdDpub2RlIHRlc3QtbW9iaWxlLWNvbm5lY3Rpdml0eS5qcw==, one of the following headers is invalid: CANOPY-API-KEY, API-KEY, or Authorization. See http://docs.canopyapi.co/ for more info.
+Date: Thu, 21 Aug 2025 18:25:16 GMT
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 217
+Connection: keep-alive
+CF-RAY: 972c2c0c3938b444-CDG
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,HEAD,POST,OPTIONS
+Access-Control-Max-Age: 86400
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=VmgI691kMyZICF9%2BdEDOBcUUjxk8tODDDEgWRAM%2F8NKkrc3aEEt3VO2QQOI7FW%2FTod%2Fu3swYLj7BzwX1awihMyYfwcqVpLfN%2F2uHvvMBB6K1cVGwaQ4n4IUQm3DfRleg2R4hx6ouQyTiuyA6nDwDps8qYA%3D%3D"}],"group":"cf-nel","max_age":604800}
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+alt-svc: h3=":443"; ma=86400
+server-timing: cfL4;desc="?proto=TCP&rtt=114223&min_rtt=113797&rtt_var=43526&sent=4&recv=6&lost=0&retrans=0&sent_bytes=2371&recv_bytes=814&delivery_rate=23207&cwnd=252&unsent_bytes=0&cid=628e325a07fecc1e&ts=392&x=0"
+
+{"reason":"No user found for dEZvcm1hdDpub2RlIHRlc3QtbW9iaWxlLWNvbm5lY3Rpdml0eS5qcw==, one of the following headers is invalid: CANOPY-API-KEY, API-KEY, or Authorization. See http://docs.canopyapi.co/ for more info."}

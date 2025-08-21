@@ -1,0 +1,12 @@
+{
+  "name": "ebay-webhook",
+  "version": "1.0.0",
+  "description": "eBay webhook for streamautoclipper.shop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["ebay", "webhook", "vercel"],
+  "author": "904critic",
+  "license": "ISC"
+}
