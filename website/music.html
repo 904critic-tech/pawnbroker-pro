@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Platform - Royalty-Free Music for Content Creators</title>
+    <meta name="description" content="Discover high-quality, royalty-free music from independent artists. Support artists directly through tipping while getting worry-free music for your content.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">Music Platform</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="music-browse.html" class="text-gray-300 hover:text-white transition-colors">Browse Music</a>
+                    <a href="#royalty-free" class="text-gray-300 hover:text-white transition-colors">Royalty-Free</a>
+                    <a href="#features" class="text-gray-300 hover:text-white transition-colors">Features</a>
+                    <a href="#artists" class="text-gray-300 hover:text-white transition-colors">For Artists</a>
+                    <a href="#creators" class="text-gray-300 hover:text-white transition-colors">For Creators</a>
+                </div>
+                <div class="flex items-center space-x-4" id="authButtons">
+                    <button id="loginBtn" class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</button>
+                    <button id="signupBtn" class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                        Sign Up
+                    </button>
+                </div>
+                <div class="flex items-center space-x-4" id="userProfile" style="display: none;">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                            <i data-lucide="user" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <span class="text-sm font-medium text-white" id="userName">Artist</span>
+                    </div>
+                    <a href="music-dashboard.html" class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                    <button id="logoutBtn" class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+            <div class="absolute top-40 right-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: -2s;"></div>
+            <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: -4s;"></div>
+        </div>
+        
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Discover Amazing
+                <span class="block text-gradient">Royalty-Free Music</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Support independent artists directly while getting high-quality, worry-free music for your content. 
+                100% royalty-free with automatic licensing.
+            </p>
+            
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto mb-8">
+                <div class="relative">
+                    <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6"></i>
+                    <input
+                        type="text"
+                        placeholder="Search for music by genre, mood, or artist..."
+                        class="w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-lg"
+                    >
+                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full transition-all duration-300 hover:from-purple-600 hover:to-pink-600 transform hover:scale-105">
+                        Search
+                    </button>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="music-browse.html" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <i data-lucide="play" class="w-5 h-5 mr-2"></i>
+                    Browse Music
+                </a>
+                <a href="music-upload.html" class="inline-flex items-center justify-center px-8 py-4 glass-effect hover:bg-white/20 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105">
+                    <i data-lucide="music" class="w-5 h-5 mr-2"></i>
+                    Upload Your Music
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Why Choose Our Platform?
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    We&apos;re building a community where artists thrive and creators get amazing music
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="download" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">100% Royalty-Free</h3>
+                    <p class="text-gray-300">
+                        Download music with automatic licensing. No copyright strikes, no legal worries. 
+                        Perfect for content creators.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-red-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="heart" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Support Artists Directly</h3>
+                    <p class="text-gray-300">
+                        Tip artists directly and keep 100% of your support. No middlemen, 
+                        no complex royalty structures.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Vibrant Community</h3>
+                    <p class="text-gray-300">
+                        Connect with independent artists, discover new music, and be part of 
+                        a growing creative community.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="gift" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Interactive Features</h3>
+                    <p class="text-gray-300">
+                        Live streaming, animated gifts, real-time interactions. 
+                        Make supporting artists fun and engaging.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="star" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">High Quality</h3>
+                    <p class="text-gray-300">
+                        Curated library of professional-grade music. Multiple formats, 
+                        high-quality audio, and detailed metadata.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Easy Discovery</h3>
+                    <p class="text-gray-300">
+                        Advanced search, smart recommendations, and curated playlists. 
+                        Find the perfect track for your project.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Royalty-Free Music Section -->
+    <section id="royalty-free" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    🎵 Royalty-Free Music Collection
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Legally licensed music from trusted sources - safe for commercial use with proper attribution
+                </p>
+            </div>
+
+            <!-- Filters -->
+            <div class="mb-8 grid grid-cols-1 md:grid-cols-4 gap-4">
+                <select id="source-filter" class="px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option value="">All Sources</option>
+                    <option value="freemusicarchive">Free Music Archive</option>
+                    <option value="incompetech">Incompetech (Kevin MacLeod)</option>
+                    <option value="pixabay">Pixabay Music</option>
+                </select>
+                <select id="genre-filter" class="px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option value="">All Genres</option>
+                    <option value="hip-hop">Hip-Hop</option>
+                    <option value="ambient">Ambient</option>
+                    <option value="acoustic">Acoustic</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="pop">Pop</option>
+                    <option value="corporate">Corporate</option>
+                </select>
+                <select id="mood-filter" class="px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <option value="">All Moods</option>
+                    <option value="upbeat">Upbeat</option>
+                    <option value="calm">Calm</option>
+                    <option value="peaceful">Peaceful</option>
+                    <option value="fun">Fun</option>
+                    <option value="happy">Happy</option>
+                    <option value="professional">Professional</option>
+                </select>
+                <input type="text" id="search-input" placeholder="Search tracks..." class="px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            </div>
+
+            <!-- Music Grid -->
+            <div id="music-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Music tracks will be loaded here -->
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading" class="text-center py-12">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mx-auto mb-4"></div>
+                <p class="text-gray-300">Loading royalty-free music...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="animate-pulse-slow">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">10K+</div>
+                    <div class="text-gray-200">Tracks Available</div>
+                </div>
+                <div class="animate-pulse-slow" style="animation-delay: -0.5s;">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">500+</div>
+                    <div class="text-gray-200">Independent Artists</div>
+                </div>
+                <div class="animate-pulse-slow" style="animation-delay: -1s;">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">Growing</div>
+                    <div class="text-gray-200">Content Creator Community</div>
+                </div>
+                <div class="animate-pulse-slow" style="animation-delay: -1.5s;">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">Direct</div>
+                    <div class="text-gray-200">Artist Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                Ready to Discover Amazing Music?
+            </h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Join content creators and independent artists in our growing community
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="music-browse.html" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Start Browsing
+                </a>
+                <a href="music-upload.html" class="inline-flex items-center justify-center px-8 py-4 glass-effect hover:bg-white/20 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105">
+                    Join as Artist
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Authentication functionality
+        class AuthManager {
+            constructor() {
+                this.checkAuthStatus();
+                this.setupEventListeners();
+            }
+            
+            checkAuthStatus() {
+                const isLoggedIn = localStorage.getItem('musicUser') || false;
+                const authButtons = document.getElementById('authButtons');
+                const userProfile = document.getElementById('userProfile');
+                const userName = document.getElementById('userName');
+                
+                if (isLoggedIn) {
+                    // User is logged in - show profile
+                    authButtons.style.display = 'none';
+                    userProfile.style.display = 'flex';
+                    userName.textContent = 'Artist'; // Would normally show actual user name
+                } else {
+                    // User is not logged in - show auth buttons
+                    authButtons.style.display = 'flex';
+                    userProfile.style.display = 'none';
+                }
+            }
+            
+            setupEventListeners() {
+                // Login button
+                const loginBtn = document.getElementById('loginBtn');
+                if (loginBtn) {
+                    loginBtn.addEventListener('click', () => {
+                        this.showLoginModal();
+                    });
+                }
+                
+                // Signup button
+                const signupBtn = document.getElementById('signupBtn');
+                if (signupBtn) {
+                    signupBtn.addEventListener('click', () => {
+                        this.showSignupModal();
+                    });
+                }
+                
+                // Logout button
+                const logoutBtn = document.getElementById('logoutBtn');
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', () => {
+                        this.logout();
+                    });
+                }
+            }
+            
+            showLoginModal() {
+                // Create login modal
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                modal.innerHTML = `
+                    <div class="bg-gray-800 rounded-xl p-8 max-w-md w-full mx-4">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-2xl font-bold text-white">Login</h3>
+                            <button class="text-gray-400 hover:text-white" onclick="this.closest('.fixed').remove()">
+                                <i data-lucide="x" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <form id="loginForm" class="space-y-4">
+                            <div>
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Email</label>
+                                <input type="email" id="loginEmail" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Password</label>
+                                <input type="password" id="loginPassword" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all">
+                                Login
+                            </button>
+                        </form>
+                        <div class="mt-4 text-center">
+                            <p class="text-gray-400">Don't have an account? 
+                                <button onclick="authManager.showSignupModal(); this.closest('.fixed').remove();" class="text-purple-400 hover:text-purple-300">Sign up</button>
+                            </p>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                lucide.createIcons();
+                
+                // Handle login form submission
+                const loginForm = document.getElementById('loginForm');
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.login();
+                });
+            }
+            
+            showSignupModal() {
+                // Create signup modal
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                modal.innerHTML = `
+                    <div class="bg-gray-800 rounded-xl p-8 max-w-md w-full mx-4">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-2xl font-bold text-white">Sign Up</h3>
+                            <button class="text-gray-400 hover:text-white" onclick="this.closest('.fixed').remove()">
+                                <i data-lucide="x" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <form id="signupForm" class="space-y-4">
+                            <div>
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Artist Name</label>
+                                <input type="text" id="signupName" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Email</label>
+                                <input type="email" id="signupEmail" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Password</label>
+                                <input type="password" id="signupPassword" required class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all">
+                                Create Account
+                            </button>
+                        </form>
+                        <div class="mt-4 text-center">
+                            <p class="text-gray-400">Already have an account? 
+                                <button onclick="authManager.showLoginModal(); this.closest('.fixed').remove();" class="text-purple-400 hover:text-purple-300">Login</button>
+                            </p>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                lucide.createIcons();
+                
+                // Handle signup form submission
+                const signupForm = document.getElementById('signupForm');
+                signupForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.signup();
+                });
+            }
+            
+            login() {
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                // For demo purposes, simulate login
+                if (email && password) {
+                    localStorage.setItem('musicUser', 'true');
+                    localStorage.setItem('userEmail', email);
+                    this.checkAuthStatus();
+                    
+                    // Close modal
+                    document.querySelector('.fixed').remove();
+                    
+                    // Show success message
+                    this.showNotification('Login successful!', 'success');
+                } else {
+                    this.showNotification('Please fill in all fields', 'error');
+                }
+            }
+            
+            signup() {
+                const name = document.getElementById('signupName').value;
+                const email = document.getElementById('signupEmail').value;
+                const password = document.getElementById('signupPassword').value;
+                
+                // For demo purposes, simulate signup
+                if (name && email && password) {
+                    localStorage.setItem('musicUser', 'true');
+                    localStorage.setItem('userName', name);
+                    localStorage.setItem('userEmail', email);
+                    this.checkAuthStatus();
+                    
+                    // Close modal
+                    document.querySelector('.fixed').remove();
+                    
+                    // Show success message
+                    this.showNotification('Account created successfully!', 'success');
+                } else {
+                    this.showNotification('Please fill in all fields', 'error');
+                }
+            }
+            
+            logout() {
+                localStorage.removeItem('musicUser');
+                localStorage.removeItem('userName');
+                localStorage.removeItem('userEmail');
+                this.checkAuthStatus();
+                this.showNotification('Logged out successfully', 'success');
+            }
+            
+            showNotification(message, type) {
+                const notification = document.createElement('div');
+                notification.className = `fixed top-4 right-4 px-6 py-3 rounded-lg text-white z-50 ${
+                    type === 'success' ? 'bg-green-500' : 'bg-red-500'
+                }`;
+                notification.textContent = message;
+                
+                document.body.appendChild(notification);
+                
+                // Remove notification after 3 seconds
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+        }
+        
+        // Initialize authentication
+        const authManager = new AuthManager();
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+
+        // Royalty-Free Music Manager
+        class RoyaltyFreeMusicManager {
+            constructor() {
+                this.tracks = [];
+                this.filteredTracks = [];
+                this.setupEventListeners();
+                this.loadTracks();
+            }
+
+            async loadTracks() {
+                try {
+                    const response = await fetch('/api/music/royalty-free');
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.tracks = data.content || [];
+                        this.filteredTracks = [...this.tracks];
+                        this.renderTracks();
+                        this.hideLoading();
+                    }
+                } catch (error) {
+                    console.error('Error loading tracks:', error);
+                    this.hideLoading();
+                    this.showError('Failed to load music tracks');
+                }
+            }
+
+            setupEventListeners() {
+                document.getElementById('source-filter')?.addEventListener('change', () => this.filterTracks());
+                document.getElementById('genre-filter')?.addEventListener('change', () => this.filterTracks());
+                document.getElementById('mood-filter')?.addEventListener('change', () => this.filterTracks());
+                document.getElementById('search-input')?.addEventListener('input', () => this.filterTracks());
+            }
+
+            filterTracks() {
+                const sourceFilter = document.getElementById('source-filter')?.value || '';
+                const genreFilter = document.getElementById('genre-filter')?.value || '';
+                const moodFilter = document.getElementById('mood-filter')?.value || '';
+                const searchQuery = document.getElementById('search-input')?.value || '';
+
+                this.filteredTracks = this.tracks.filter(track => {
+                    const matchesSource = !sourceFilter || track.source === sourceFilter;
+                    const matchesGenre = !genreFilter || track.genre === genreFilter;
+                    const matchesMood = !moodFilter || track.mood === moodFilter;
+                    const matchesSearch = !searchQuery || 
+                        track.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        track.artist.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        track.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+
+                    return matchesSource && matchesGenre && matchesMood && matchesSearch;
+                });
+
+                this.renderTracks();
+            }
+
+            renderTracks() {
+                const grid = document.getElementById('music-grid');
+                if (!grid) return;
+
+                if (this.filteredTracks.length === 0) {
+                    grid.innerHTML = `
+                        <div class="col-span-full text-center py-12">
+                            <p class="text-gray-300 text-lg">No tracks found matching your filters.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                grid.innerHTML = this.filteredTracks.map(track => this.renderTrackCard(track)).join('');
+            }
+
+            renderTrackCard(track) {
+                const sourceColors = {
+                    'freemusicarchive': '#ff6b6b',
+                    'incompetech': '#4ecdc4',
+                    'pixabay': '#45b7d1'
+                };
+
+                const sourceColor = sourceColors[track.source] || '#667eea';
+
+                return `
+                    <div class="bg-gray-700 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-white">${track.title}</h3>
+                                <span class="px-2 py-1 text-xs font-medium rounded-full" style="background: ${sourceColor}; color: white;">
+                                    ${track.source}
+                                </span>
+                            </div>
+                            
+                            <p class="text-gray-300 mb-2">by ${track.artist}</p>
+                            <p class="text-gray-400 text-sm mb-4">${track.description}</p>
+                            
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-gray-300 text-sm">${track.duration}</span>
+                                <span class="text-gray-300 text-sm">${track.genre} • ${track.mood}</span>
+                            </div>
+
+                            <!-- Audio Player -->
+                            <div class="mb-4">
+                                <audio controls class="w-full" preload="none">
+                                    <source src="${track.audioUrl || '/api/music/preview/' + track.id}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+
+                            <div class="flex flex-col gap-2">
+                                <a href="${track.downloadUrl}" target="_blank" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-center font-medium hover:from-purple-600 hover:to-pink-600 transition-all">
+                                    📥 Download
+                                </a>
+                                <button onclick="royaltyFreeMusicManager.showAttribution('${track.id}')" class="w-full bg-gray-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-gray-500 transition-all">
+                                    📋 Attribution Info
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            showAttribution(trackId) {
+                const track = this.tracks.find(t => t.id === trackId);
+                if (!track) return;
+
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                modal.innerHTML = `
+                    <div class="bg-gray-800 rounded-xl p-6 max-w-md w-full mx-4">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-white">Attribution Required</h3>
+                            <button class="text-gray-400 hover:text-white" onclick="this.closest('.fixed').remove()">
+                                <i data-lucide="x" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="space-y-4">
+                            <p class="text-gray-300">${track.attribution.text}</p>
+                            <p class="text-gray-400 text-sm">License: ${track.license}</p>
+                            <a href="${track.attribution.url}" target="_blank" class="block w-full bg-purple-600 text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-purple-700 transition-all">
+                                View Original
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                lucide.createIcons();
+            }
+
+            hideLoading() {
+                const loading = document.getElementById('loading');
+                if (loading) {
+                    loading.style.display = 'none';
+                }
+            }
+
+            showError(message) {
+                const grid = document.getElementById('music-grid');
+                if (grid) {
+                    grid.innerHTML = `
+                        <div class="col-span-full text-center py-12">
+                            <p class="text-red-400 text-lg">${message}</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Initialize royalty-free music manager
+        const royaltyFreeMusicManager = new RoyaltyFreeMusicManager();
+    </script>
+    
+    <!-- Music Player -->
+    <script src="player.js"></script>
+</body>
+</html>
