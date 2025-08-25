@@ -34,10 +34,12 @@ vercel --prod
 
 ### 3. Set Environment Variables
 In your Vercel dashboard, add these environment variables:
-- `SUPABASE_URL` - Your Supabase project URL: `https://fducpwufiyjttypsdemr.supabase.co`
-- `SUPABASE_ANON_KEY` - Your Supabase anon key: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkdWNwd3VmaXlqdHR5cHNkZW1yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYxMTI5OTAsImV4cCI6MjA3MTY4ODk5MH0._oexwrLfg1cCSsl_p-CRD6kZzbU9IKibvQTm7PHTMo8`
-- `SUPABASE_SERVICE_ROLE_KEY` - Your Supabase service role key: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkdWNwd3VmaXlqdHR5cHNkZW1yIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NjExMjk5MCwiZXhwIjoyMDcxNjg4OTkwfQ.rQRG13vnuLpl0gDKaW4F-1mnQfQW408aC5tkdOWpzgU`
+- `SUPABASE_URL` - Your Supabase project URL (get from your Supabase dashboard)
+- `SUPABASE_ANON_KEY` - Your Supabase anon key (get from your Supabase dashboard)
+- `SUPABASE_SERVICE_ROLE_KEY` - Your Supabase service role key (get from your Supabase dashboard)
 - `NODE_ENV` - Set to "production"
+
+**⚠️ SECURITY WARNING: Never commit API keys to your repository. Always use environment variables.**
 
 ## 🔗 API Endpoints Available
 

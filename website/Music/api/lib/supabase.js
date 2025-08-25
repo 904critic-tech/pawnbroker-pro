@@ -1,8 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.SUPABASE_URL || 'https://fducpwufiyjttypsdemr.supabase.co';
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkdWNwd3VmaXlqdHR5cHNkZW1yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYxMTI5OTAsImV4cCI6MjA3MTY4ODk5MH0._oexwrLfg1cCSsl_p-CRD6kZzbU9IKibvQTm7PHTMo8';
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkdWNwd3VmaXlqdHR5cHNkZW1yIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NjExMjk5MCwiZXhwIjoyMDcxNjg4OTkwfQ.rQRG13vnuLpl0gDKaW4F-1mnQfQW408aC5tkdOWpzgU';
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+// Validate required environment variables
+if (!supabaseUrl || !supabaseAnonKey || !supabaseServiceKey) {
+  throw new Error('Missing required Supabase environment variables. Please set SUPABASE_URL, SUPABASE_ANON_KEY, and SUPABASE_SERVICE_ROLE_KEY.');
+}
 
 // Create Supabase client for public operations (with RLS)
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
