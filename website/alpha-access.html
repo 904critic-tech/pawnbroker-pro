@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StreamAutoClipper Alpha Access</title>
+    <meta name="description" content="Request alpha access to StreamAutoClipper - Limited early access testing program" />
+    <link rel="icon" href="/logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css" />
+    
+    <!-- Infolinks Ad Network -->
+    <script type="text/javascript"> var infolinks_pid = 3439510; var infolinks_wsid = 0; </script> <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+    <style>
+        .alpha-container {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .alpha-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .alpha-form {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            color: #e2e8f0;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .code-entry {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(100, 116, 139, 0.2);
+        }
+        .access-code-input {
+            display: flex;
+            gap: 10px;
+            align-items: end;
+            margin-bottom: 20px;
+        }
+        .access-code-input input {
+            flex: 1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .verify-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .verify-btn:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+            transform: translateY(-2px);
+        }
+        .error-message {
+            color: #ef4444;
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .success-message {
+            color: #10b981;
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .download-section {
+            display: none;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 30px;
+            color: white;
+        }
+        .download-section.show {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: #059669;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        .download-btn:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <header class="nav">
+        <div class="container nav-inner">
+            <div class="brand">
+                <img src="/logo.png" alt="StreamAutoClipper" class="brand-logo" />
+            </div>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/#how-it-works">How It Works</a>
+                <a href="/#features">Features</a>
+                <a href="/#start">Download</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="alpha-container">
+        <div class="alpha-badge">Alpha Testing Program</div>
+        <h1>StreamAutoClipper Alpha Access</h1>
+        <p>StreamAutoClipper is currently in alpha testing. Request access below or enter your access code if you already have one.</p>
+
+        <!-- Alpha Program Benefits -->
+        <div class="alpha-form" id="program-benefits" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3);">
+            <h2>🎬 Help Us Build the Future of Content Creation!</h2>
+            <p>We're looking for streamers and content creators to test StreamAutoClipper and help us perfect the AI auto-clipping experience!</p>
+            
+            <div style="background: rgba(15, 23, 42, 0.8); padding: 20px; border-radius: 8px; margin: 20px 0; text-align: left;">
+                <h4 style="color: #10b981; margin-bottom: 10px;">What We're Looking For:</h4>
+                <ul style="color: #e2e8f0; line-height: 1.6;">
+                    <li>🎮 Active Twitch streamers</li>
+                    <li>📱 TikTok Live streamers</li>
+                    <li>🎥 Creators interested in viral clip creation</li>
+                    <li>💡 People who can provide valuable feedback</li>
+                    <li>📢 <strong>Streamers who will share their experience publicly!</strong></li>
+                    <li>🔥 Content creators looking for the next big tool</li>
+                </ul>
+            </div>
+            
+            <div style="background: rgba(59, 130, 246, 0.1); padding: 20px; border-radius: 8px; margin: 20px 0; text-align: left;">
+                <h4 style="color: #3b82f6; margin-bottom: 10px;">🚀 We ENCOURAGE You To:</h4>
+                <ul style="color: #e2e8f0; line-height: 1.6;">
+                    <li>📺 <strong>Stream with StreamAutoClipper live on camera!</strong></li>
+                    <li>🎤 Talk about your experience during streams</li>
+                    <li>📱 Share clips and results on social media</li>
+                    <li>👥 Tell other creators about the alpha program</li>
+                    <li>⭐ Create buzz and excitement for the tool!</li>
+                </ul>
+            </div>
+            
+            <div style="background: rgba(245, 158, 11, 0.1); padding: 20px; border-radius: 8px; margin: 20px 0; text-align: left;">
+                <h4 style="color: #f59e0b; margin-bottom: 10px;">🔒 Simple Protection Agreement:</h4>
+                <p style="color: #e2e8f0; line-height: 1.6; margin-bottom: 10px;">
+                    We just need you to agree not to share access codes, take screenshots, or reverse engineer the software. 
+                    <strong>You can absolutely talk about it publicly!</strong>
+                </p>
+                <ul style="color: #e2e8f0; line-height: 1.6; font-size: 14px;">
+                    <li>❌ Don't share your access code with others</li>
+                    <li>❌ Don't take screenshots of the software interface</li>
+                    <li>❌ Don't reverse engineer or copy the software</li>
+                    <li>✅ DO stream with it, talk about it, share your results!</li>
+                </ul>
+            </div>
+            
+            <p style="color: #10b981; font-weight: 600; margin-top: 20px;">
+                💎 <strong>Early adopters may receive lifetime license benefits!</strong>
+            </p>
+            
+            <a href="/nda.html" class="btn primary large" style="background: linear-gradient(135deg, #f59e0b, #d97706); margin-top: 20px;">
+                Review Simple Agreement & Access Alpha
+            </a>
+            <p><small>Quick protection agreement - you can still stream and discuss publicly!</small></p>
+        </div>
+
+        <!-- Request Access Form (Hidden until NDA accepted) -->
+        <div class="alpha-form" id="request-form" style="display: none;">
+            <div style="margin-bottom: 20px;">
+                <button type="button" onclick="goBackToAgreement()" style="background: rgba(100, 116, 139, 0.3); border: 1px solid rgba(100, 116, 139, 0.5); color: #e2e8f0; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">
+                    ← Back to Agreement Info
+                </button>
+            </div>
+            <h2>Request Alpha Access</h2>
+            <p>Fill out the form below to request an alpha access code. We'll review your request and send you a code if selected.</p>
+            
+            <form id="alpha-request-form">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="platform">Primary Streaming Platform *</label>
+                    <select id="platform" name="platform" required style="width: 100%; padding: 12px 16px; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(100, 116, 139, 0.3); border-radius: 8px; color: #e2e8f0; font-size: 16px;">
+                        <option value="">Select your platform</option>
+                        <option value="twitch">Twitch</option>
+                        <option value="tiktok-live">TikTok Live</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="username">Username/Channel Name *</label>
+                    <input type="text" id="username" name="username" placeholder="e.g., YourUsername" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="audience">Approximate Audience Size</label>
+                    <input type="text" id="audience" name="audience" placeholder="e.g., 1,000 followers, 10,000 monthly views">
+                </div>
+                
+                <div class="form-group">
+                    <label for="use-case">How do you plan to use StreamAutoClipper? *</label>
+                    <textarea id="use-case" name="use-case" placeholder="Tell us about your content creation goals and how you'd use our AI auto-clipping tool..." required></textarea>
+                </div>
+                
+                <button type="submit" class="btn primary large">Request Alpha Access</button>
+            </form>
+            
+            <div id="request-status"></div>
+        </div>
+
+        <!-- Access Code Entry -->
+        <div class="code-entry">
+            <h2>Already Have an Access Code?</h2>
+            <p>Enter your alpha access code below to download StreamAutoClipper.</p>
+            
+            <div class="access-code-input">
+                <input type="text" id="access-code" placeholder="ALPHA-XXXX-XXXX" maxlength="15">
+                <button type="button" class="verify-btn" onclick="verifyAccessCode()">Verify Code</button>
+            </div>
+            
+            <div id="code-status"></div>
+            
+            <!-- Download Section (Hidden by default) -->
+            <div class="download-section" id="download-section">
+                <h3>🎉 Access Granted!</h3>
+                <p>Your alpha access code is valid. You can now download StreamAutoClipper Alpha.</p>
+                <a href="#" class="download-btn" id="alpha-download-link">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 2V14M10 14L6 10M10 14L14 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 16V17C2 17.5523 2.44772 18 3 18H17C17.5523 18 18 17.5523 18 17V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Download StreamAutoClipper Alpha
+                </a>
+                <p><small>Version Alpha 1.0 • Windows • 83MB</small></p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Alpha access codes (you can update this list)
+        const validCodes = [
+            'ALPHA-TEST-2025',
+            'ALPHA-DEV-0001',
+            'ALPHA-BETA-0001',
+            'ALPHA-CREW-2025'
+        ];
+
+        // Handle access code verification
+        function verifyAccessCode() {
+            const code = document.getElementById('access-code').value.toUpperCase().trim();
+            const statusDiv = document.getElementById('code-status');
+            const downloadSection = document.getElementById('download-section');
+            
+            if (!code) {
+                statusDiv.innerHTML = '<div class="error-message">Please enter an access code</div>';
+                return;
+            }
+            
+            if (validCodes.includes(code)) {
+                statusDiv.innerHTML = '<div class="success-message">✅ Valid access code!</div>';
+                downloadSection.classList.add('show');
+                
+                // Set download link (you can update this URL)
+                document.getElementById('alpha-download-link').href = '/downloads/TikTok_Auto_Clipper_Alpha.exe';
+                
+                // Store verified status
+                localStorage.setItem('alphaAccess', code);
+            } else {
+                statusDiv.innerHTML = '<div class="error-message">❌ Invalid access code. Please check your code or request access above.</div>';
+                downloadSection.classList.remove('show');
+            }
+        }
+
+        // Handle alpha request form
+        document.getElementById('alpha-request-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const statusDiv = document.getElementById('request-status');
+            const formData = new FormData(this);
+            
+            // Show loading state
+            statusDiv.innerHTML = '<div class="success-message">📨 Sending request...</div>';
+            
+            // Send request to backend API
+            const requestData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                platform: formData.get('platform'),
+                username: formData.get('username'),
+                audience: formData.get('audience'),
+                useCase: formData.get('use-case')
+            };
+            
+            try {
+                // Send to Formspree (free email service)
+                // Submit to Formspree (automatic email forwarding to streamautoclipper@gmail.com)
+                const formspreeData = new FormData();
+                formspreeData.append('_subject', `ALPHA REQUEST: ${requestData.name} - ${requestData.platform === 'twitch' ? 'Twitch' : 'TikTok Live'}: ${requestData.username}`);
+                formspreeData.append('name', requestData.name);
+                formspreeData.append('email', requestData.email);
+                formspreeData.append('platform', requestData.platform === 'twitch' ? 'Twitch' : 'TikTok Live');
+                formspreeData.append('username', requestData.username);
+                formspreeData.append('audience', requestData.audience || 'Not specified');
+                formspreeData.append('useCase', requestData.useCase);
+                formspreeData.append('timestamp', new Date().toISOString());
+                formspreeData.append('userAgent', navigator.userAgent);
+                formspreeData.append('_replyto', requestData.email);
+                
+                const response = await fetch('https://formspree.io/f/xeozwvrg', {
+                    method: 'POST',
+                    body: formspreeData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    statusDiv.innerHTML = `
+                        <div style="color: #10b981; border: 1px solid #10b981; padding: 12px; border-radius: 8px; background: rgba(16, 185, 129, 0.1);">
+                            <strong>✅ Request Submitted Successfully!</strong><br/>
+                            Your alpha access request has been automatically sent to our team.<br/>
+                            <small>We'll review your application and email you an access code if selected within 24-48 hours.</small>
+                        </div>
+                    `;
+                    this.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+                
+            } catch (error) {
+                console.error('Submission error:', error);
+                
+                // Fallback to mailto if API fails
+                const platform = formData.get('platform');
+                const username = formData.get('username');
+                const platformDisplay = platform === 'twitch' ? `Twitch: ${username}` : `TikTok Live: ${username}`;
+                
+                const emailBody = `
+New Alpha Access Request:
+
+Name: ${formData.get('name')}
+Email: ${formData.get('email')}
+Platform: ${platform === 'twitch' ? 'Twitch' : 'TikTok Live'}
+Username: ${username}
+Audience Size: ${formData.get('audience')}
+
+Use Case:
+${formData.get('use-case')}
+
+---
+Request submitted from: ${window.location.origin}
+Time: ${new Date().toISOString()}
+User Agent: ${navigator.userAgent}
+                `.trim();
+
+                const mailtoLink = `mailto:streamautoclipper@gmail.com?subject=ALPHA REQUEST: ${formData.get('name')} - ${platformDisplay}&body=${encodeURIComponent(emailBody)}`;
+                
+                statusDiv.innerHTML = `
+                    <div style="color: #10b981; border: 1px solid #10b981; padding: 12px; border-radius: 8px; background: rgba(16, 185, 129, 0.1);">
+                        <strong>📧 Email Method</strong><br/>
+                        <p style="margin: 8px 0;">Click the button below to send your alpha access request:</p>
+                        <div style="margin-top: 12px;">
+                            <a href="${mailtoLink}" target="_blank" 
+                               style="display: inline-block; background: #3b82f6; color: white; padding: 12px 24px; 
+                                      text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">
+                                📧 Send Alpha Request Email
+                            </a>
+                        </div>
+                        <small style="display: block; margin-top: 12px; color: #6b7280; line-height: 1.4;">
+                            This will open your email client with a pre-filled message. Simply send the email and we'll review your request within 24-48 hours.
+                        </small>
+                    </div>
+                `;
+            }
+        });
+
+        // FORCE NDA CHECK FUNCTION
+        function forceShowNDAForm() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const ndaParam = urlParams.get('nda');
+            const ndaAccepted = localStorage.getItem('ndaAccepted');
+            
+            console.log('🔥 FORCE NDA CHECK - ndaParam:', ndaParam, 'ndaAccepted:', ndaAccepted);
+            
+            if (ndaParam === 'accepted' || ndaAccepted) {
+                console.log('🚀 FORCING FORM DISPLAY');
+                
+                // FORCE hide benefits
+                const benefitsSection = document.getElementById('program-benefits');
+                if (benefitsSection) {
+                    benefitsSection.style.setProperty('display', 'none', 'important');
+                    benefitsSection.style.visibility = 'hidden';
+                    benefitsSection.hidden = true;
+                    console.log('✅ Benefits hidden:', benefitsSection.style.display);
+                }
+                
+                // NUCLEAR OPTION - FORCE show request form with multiple methods
+                const requestForm = document.getElementById('request-form');
+                if (requestForm) {
+                    // Remove inline style attribute completely
+                    requestForm.removeAttribute('style');
+                    
+                    // Set multiple display properties
+                    requestForm.style.setProperty('display', 'block', 'important');
+                    requestForm.style.setProperty('visibility', 'visible', 'important');
+                    requestForm.style.setProperty('opacity', '1', 'important');
+                    requestForm.hidden = false;
+                    
+                    // Add CSS class for extra override
+                    requestForm.classList.add('force-visible');
+                    
+                    console.log('✅ Form display set to:', requestForm.style.display);
+                    console.log('✅ Form computed style:', window.getComputedStyle(requestForm).display);
+                    console.log('✅ Form visible:', requestForm.offsetHeight > 0);
+                }
+                
+                // Add CSS override to head
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    #request-form.force-visible {
+                        display: block !important;
+                        visibility: visible !important;
+                        opacity: 1 !important;
+                        height: auto !important;
+                        overflow: visible !important;
+                    }
+                    #program-benefits {
+                        display: none !important;
+                        visibility: hidden !important;
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                // Update titles
+                const title = document.querySelector('h1');
+                if (title) title.textContent = 'Request Alpha Access';
+                
+                const subtitle = document.querySelector('p');
+                if (subtitle) subtitle.textContent = 'Complete the form below to request your alpha access code.';
+                
+                return true;
+            }
+            return false;
+        }
+
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-fill access code from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const codeParam = urlParams.get('code');
+            if (codeParam) {
+                document.getElementById('access-code').value = codeParam.toUpperCase();
+                verifyAccessCode();
+            }
+
+            // IMMEDIATE NDA check
+            setTimeout(forceShowNDAForm, 100);
+            
+            // BACKUP checks to ensure it stays visible
+            setTimeout(forceShowNDAForm, 500);
+            setTimeout(forceShowNDAForm, 1000);
+        });
+
+        // Check if user already has access
+        const storedAccess = localStorage.getItem('alphaAccess');
+        if (storedAccess && validCodes.includes(storedAccess)) {
+            document.getElementById('access-code').value = storedAccess;
+            verifyAccessCode();
+        }
+
+        // Enter key support for access code
+        document.getElementById('access-code').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                verifyAccessCode();
+            }
+        });
+    </script>
+    
+    <script>
+        // Global function to go back to agreement info
+        function goBackToAgreement() {
+            // PREVENT hiding form if NDA was accepted via URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const ndaParam = urlParams.get('nda');
+            
+            if (ndaParam === 'accepted') {
+                console.log('🛑 BLOCKED goBackToAgreement - NDA accepted via URL');
+                return; // Don't hide the form if NDA was accepted via URL
+            }
+            
+            document.getElementById('request-form').style.display = 'none';
+            document.getElementById('program-benefits').style.display = 'block';
+            
+            // Restore original title
+            document.querySelector('h1').textContent = 'StreamAutoClipper Alpha Access';
+            document.querySelector('p').textContent = 'StreamAutoClipper is currently in alpha testing. Request access below or enter your access code if you already have one.';
+            
+            // Clear NDA acceptance so user can go through process again
+            localStorage.removeItem('ndaAccepted');
+            
+            // Remove URL parameter
+            const url = new URL(window.location);
+            url.searchParams.delete('nda');
+            window.history.replaceState({}, '', url);
+        }
+    </script>
+</body>
+</html>

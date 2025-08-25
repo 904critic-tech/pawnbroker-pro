@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Earnings - Music Platform</title>
+    <meta name="description" content="Track your music earnings, view analytics, and manage your revenue from the Music Platform.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+        
+        .earnings-card {
+            transition: all 0.3s ease;
+        }
+        
+        .earnings-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <a href="music.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">Music Platform</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="music-browse.html" class="text-gray-300 hover:text-white transition-colors">Browse</a>
+                    <a href="music-upload.html" class="text-gray-300 hover:text-white transition-colors">Upload</a>
+                    <a href="music-dashboard.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</button>
+                    <button class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-24 pb-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Track Earnings
+                </h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                    Monitor your revenue, track performance, and manage your earnings from music downloads and licensing.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Earnings Overview -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Stats Cards -->
+            <div class="grid md:grid-cols-4 gap-6 mb-8">
+                <div class="earnings-card bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+                            <i data-lucide="dollar-sign" class="w-6 h-6 text-green-400"></i>
+                        </div>
+                        <span class="text-green-400 text-sm font-medium">+12.5%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-1">$2,847.50</h3>
+                    <p class="text-gray-400 text-sm">Total Earnings</p>
+                </div>
+                
+                <div class="earnings-card bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                            <i data-lucide="download" class="w-6 h-6 text-blue-400"></i>
+                        </div>
+                        <span class="text-blue-400 text-sm font-medium">+8.2%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-1">1,247</h3>
+                    <p class="text-gray-400 text-sm">Total Downloads</p>
+                </div>
+                
+                <div class="earnings-card bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-6 h-6 text-purple-400"></i>
+                        </div>
+                        <span class="text-purple-400 text-sm font-medium">+15.3%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-1">23</h3>
+                    <p class="text-gray-400 text-sm">Active Tracks</p>
+                </div>
+                
+                <div class="earnings-card bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center">
+                            <i data-lucide="trending-up" class="w-6 h-6 text-yellow-400"></i>
+                        </div>
+                        <span class="text-yellow-400 text-sm font-medium">+5.7%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-1">$156.80</h3>
+                    <p class="text-gray-400 text-sm">This Month</p>
+                </div>
+            </div>
+
+            <!-- Earnings Chart -->
+            <div class="bg-gray-800 rounded-xl p-6 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-white">Earnings Over Time</h2>
+                    <div class="flex space-x-2">
+                        <button class="px-3 py-1 bg-purple-500 text-white rounded-md text-sm">7D</button>
+                        <button class="px-3 py-1 bg-gray-700 text-gray-300 rounded-md text-sm">30D</button>
+                        <button class="px-3 py-1 bg-gray-700 text-gray-300 rounded-md text-sm">90D</button>
+                        <button class="px-3 py-1 bg-gray-700 text-gray-300 rounded-md text-sm">1Y</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="earningsChart" width="400" height="300"></canvas>
+                </div>
+            </div>
+
+            <!-- Top Performing Tracks -->
+            <div class="bg-gray-800 rounded-xl p-6 mb-8">
+                <h2 class="text-xl font-bold text-white mb-6">Top Performing Tracks</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-gray-700">
+                                <th class="text-left py-3 px-4 text-gray-400 font-medium">Track</th>
+                                <th class="text-left py-3 px-4 text-gray-400 font-medium">Downloads</th>
+                                <th class="text-left py-3 px-4 text-gray-400 font-medium">Revenue</th>
+                                <th class="text-left py-3 px-4 text-gray-400 font-medium">License Type</th>
+                                <th class="text-left py-3 px-4 text-gray-400 font-medium">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-4 px-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white font-medium">Midnight Dreams</p>
+                                            <p class="text-gray-400 text-sm">Electronic</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-4 text-white">342</td>
+                                <td class="py-4 px-4 text-green-400 font-medium">$684.00</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full">Royalty-Free</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Active</span>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-4 px-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white font-medium">Ocean Waves</p>
+                                            <p class="text-gray-400 text-sm">Ambient</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-4 text-white">287</td>
+                                <td class="py-4 px-4 text-green-400 font-medium">$574.00</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Creative Commons</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Active</span>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-4 px-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-gradient-to-r from-red-500 to-orange-500 rounded-lg flex items-center justify-center">
+                                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white font-medium">Urban Beat</p>
+                                            <p class="text-gray-400 text-sm">Hip Hop</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-4 text-white">198</td>
+                                <td class="py-4 px-4 text-green-400 font-medium">$396.00</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded-full">Commercial</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Active</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Payment History -->
+            <div class="bg-gray-800 rounded-xl p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-white">Payment History</h2>
+                    <button class="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors">
+                        <i data-lucide="download" class="w-4 h-4 inline mr-2"></i>
+                        Export
+                    </button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-gray-700">
+                                <th class="text-left py-3 px-4 text-gray-400 font-medium">Date</th>
+                                <th class="text-left py-3 px-4 text-gray-400 font-medium">Description</th>
+                                <th class="text-left py-3 px-4 text-gray-400 font-medium">Amount</th>
+                                <th class="text-left py-3 px-4 text-gray-400 font-medium">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-4 px-4 text-gray-300">Dec 15, 2024</td>
+                                <td class="py-4 px-4 text-white">Monthly Payout</td>
+                                <td class="py-4 px-4 text-green-400 font-medium">$156.80</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Completed</span>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-4 px-4 text-gray-300">Nov 15, 2024</td>
+                                <td class="py-4 px-4 text-white">Monthly Payout</td>
+                                <td class="py-4 px-4 text-green-400 font-medium">$142.30</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Completed</span>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-4 px-4 text-gray-300">Oct 15, 2024</td>
+                                <td class="py-4 px-4 text-white">Monthly Payout</td>
+                                <td class="py-4 px-4 text-green-400 font-medium">$128.90</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Completed</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-upload.html" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="music-dashboard.html" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="track-earnings.html" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="promote-music.html" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-browse.html" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="advanced-search.html" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="licensing-info.html" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="support-artists.html" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="about-us.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+
+        // Simple earnings chart
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('earningsChart');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            // Chart data
+            const data = [120, 180, 150, 220, 280, 320, 290, 350, 400, 380, 420, 450];
+            const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            
+            // Chart dimensions
+            const width = canvas.width;
+            const height = canvas.height;
+            const padding = 40;
+            const chartWidth = width - 2 * padding;
+            const chartHeight = height - 2 * padding;
+            
+            // Find max value for scaling
+            const maxValue = Math.max(...data);
+            
+            // Draw grid
+            ctx.strokeStyle = '#374151';
+            ctx.lineWidth = 1;
+            
+            // Vertical grid lines
+            for (let i = 0; i <= 12; i++) {
+                const x = padding + (i * chartWidth) / 12;
+                ctx.beginPath();
+                ctx.moveTo(x, padding);
+                ctx.lineTo(x, height - padding);
+                ctx.stroke();
+            }
+            
+            // Horizontal grid lines
+            for (let i = 0; i <= 5; i++) {
+                const y = padding + (i * chartHeight) / 5;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(width - padding, y);
+                ctx.stroke();
+            }
+            
+            // Draw line chart
+            ctx.strokeStyle = '#8b5cf6';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            
+            data.forEach((value, index) => {
+                const x = padding + (index * chartWidth) / (data.length - 1);
+                const y = height - padding - (value / maxValue) * chartHeight;
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            
+            ctx.stroke();
+            
+            // Draw data points
+            ctx.fillStyle = '#8b5cf6';
+            data.forEach((value, index) => {
+                const x = padding + (index * chartWidth) / (data.length - 1);
+                const y = height - padding - (value / maxValue) * chartHeight;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, 4, 0, 2 * Math.PI);
+                ctx.fill();
+            });
+            
+            // Draw labels
+            ctx.fillStyle = '#9ca3af';
+            ctx.font = '12px Inter';
+            ctx.textAlign = 'center';
+            
+            labels.forEach((label, index) => {
+                const x = padding + (index * chartWidth) / (data.length - 1);
+                const y = height - padding + 20;
+                ctx.fillText(label, x, y);
+            });
+        });
+    </script>
+</body>
+</html>

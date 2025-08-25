@@ -1,46 +1,43 @@
 const express = require('express');
 const router = express.Router();
 const ebayScraper = require('../services/eBayScraper');
-const inputValidation = require('../middleware/inputValidation');
-const cacheService = require('../services/CacheService');
+const lambdaService = require('../services/LambdaService');
 
-// Rate limiting for eBay scraping
+// Simple rate limiting
 const rateLimit = require('express-rate-limit');
 
 const ebayLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10, // limit each IP to 10 requests per windowMs
   message: {
-    error: 'Too many eBay scraping requests, please try again later.'
+    error: 'Too many requests, please try again later.'
   },
   standardHeaders: true,
   legacyHeaders: false,
 });
 
+// Simple input validation
+const validateSearchQuery = (req, res, next) => {
+  const { query } = req.params;
+  if (!query || query.trim().length < 2) {
+    return res.status(400).json({
+      success: false,
+      message: 'Search query must be at least 2 characters long'
+    });
+  }
+  next();
+};
+
 // Search eBay sold items
-router.get('/search/:query', ebayLimiter, inputValidation.validateSearchQuery, async (req, res) => {
+router.get('/search/:query', ebayLimiter, validateSearchQuery, async (req, res) => {
   try {
     const { query } = req.params;
     const limit = parseInt(req.query.limit) || 25;
     
     console.log(`Searching eBay for: ${query}`);
     
-    // Check cache first
-    const cachedResults = cacheService.getCachedSearchResults(query, limit);
-    if (cachedResults) {
-      console.log(`📦 Returning cached results for: ${query}`);
-      return res.json({
-        success: true,
-        data: cachedResults,
-        cached: true
-      });
-    }
-    
     // Fetch fresh data
     const results = await ebayScraper.searchSoldItems(query, limit);
-    
-    // Cache the results
-    cacheService.cacheSearchResults(query, results, limit);
     
     res.json({
       success: true,
@@ -59,28 +56,23 @@ router.get('/search/:query', ebayLimiter, inputValidation.validateSearchQuery, a
 });
 
 // Get pricing estimate
-router.get('/estimate/:query', ebayLimiter, inputValidation.validateSearchQuery, async (req, res) => {
+router.get('/estimate/:query', ebayLimiter, validateSearchQuery, async (req, res) => {
   try {
     const { query } = req.params;
     
     console.log(`Getting pricing estimate for: ${query}`);
     
-    // Check cache first
-    const cachedEstimate = cacheService.getCachedPricingEstimate(query);
-    if (cachedEstimate) {
-      console.log(`📦 Returning cached estimate for: ${query}`);
-      return res.json({
-        success: true,
-        data: cachedEstimate,
-        cached: true
-      });
+    // Try Lambda first, fall back to local scraper
+    let estimate;
+    try {
+      console.log(`🚀 Attempting Lambda pricing for: ${query}`);
+      estimate = await lambdaService.getPricingEstimate(query);
+      console.log(`✅ Lambda pricing successful for: ${query}`);
+    } catch (lambdaError) {
+      console.log(`⚠️ Lambda failed, falling back to local scraper for: ${query}`);
+      console.log(`Lambda error: ${lambdaError.message}`);
+      estimate = await ebayScraper.getPricingEstimate(query);
     }
-    
-    // Fetch fresh data
-    const estimate = await ebayScraper.getPricingEstimate(query);
-    
-    // Cache the estimate
-    cacheService.cachePricingEstimate(query, estimate);
     
     res.json({
       success: true,
@@ -107,38 +99,32 @@ router.get('/health', (req, res) => {
   });
 });
 
-// Cache statistics endpoint
-router.get('/cache/stats', (req, res) => {
+// Test Lambda connection
+router.get('/test-lambda', async (req, res) => {
   try {
-    const stats = cacheService.getStats();
+    console.log('🧪 Testing Lambda connection...');
+    
+    // Test if LambdaService can be imported
+    console.log('📦 Importing LambdaService...');
+    const lambdaService = require('../services/LambdaService');
+    console.log('✅ LambdaService imported successfully');
+    
+    const result = await lambdaService.testConnection();
+    console.log('🔍 Lambda test result:', result);
+    
     res.json({
       success: true,
-      data: stats,
-      timestamp: new Date().toISOString()
+      lambdaTest: result,
+      message: 'Lambda connection test completed'
     });
+    
   } catch (error) {
+    console.error('Lambda test error:', error);
     res.status(500).json({
       success: false,
-      message: 'Failed to get cache statistics',
-      error: error.message
-    });
-  }
-});
-
-// Clear cache endpoint
-router.post('/cache/clear', (req, res) => {
-  try {
-    cacheService.clear();
-    res.json({
-      success: true,
-      message: 'Cache cleared successfully',
-      timestamp: new Date().toISOString()
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Failed to clear cache',
-      error: error.message
+      message: 'Lambda connection test failed',
+      error: error.message,
+      stack: error.stack
     });
   }
 });

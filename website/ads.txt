@@ -1,0 +1,9 @@
+# ads.txt file for StreamAutoClipper - streamautoclipper.shop
+# This file authorizes Google AdSense to sell ads on this domain
+# Publisher ID: pub-7869206132163225
+
+# Google AdSense
+google.com, pub-7869206132163225, DIRECT, f08c47fec0942fa0
+
+# Google Ad Manager (backup)
+google.com, pub-7869206132163225, RESELLER, f08c47fec0942fa0

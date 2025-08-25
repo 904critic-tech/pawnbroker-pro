@@ -1,0 +1,14 @@
+{
+  "name": "guided-light-app",
+  "addedDate": "2025-08-23T14:45:48.606Z",
+  "sourcePath": "C:\\Users\\shuma\\OneDrive\\Desktop\\Is it worth it\\website",
+  "files": [
+    "package.json",
+    "index.html",
+    "styles.css",
+    "vercel.json"
+  ],
+  "deployed": true,
+  "deploymentUrl": "https://guided-light-cpq1zi8in-904critic-techs-projects.vercel.app",
+  "deployedDate": "2025-08-23T14:58:11.121Z"
+}

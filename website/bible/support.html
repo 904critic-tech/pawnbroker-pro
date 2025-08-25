@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Guided Light App | StreamAutoClipper</title>
+    <meta name="description" content="Get support for the Guided Light App - Contact information, troubleshooting, and help resources.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="/styles.css" />
+    
+    <style>
+        :root {
+            --bg-1: #0f172a;
+            --bg-2: #1e293b;
+            --panel: rgba(15,23,42,0.6);
+            --text: #e5e7eb;
+            --muted: #94a3b8;
+            --blue: #3b82f6;
+            --green: #10b981;
+            --border: rgba(59,130,246,0.2);
+        }
+        
+        * { box-sizing: border-box; }
+        
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .nav {
+            position: sticky;
+            top: 0;
+            backdrop-filter: saturate(180%) blur(10px);
+            background: rgba(2,6,23,.7);
+            border-bottom: 1px solid var(--border);
+            z-index: 20;
+            padding: 1rem 0;
+        }
+        
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .brand a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--blue);
+            border-bottom: 3px solid var(--blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            color: var(--blue);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        h3 {
+            color: var(--text);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .support-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--panel);
+            backdrop-filter: blur(8px);
+        }
+        
+        .contact-card {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--blue);
+            margin: 15px 0;
+            backdrop-filter: blur(8px);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        
+        .troubleshooting {
+            background: rgba(16, 185, 129, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        .troubleshooting h3 {
+            color: var(--green);
+            margin-top: 0;
+        }
+        
+        .step-list {
+            background: var(--panel);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        .step-list ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .step-list li {
+            margin: 8px 0;
+        }
+        
+        .urgent {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .urgent strong {
+            color: #fbbf24;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .support-section {
+                padding: 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="brand">
+                <a href="https://streamautoclipper.shop/">
+                    ← Back to StreamAutoClipper
+                </a>
+            </div>
+            <div style="color: var(--muted); font-size: 14px;">
+                Guided Light App - Support
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Support Center</h1>
+        <p style="text-align: center; color: var(--muted); margin-bottom: 30px;">We're here to help you get the most out of Guided Light</p>
+
+        <div class="support-section">
+            <h2>📧 Contact Support</h2>
+            <p>Our support team is here to help you with any questions or issues you may have with Guided Light.</p>
+            
+            <div class="contact-card">
+                <div class="contact-info">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <strong>General Support</strong><br>
+                        <a href="mailto:streamautoclipper@gmail.com">streamautoclipper@gmail.com</a><br>
+                        <small>For app issues, feature questions, and general help</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-info">
+                    <div class="contact-icon">🔒</div>
+                    <div>
+                        <strong>Privacy & Data</strong><br>
+                        <a href="mailto:streamautoclipper@gmail.com">streamautoclipper@gmail.com</a><br>
+                        <small>For privacy concerns and data-related questions</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-info">
+                    <div class="contact-icon">⚖️</div>
+                    <div>
+                        <strong>Legal & Terms</strong><br>
+                        <a href="mailto:streamautoclipper@gmail.com">streamautoclipper@gmail.com</a><br>
+                        <small>For legal questions and terms of service inquiries</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-info">
+                    <div class="contact-icon">🌐</div>
+                    <div>
+                        <strong>Website</strong><br>
+                        <a href="https://streamautoclipper.shop" target="_blank">https://streamautoclipper.shop</a><br>
+                        <small>Visit our main website for more information</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="support-section">
+            <h2>⏰ Response Times</h2>
+            <p>We strive to respond to all inquiries as quickly as possible:</p>
+            <ul>
+                <li><strong>General Support:</strong> 24-48 hours</li>
+                <li><strong>Privacy & Legal:</strong> 48-72 hours</li>
+                <li><strong>Urgent Issues:</strong> 12-24 hours (marked as urgent)</li>
+            </ul>
+            
+            <div class="urgent">
+                <strong>🚨 Urgent Issues:</strong> If you're experiencing a critical problem that prevents you from using the app, please include "URGENT" in your email subject line for faster response.
+            </div>
+        </div>
+
+        <div class="support-section">
+            <h2>🔧 Common Issues & Solutions</h2>
+            
+            <div class="troubleshooting">
+                <h3>App Won't Load or Crashes</h3>
+                <div class="step-list">
+                    <ol>
+                        <li>Check your internet connection</li>
+                        <li>Restart the app completely</li>
+                        <li>Clear app cache: Settings > Apps > Guided Light > Storage > Clear Cache</li>
+                        <li>Restart your device</li>
+                        <li>Uninstall and reinstall the app</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="troubleshooting">
+                <h3>Bible Content Not Loading</h3>
+                <div class="step-list">
+                    <ol>
+                        <li>Ensure you have a stable internet connection</li>
+                        <li>Wait a few moments for content to load</li>
+                        <li>Try refreshing the screen by pulling down</li>
+                        <li>Check if your device has enough storage space</li>
+                        <li>Contact support if the issue persists</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="troubleshooting">
+                <h3>Ads Not Displaying Properly</h3>
+                <div class="step-list">
+                    <ol>
+                        <li>Check your internet connection</li>
+                        <li>Ensure ads are not blocked by your device settings</li>
+                        <li>Check if you have any ad-blocking software enabled</li>
+                        <li>Restart the app</li>
+                        <li>Contact support if ads are inappropriate or not working</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="troubleshooting">
+                <h3>Search Function Not Working</h3>
+                <div class="step-list">
+                    <ol>
+                        <li>Make sure you have an internet connection</li>
+                        <li>Try different search terms</li>
+                        <li>Check spelling of book names or verses</li>
+                        <li>Wait for search results to load completely</li>
+                        <li>Contact support if search consistently fails</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="support-section">
+            <h2>📱 Device Requirements</h2>
+            <p>To ensure optimal performance, your device should meet these requirements:</p>
+            <ul>
+                <li><strong>Operating System:</strong> Android 5.0 (API level 21) or higher</li>
+                <li><strong>Storage:</strong> At least 100MB of free space</li>
+                <li><strong>Memory:</strong> 2GB RAM recommended</li>
+                <li><strong>Internet:</strong> Required for initial content loading and updates</li>
+            </ul>
+        </div>
+
+        <div class="support-section">
+            <h2>📋 Before Contacting Support</h2>
+            <p>To help us assist you more effectively, please provide the following information:</p>
+            <ul>
+                <li><strong>Device Model:</strong> What phone/tablet are you using?</li>
+                <li><strong>Android Version:</strong> What version of Android is installed?</li>
+                <li><strong>App Version:</strong> What version of Guided Light are you using?</li>
+                <li><strong>Issue Description:</strong> What exactly is happening?</li>
+                <li><strong>Steps to Reproduce:</strong> How can we recreate the issue?</li>
+                <li><strong>Screenshots:</strong> If applicable, include screenshots of the problem</li>
+            </ul>
+        </div>
+
+        <div class="support-section">
+            <h2>📚 Additional Resources</h2>
+            <p>Check these resources before contacting support:</p>
+            <ul>
+                <li><a href="https://streamautoclipper.shop/bible/faq.html">📖 Frequently Asked Questions</a> - Quick answers to common questions</li>
+                <li><a href="https://streamautoclipper.shop/bible/privacy.html">🔒 Privacy Policy</a> - How we handle your data</li>
+                <li><a href="https://streamautoclipper.shop/bible/tos.html">⚖️ Terms of Service</a> - App usage terms and conditions</li>
+                <li><strong>App Store Reviews:</strong> Check other users' experiences and solutions</li>
+            </ul>
+        </div>
+
+        <div class="support-section">
+            <h2>🔄 App Updates</h2>
+            <p>Keeping your app updated ensures you have the latest features and bug fixes:</p>
+            <ul>
+                <li>Updates are automatically available through the Google Play Store</li>
+                <li>You'll receive notifications when updates are available</li>
+                <li>Manual updates: Open Play Store > My Apps & Games > Updates</li>
+                <li>Enable auto-updates for the best experience</li>
+            </ul>
+        </div>
+
+        <div class="support-section">
+            <h2>💡 Tips for Better Experience</h2>
+            <ul>
+                <li><strong>Regular Updates:</strong> Keep the app updated for the best performance</li>
+                <li><strong>Stable Connection:</strong> Use a stable internet connection for content loading</li>
+                <li><strong>Storage Space:</strong> Ensure your device has adequate free storage</li>
+                <li><strong>Battery Optimization:</strong> Add the app to battery optimization exceptions if needed</li>
+                <li><strong>Feedback:</strong> Rate the app and leave reviews to help us improve</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 20px; background: rgba(59, 130, 246, 0.1); border-radius: 8px; border: 1px solid var(--border);">
+            <h3>Thank You for Using Guided Light!</h3>
+            <p>We appreciate your support and are committed to providing you with the best spiritual guidance experience possible.</p>
+            <p><strong>Response Time:</strong> We typically respond within 24-48 hours</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Guided Light App. Support center for spiritual guidance mobile application.</p>
+        <p><a href="https://streamautoclipper.shop/bible/tos.html">Terms of Service</a> | <a href="https://streamautoclipper.shop/bible/privacy.html">Privacy Policy</a> | <a href="https://streamautoclipper.shop/bible/faq.html">FAQ</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+{
+    "folders": [
+        {
+            "name": "Website Project",
+            "path": "."
+        },
+        {
+            "name": "Website Development",
+            "path": "./website"
+        },
+        {
+            "name": "Public Staging",
+            "path": "./public-site"
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/node_modules": true,
+            "**/.vercel": true,
+            "**/backups": false
+        },
+        "search.exclude": {
+            "**/node_modules": true,
+            "**/.vercel": true
+        },
+        "files.watcherExclude": {
+            "**/node_modules/**": true,
+            "**/.vercel/**": true
+        }
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-vscode.vscode-json",
+            "bradlc.vscode-tailwindcss",
+            "esbenp.prettier-vscode"
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Setup Development Environment",
+                "type": "shell",
+                "command": "npm run setup-dev",
+                "group": "build",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                }
+            },
+            {
+                "label": "Create Backup",
+                "type": "shell",
+                "command": "npm run backup",
+                "group": "build",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                }
+            },
+            {
+                "label": "Apply Changes",
+                "type": "shell",
+                "command": "npm run apply-changes",
+                "group": "build",
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": false,
+                    "panel": "shared"
+                }
+            }
+        ]
+    }
+}

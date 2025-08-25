@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Music Platform</title>
+    <meta name="description" content="Get in touch with our team for support, partnerships, or any questions about our music platform.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-card {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <a href="music.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">Music Platform</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="music-browse.html" class="text-gray-300 hover:text-white transition-colors">Browse</a>
+                    <a href="music-upload.html" class="text-gray-300 hover:text-white transition-colors">Upload</a>
+                    <a href="music-dashboard.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</button>
+                    <button class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-24 pb-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Contact Us
+                </h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                    Have questions, feedback, or need support? We're here to help! Reach out to our team through any of the channels below.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Methods -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Email Support -->
+                <div class="contact-card bg-gray-800 rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="mail" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Email Support</h3>
+                    <p class="text-gray-300 mb-4">Get help with technical issues, account questions, or general inquiries.</p>
+                    <a href="mailto:support@musicplatform.com" class="text-purple-400 hover:text-purple-300 transition-colors">
+                        support@musicplatform.com
+                    </a>
+                    <p class="text-gray-400 text-sm mt-2">Response within 24 hours</p>
+                </div>
+
+                <!-- Live Chat -->
+                <div class="contact-card bg-gray-800 rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="message-circle" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Live Chat</h3>
+                    <p class="text-gray-300 mb-4">Chat with our support team in real-time for immediate assistance.</p>
+                    <button class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                        Start Chat
+                    </button>
+                    <p class="text-gray-400 text-sm mt-2">Available 9 AM - 6 PM EST</p>
+                </div>
+
+                <!-- Community Forum -->
+                <div class="contact-card bg-gray-800 rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="users" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Community Forum</h3>
+                    <p class="text-gray-300 mb-4">Connect with other artists and creators, share tips, and get community support.</p>
+                    <button class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">
+                        Join Forum
+                    </button>
+                    <p class="text-gray-400 text-sm mt-2">24/7 community support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-12 bg-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-white mb-4">Send Us a Message</h2>
+                <p class="text-gray-300">Fill out the form below and we'll get back to you as soon as possible.</p>
+            </div>
+            
+            <form class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="firstName" class="block text-sm font-medium text-gray-300 mb-2">First Name</label>
+                        <input type="text" id="firstName" name="firstName" class="form-input w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20">
+                    </div>
+                    <div>
+                        <label for="lastName" class="block text-sm font-medium text-gray-300 mb-2">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" class="form-input w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20">
+                </div>
+                
+                <div>
+                    <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Subject</label>
+                    <select id="subject" name="subject" class="form-input w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20">
+                        <option value="">Select a subject</option>
+                        <option value="technical-support">Technical Support</option>
+                        <option value="account-issues">Account Issues</option>
+                        <option value="licensing-questions">Licensing Questions</option>
+                        <option value="partnership">Partnership Inquiry</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                    <textarea id="message" name="message" rows="6" class="form-input w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20" placeholder="Tell us how we can help you..."></textarea>
+                </div>
+                
+                <div class="flex items-center">
+                    <input type="checkbox" id="newsletter" name="newsletter" class="w-4 h-4 text-purple-500 bg-gray-700 border-gray-600 rounded focus:ring-purple-500 focus:ring-2">
+                    <label for="newsletter" class="ml-2 text-sm text-gray-300">
+                        Subscribe to our newsletter for updates and tips
+                    </label>
+                </div>
+                
+                <button type="submit" class="w-full px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                    <i data-lucide="send" class="w-5 h-5 inline mr-2"></i>
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
+            
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-white">How do I upload my music to the platform?</h3>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform"></i>
+                    </button>
+                    <div class="mt-4 text-gray-300 hidden">
+                        <p>To upload your music, simply create an artist account, go to the upload section, and follow the step-by-step process. You'll need to provide track information, upload your audio file, and set your licensing terms.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-white">What are the licensing terms for using music?</h3>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform"></i>
+                    </button>
+                    <div class="mt-4 text-gray-300 hidden">
+                        <p>Our platform offers various licensing options including royalty-free, commercial, and exclusive licenses. Each track's specific licensing terms are clearly displayed on the track page. Most tracks are royalty-free for content creation.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-white">How do I get paid for my music?</h3>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform"></i>
+                    </button>
+                    <div class="mt-4 text-gray-300 hidden">
+                        <p>Artists earn money through track purchases, tips, subscriptions, and commissions. Payments are processed monthly and sent directly to your registered payment method. You can track your earnings in your artist dashboard.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-white">Can I use the music in commercial projects?</h3>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform"></i>
+                    </button>
+                    <div class="mt-4 text-gray-300 hidden">
+                        <p>Yes! Most tracks on our platform are licensed for commercial use. However, specific licensing terms vary by track, so always check the individual track's licensing information before use.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg font-semibold text-white">How do I report copyright issues?</h3>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform"></i>
+                    </button>
+                    <div class="mt-4 text-gray-300 hidden">
+                        <p>If you believe there's a copyright issue with any content on our platform, please contact us immediately at copyright@musicplatform.com with detailed information about the issue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Locations -->
+    <section class="py-12 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Our Offices</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Main Office -->
+                <div class="bg-gray-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mr-4">
+                            <i data-lucide="map-pin" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Main Office</h3>
+                            <p class="text-gray-400 text-sm">San Francisco, CA</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-gray-300">
+                        <p>123 Music Street</p>
+                        <p>San Francisco, CA 94102</p>
+                        <p>United States</p>
+                        <p class="text-purple-400">+1 (555) 123-4567</p>
+                    </div>
+                </div>
+
+                <!-- European Office -->
+                <div class="bg-gray-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mr-4">
+                            <i data-lucide="map-pin" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">European Office</h3>
+                            <p class="text-gray-400 text-sm">Berlin, Germany</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-gray-300">
+                        <p>456 Creative Avenue</p>
+                        <p>Berlin, 10115</p>
+                        <p>Germany</p>
+                        <p class="text-blue-400">+49 30 1234 5678</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Follow Us</h2>
+            <p class="text-gray-300 mb-8">Stay updated with the latest news, tips, and community highlights.</p>
+            
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i data-lucide="twitter" class="w-6 h-6 text-white"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i data-lucide="instagram" class="w-6 h-6 text-white"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i data-lucide="youtube" class="w-6 h-6 text-white"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i data-lucide="linkedin" class="w-6 h-6 text-white"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <i data-lucide="discord" class="w-6 h-6 text-white"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-upload.html" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="music-dashboard.html" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="track-earnings.html" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="promote-music.html" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-browse.html" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="advanced-search.html" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="licensing-info.html" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="support-artists.html" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="about-us.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+        
+        // FAQ toggle function
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add form submission logic here
+            alert('Thank you for your message! We\'ll get back to you soon.');
+        });
+    </script>
+</body>
+</html>

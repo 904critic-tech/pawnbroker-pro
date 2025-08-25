@@ -1,0 +1,35 @@
+{
+  "website": {
+    "name": "Is it worth it - Website",
+    "description": "Main website project with safe development environment",
+    "globalPath": "C:/Users/shuma/OneDrive/Desktop/Is it worth it/website",
+    "developmentFolder": "website",
+    "stagingFolder": "public-site",
+    "backupsFolder": "website/backups",
+    "projectsFolder": "website/projects"
+  },
+  "development": {
+    "safeMode": true,
+    "autoBackup": true,
+    "testBeforeApply": true,
+    "criticalFiles": [
+      "index.html",
+      "styles.css",
+      "api/**/*"
+    ]
+  },
+  "commands": {
+    "setup": "npm run setup-dev",
+    "backup": "npm run backup",
+    "apply": "npm run apply-changes",
+    "addProject": "npm run add-project",
+    "listProjects": "npm run list-projects"
+  },
+  "paths": {
+    "commonLocations": [
+      "C:/Users/shuma/OneDrive/Desktop/Is it worth it/website",
+      "C:/Users/shuma/Desktop/Is it worth it/website",
+      "C:/Users/shuma/Documents/Is it worth it/website"
+    ]
+  }
+}

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alpha Testing NDA - StreamAutoClipper</title>
+    <meta name="description" content="Non-Disclosure Agreement for StreamAutoClipper Alpha Testing Program" />
+    <link rel="icon" href="/logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+        .nda-container {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 40px 20px;
+        }
+        .nda-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .alpha-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nda-document {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            color: #e2e8f0;
+            line-height: 1.7;
+        }
+        .nda-section {
+            margin-bottom: 30px;
+        }
+        .nda-section h3 {
+            color: #f1f5f9;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(100, 116, 139, 0.2);
+            padding-bottom: 8px;
+        }
+        .nda-section p, .nda-section li {
+            margin-bottom: 10px;
+        }
+        .nda-section ul {
+            padding-left: 20px;
+        }
+        .agreement-form {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.05));
+            border: 2px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 20px 0;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(100, 116, 139, 0.2);
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 4px;
+            transform: scale(1.2);
+            accent-color: #ef4444;
+        }
+        .checkbox-group label {
+            color: #e2e8f0;
+            font-size: 14px;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+        .signature-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .signature-field {
+            text-align: left;
+        }
+        .signature-field label {
+            display: block;
+            color: #e2e8f0;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .signature-field input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-size: 16px;
+        }
+        .signature-field input:focus {
+            outline: none;
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+        .agree-btn {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        .agree-btn:hover {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+        }
+        .agree-btn:disabled {
+            background: #374151;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #3b82f6;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover {
+            color: #60a5fa;
+        }
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #fecaca;
+        }
+        .warning-box strong {
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <header class="nav">
+        <div class="container nav-inner">
+            <div class="brand">
+                <img src="/logo.png" alt="StreamAutoClipper" class="brand-logo" />
+            </div>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/#how-it-works">How It Works</a>
+                <a href="/#features">Features</a>
+                <a href="/alpha-access.html">Alpha Access</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="nda-container">
+        <a href="/alpha-access.html" class="back-link">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.22 3.22L1.44 8L6.22 12.78L7.28 11.72L4.06 8.5H14.5V7.5H4.06L7.28 4.28L6.22 3.22Z" fill="currentColor"/>
+            </svg>
+            Back to Alpha Access
+        </a>
+
+        <div class="nda-header">
+            <div class="alpha-badge">🔒 Simple Protection Agreement</div>
+            <h1>Alpha Testing Agreement</h1>
+            <p>StreamAutoClipper Alpha Testing Program</p>
+        </div>
+
+        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 20px; margin: 20px 0; color: #10b981;">
+            <strong>Good News:</strong> This is a simple protection agreement that lets you stream publicly and talk about your experience! We just need to protect access codes, screenshots, and reverse engineering.
+        </div>
+
+        <div class="nda-document">
+            <div class="nda-section">
+                <h3>1. Parties</h3>
+                <p>This Non-Disclosure Agreement ("Agreement") is entered into between StreamAutoClipper ("Disclosing Party") and the alpha tester ("Receiving Party") who agrees to test the StreamAutoClipper alpha software.</p>
+            </div>
+
+            <div class="nda-section">
+                <h3>2. Definition of Confidential Information</h3>
+                <p>For purposes of this Agreement, "Confidential Information" includes <strong>ONLY</strong> the following specific items:</p>
+                <ul>
+                    <li><strong>Alpha Access Codes:</strong> Your specific access code and any unused access codes</li>
+                    <li><strong>Software Files:</strong> The actual application files, executables, and installation packages</li>
+                    <li><strong>Screenshots/Recordings:</strong> Visual documentation of the software interface and functionality</li>
+                    <li><strong>Source Code:</strong> Any visible source code, technical implementation details, or reverse-engineered information</li>
+                    <li><strong>Competitive Use:</strong> Using the software to build competing products or services</li>
+                </ul>
+                <p><strong>IMPORTANT:</strong> You are <em>encouraged</em> to discuss your experience, opinions, and results publicly during streams and on social media!</p>
+            </div>
+
+            <div class="nda-section">
+                <h3>3. Obligations of Receiving Party</h3>
+                <p>The Receiving Party agrees to:</p>
+                <ul>
+                    <li><strong>Protect Access Codes:</strong> Keep your alpha access code private and not share it with others</li>
+                    <li><strong>No Screenshots/Recordings:</strong> Not take screenshots, record videos, or create visual documentation of the software interface</li>
+                    <li><strong>No Reverse Engineering:</strong> Not attempt to reverse engineer, decompile, or extract source code from the software</li>
+                    <li><strong>No Competitive Use:</strong> Not use insights gained from testing to create competing products or services</li>
+                    <li><strong>No File Sharing:</strong> Not distribute, share, or upload the software files or installation packages</li>
+                </ul>
+                <p><strong>YOU ARE ENCOURAGED TO:</strong></p>
+                <ul style="color: #10b981;">
+                    <li>✅ <strong>Stream with the software live on camera</strong></li>
+                    <li>✅ <strong>Discuss your experience and opinions publicly</strong></li>
+                    <li>✅ <strong>Share your results and clips on social media</strong></li>
+                    <li>✅ <strong>Tell other creators about the alpha program</strong></li>
+                    <li>✅ <strong>Create buzz and excitement about StreamAutoClipper</strong></li>
+                </ul>
+            </div>
+
+            <div class="nda-section">
+                <h3>4. Prohibited Activities</h3>
+                <p>The Receiving Party specifically agrees NOT to:</p>
+                <ul>
+                    <li><strong>Share access codes</strong> with any third party (keep your code private)</li>
+                    <li><strong>Distribute software files</strong> or installation packages to others</li>
+                    <li><strong>Take screenshots or record videos</strong> of the software interface</li>
+                    <li><strong>Reverse engineer or decompile</strong> the software to extract source code</li>
+                    <li><strong>Create competing products</strong> based on insights gained from testing</li>
+                    <li><strong>Share the software files</strong> with competitors or potential competitors</li>
+                </ul>
+                <p><strong>Note:</strong> These restrictions are specifically about protecting the software itself and access distribution, not your ability to talk about your experience!</p>
+            </div>
+
+            <div class="nda-section">
+                <h3>5. Duration</h3>
+                <p>This Agreement shall remain in effect for a period of three (3) years from the date of execution, or until the software is publicly released, whichever occurs first. The obligations regarding Confidential Information shall survive termination of this Agreement.</p>
+            </div>
+
+            <div class="nda-section">
+                <h3>6. Return of Materials</h3>
+                <p>Upon termination of the alpha testing period or upon request by the Disclosing Party, the Receiving Party agrees to immediately delete all copies of the software and return or destroy any materials containing Confidential Information.</p>
+            </div>
+
+            <div class="nda-section">
+                <h3>7. Legal Remedies</h3>
+                <p>The Receiving Party acknowledges that any breach of this Agreement may cause irreparable harm to the Disclosing Party, and that monetary damages may be inadequate. Therefore, the Disclosing Party shall be entitled to seek injunctive relief and other equitable remedies in addition to any other legal remedies available.</p>
+            </div>
+
+            <div class="nda-section">
+                <h3>8. Governing Law</h3>
+                <p>This Agreement shall be governed by and construed in accordance with the laws of the jurisdiction where StreamAutoClipper is based, without regard to conflict of law principles.</p>
+            </div>
+        </div>
+
+        <div class="agreement-form">
+            <h3>Agreement Acceptance</h3>
+            <p>By checking the boxes below and providing your digital signature, you agree to be legally bound by this Non-Disclosure Agreement.</p>
+
+            <form id="nda-form">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="read-understand" required>
+                    <label for="read-understand">I have read and understand this Non-Disclosure Agreement in its entirety</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agree-terms" required>
+                    <label for="agree-terms">I agree to all terms and conditions outlined in this Agreement</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="understand-consequences" required>
+                    <label for="understand-consequences">I understand the legal consequences of breaching this Agreement</label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="voluntary-agreement" required>
+                    <label for="voluntary-agreement">I am entering into this Agreement voluntarily and without coercion</label>
+                </div>
+
+                <div class="signature-section">
+                    <div class="signature-field">
+                        <label for="full-name">Full Legal Name *</label>
+                        <input type="text" id="full-name" name="full-name" required>
+                    </div>
+                    <div class="signature-field">
+                        <label for="date">Date *</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                </div>
+
+                <div class="signature-field">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <button type="submit" class="agree-btn" id="agree-btn" disabled>
+                    I Agree to the NDA Terms
+                </button>
+            </form>
+
+            <div id="nda-status"></div>
+        </div>
+    </main>
+
+    <script>
+        // Set today's date by default
+        document.getElementById('date').valueAsDate = new Date();
+
+        // Enable/disable button based on checkbox states
+        function updateButtonState() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const button = document.getElementById('agree-btn');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            
+            button.disabled = !allChecked;
+        }
+
+        // Add event listeners to all checkboxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', updateButtonState);
+        });
+
+        // Handle form submission
+        document.getElementById('nda-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const statusDiv = document.getElementById('nda-status');
+            const formData = new FormData(this);
+            
+            // Validate all fields
+            const fullName = formData.get('full-name');
+            const email = formData.get('email');
+            const date = formData.get('date');
+            
+            if (!fullName || !email || !date) {
+                statusDiv.innerHTML = '<div style="color: #ef4444; margin-top: 15px;">Please fill in all required fields.</div>';
+                return;
+            }
+            
+            // Store NDA acceptance
+            const ndaData = {
+                fullName: fullName,
+                email: email,
+                date: date,
+                timestamp: new Date().toISOString(),
+                ipAddress: 'logged', // In real implementation, capture IP
+                userAgent: navigator.userAgent
+            };
+            
+            localStorage.setItem('ndaAccepted', JSON.stringify(ndaData));
+            localStorage.setItem('ndaAcceptedDate', date);
+            
+            // Show success and redirect
+            statusDiv.innerHTML = `
+                <div style="color: #10b981; margin-top: 15px; text-align: center;">
+                    ✅ NDA Accepted Successfully!<br>
+                    <small>Redirecting to alpha access...</small>
+                </div>
+            `;
+            
+            // Redirect back to alpha access page
+            setTimeout(() => {
+                window.location.href = '/alpha-access.html?nda=accepted';
+            }, 2000);
+            
+            // In a real implementation, you'd send this to your backend:
+            // fetch('/api/nda-acceptance', { method: 'POST', body: formData })
+        });
+
+        // Pre-fill email if coming from alpha access form
+        const urlParams = new URLSearchParams(window.location.search);
+        const emailParam = urlParams.get('email');
+        if (emailParam) {
+            document.getElementById('email').value = decodeURIComponent(emailParam);
+        }
+    </script>
+</body>
+</html>

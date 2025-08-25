@@ -264,11 +264,49 @@ router.delete('/account', [
       });
     }
 
-    // TODO: Delete user's items and other related data
-    // This would typically involve deleting all items associated with the user
+    // Delete user's items and other related data
+    try {
+      // Delete user's search history
+      await SearchHistory.deleteMany({ userId: user._id });
+      
+      // Delete user's uploaded images (if using Cloudinary)
+      const userImages = await Image.find({ userId: user._id });
+      for (const image of userImages) {
+        // Delete from Cloudinary if cloudinaryId exists
+        if (image.cloudinaryId) {
+          try {
+            const cloudinary = require('cloudinary').v2;
+            await cloudinary.uploader.destroy(image.cloudinaryId);
+          } catch (cloudinaryError) {
+            console.warn('Failed to delete image from Cloudinary:', cloudinaryError.message);
+          }
+        }
+        // Delete from database
+        await Image.findByIdAndDelete(image._id);
+      }
+      
+      // Delete user's items
+      await Item.deleteMany({ userId: user._id });
+      
+      // Delete user's learning data (if any)
+      if (typeof UserLearning !== 'undefined') {
+        await UserLearning.deleteMany({ userId: user._id });
+      }
+      
+      // Delete user's preferences (if any)
+      if (typeof UserPreference !== 'undefined') {
+        await UserPreference.deleteMany({ userId: user._id });
+      }
+      
+      console.log(`User data deleted for user: ${user._id}`);
+    } catch (dataDeletionError) {
+      console.error('Failed to delete user data:', dataDeletionError);
+      // Continue with account deactivation even if data deletion fails
+    }
 
-    // Deactivate user account instead of deleting
+    // Soft delete user account (GDPR compliant)
     user.isActive = false;
+    user.deletedAt = new Date();
     await user.save();
 
     res.json({

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Dashboard - Music Platform</title>
+    <meta name="description" content="Track your music performance, earnings, and audience growth on our platform.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+        
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        
+        .progress-ring-circle {
+            transition: stroke-dasharray 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">Music Platform</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="browse.html" class="text-gray-300 hover:text-white transition-colors">Browse</a>
+                    <a href="upload.html" class="text-gray-300 hover:text-white transition-colors">Upload</a>
+                    <a href="dashboard.html" class="text-white font-semibold">Dashboard</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                            <i data-lucide="user" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <span class="text-sm font-medium text-white">Alex Rivers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-24 pb-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                        Artist Dashboard
+                    </h1>
+                    <p class="text-xl text-gray-200">
+                        Track your performance, earnings, and audience growth
+                    </p>
+                </div>
+                <div class="mt-6 md:mt-0 flex space-x-4">
+                    <button class="px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-full hover:bg-white/20 transition-all">
+                        <i data-lucide="download" class="w-4 h-4 inline mr-2"></i>
+                        Export Data
+                    </button>
+                    <button class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all">
+                        <i data-lucide="settings" class="w-4 h-4 inline mr-2"></i>
+                        Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Overview -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <!-- Total Earnings -->
+                <div class="stat-card glass-effect rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="dollar-sign" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-green-400 text-sm font-medium">+12.5%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-1">$2,847</h3>
+                    <p class="text-gray-400 text-sm">Total Earnings</p>
+                </div>
+
+                <!-- Total Plays -->
+                <div class="stat-card glass-effect rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="play" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-blue-400 text-sm font-medium">+8.2%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-1">45.2K</h3>
+                    <p class="text-gray-400 text-sm">Total Plays</p>
+                </div>
+
+                <!-- Downloads -->
+                <div class="stat-card glass-effect rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="download" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-purple-400 text-sm font-medium">+15.3%</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-1">3,847</h3>
+                    <p class="text-gray-400 text-sm">Downloads</p>
+                </div>
+
+                <!-- Active Tracks -->
+                <div class="stat-card glass-effect rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-orange-400 text-sm font-medium">+2</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-1">12</h3>
+                    <p class="text-gray-400 text-sm">Active Tracks</p>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <!-- Earnings Chart -->
+                <div class="glass-effect rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-semibold text-white">Earnings Overview</h3>
+                        <select class="bg-gray-800 text-white px-3 py-1 rounded-lg border border-gray-700 text-sm">
+                            <option>Last 30 days</option>
+                            <option>Last 90 days</option>
+                            <option>Last year</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="earningsChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+
+                <!-- Plays Chart -->
+                <div class="glass-effect rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-semibold text-white">Play Count</h3>
+                        <select class="bg-gray-800 text-white px-3 py-1 rounded-lg border border-gray-700 text-sm">
+                            <option>Last 30 days</option>
+                            <option>Last 90 days</option>
+                            <option>Last year</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="playsChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity & Top Tracks -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Recent Activity -->
+                <div class="glass-effect rounded-xl p-6">
+                    <h3 class="text-xl font-semibold text-white mb-6">Recent Activity</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
+                            <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                                <i data-lucide="heart" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-white font-medium">New tip received</p>
+                                <p class="text-gray-400 text-sm">$25 from @musiclover</p>
+                            </div>
+                            <span class="text-gray-400 text-sm">2h ago</span>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
+                            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+                                <i data-lucide="download" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-white font-medium">Track downloaded</p>
+                                <p class="text-gray-400 text-sm">"Midnight Dreams" by @creator</p>
+                            </div>
+                            <span class="text-gray-400 text-sm">4h ago</span>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
+                            <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
+                                <i data-lucide="play" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-white font-medium">New play milestone</p>
+                                <p class="text-gray-400 text-sm">"Ocean Waves" reached 10K plays</p>
+                            </div>
+                            <span class="text-gray-400 text-sm">1d ago</span>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
+                            <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
+                                <i data-lucide="star" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-white font-medium">Featured track</p>
+                                <p class="text-gray-400 text-sm">"Urban Beat" featured on homepage</p>
+                            </div>
+                            <span class="text-gray-400 text-sm">2d ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Performing Tracks -->
+                <div class="glass-effect rounded-xl p-6">
+                    <h3 class="text-xl font-semibold text-white mb-6">Top Performing Tracks</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                                <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-white font-medium">Midnight Dreams</h4>
+                                <p class="text-gray-400 text-sm">15.2K plays • $847 earned</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-green-400 text-sm font-medium">+23%</div>
+                                <div class="text-gray-400 text-xs">This week</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                                <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-white font-medium">Ocean Waves</h4>
+                                <p class="text-gray-400 text-sm">12.8K plays • $623 earned</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-green-400 text-sm font-medium">+18%</div>
+                                <div class="text-gray-400 text-xs">This week</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
+                            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
+                                <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-white font-medium">Urban Beat</h4>
+                                <p class="text-gray-400 text-sm">8.9K plays • $456 earned</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-green-400 text-sm font-medium">+31%</div>
+                                <div class="text-gray-400 text-xs">This week</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
+                            <div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center">
+                                <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-white font-medium">Sunset Vibes</h4>
+                                <p class="text-gray-400 text-sm">6.3K plays • $312 earned</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-green-400 text-sm font-medium">+12%</div>
+                                <div class="text-gray-400 text-xs">This week</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Management -->
+    <section class="py-12 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-white">Track Management</h2>
+                <a href="upload.html" class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all">
+                    <i data-lucide="plus" class="w-4 h-4 inline mr-2"></i>
+                    Upload New Track
+                </a>
+            </div>
+
+            <!-- Track Table -->
+            <div class="glass-effect rounded-xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-800">
+                            <tr>
+                                <th class="px-6 py-4 text-left text-gray-300 font-medium">Track</th>
+                                <th class="px-6 py-4 text-left text-gray-300 font-medium">Plays</th>
+                                <th class="px-6 py-4 text-left text-gray-300 font-medium">Downloads</th>
+                                <th class="px-6 py-4 text-left text-gray-300 font-medium">Earnings</th>
+                                <th class="px-6 py-4 text-left text-gray-300 font-medium">Status</th>
+                                <th class="px-6 py-4 text-left text-gray-300 font-medium">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-700">
+                            <tr class="hover:bg-gray-800/50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-white font-medium">Midnight Dreams</div>
+                                            <div class="text-gray-400 text-sm">Electronic • 3:45</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-white">15,234</td>
+                                <td class="px-6 py-4 text-white">1,847</td>
+                                <td class="px-6 py-4 text-green-400 font-medium">$847</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Active</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex space-x-2">
+                                        <button class="text-gray-400 hover:text-white transition-colors">
+                                            <i data-lucide="edit" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="text-gray-400 hover:text-white transition-colors">
+                                            <i data-lucide="bar-chart" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="text-red-400 hover:text-red-300 transition-colors">
+                                            <i data-lucide="trash" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="hover:bg-gray-800/50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-white font-medium">Ocean Waves</div>
+                                            <div class="text-gray-400 text-sm">Ambient • 4:12</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-white">12,847</td>
+                                <td class="px-6 py-4 text-white">1,234</td>
+                                <td class="px-6 py-4 text-green-400 font-medium">$623</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Active</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex space-x-2">
+                                        <button class="text-gray-400 hover:text-white transition-colors">
+                                            <i data-lucide="edit" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="text-gray-400 hover:text-white transition-colors">
+                                            <i data-lucide="bar-chart" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="text-red-400 hover:text-red-300 transition-colors">
+                                            <i data-lucide="trash" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="hover:bg-gray-800/50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
+                                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-white font-medium">Urban Beat</div>
+                                            <div class="text-gray-400 text-sm">Hip Hop • 2:58</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-white">8,923</td>
+                                <td class="px-6 py-4 text-white">987</td>
+                                <td class="px-6 py-4 text-green-400 font-medium">$456</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-xs">Pending</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex space-x-2">
+                                        <button class="text-gray-400 hover:text-white transition-colors">
+                                            <i data-lucide="edit" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="text-gray-400 hover:text-white transition-colors">
+                                            <i data-lucide="bar-chart" class="w-4 h-4"></i>
+                                        </button>
+                                        <button class="text-red-400 hover:text-red-300 transition-colors">
+                                            <i data-lucide="trash" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="upload.html" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="dashboard.html" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="browse.html" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+        
+        // Simple chart simulation
+        function createSimpleChart(canvasId, data, color) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw grid
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 1;
+            
+            // Vertical lines
+            for (let i = 0; i <= 10; i++) {
+                const x = (width / 10) * i;
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, height);
+                ctx.stroke();
+            }
+            
+            // Horizontal lines
+            for (let i = 0; i <= 5; i++) {
+                const y = (height / 5) * i;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+            
+            // Draw line chart
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            
+            data.forEach((value, index) => {
+                const x = (width / (data.length - 1)) * index;
+                const y = height - (value / Math.max(...data)) * height;
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            
+            ctx.stroke();
+            
+            // Draw points
+            ctx.fillStyle = color;
+            data.forEach((value, index) => {
+                const x = (width / (data.length - 1)) * index;
+                const y = height - (value / Math.max(...data)) * height;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, 4, 0, 2 * Math.PI);
+                ctx.fill();
+            });
+        }
+        
+        // Initialize charts when page loads
+        window.addEventListener('load', function() {
+            // Sample data for earnings chart
+            const earningsData = [1200, 1350, 1100, 1600, 1400, 1800, 2200, 2000, 2400, 2800, 2600, 2847];
+            createSimpleChart('earningsChart', earningsData, '#8b5cf6');
+            
+            // Sample data for plays chart
+            const playsData = [8000, 9200, 7800, 10500, 9500, 12000, 14000, 13000, 15000, 18000, 16000, 45200];
+            createSimpleChart('playsChart', playsData, '#06b6d4');
+        });
+    </script>
+    
+    <!-- Music Player -->
+    <script src="player.js"></script>
+</body>
+</html>

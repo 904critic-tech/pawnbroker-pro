@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licensing Information - Music Platform</title>
+    <meta name="description" content="Learn about music licensing, usage rights, and compliance requirements for content creators.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .license-card {
+            transition: all 0.3s ease;
+        }
+        
+        .license-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .usage-example {
+            transition: all 0.3s ease;
+        }
+        
+        .usage-example:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <a href="music.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">Music Platform</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="music-browse.html" class="text-gray-300 hover:text-white transition-colors">Browse</a>
+                    <a href="music-upload.html" class="text-gray-300 hover:text-white transition-colors">Upload</a>
+                    <a href="music-dashboard.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</button>
+                    <button class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-24 pb-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Licensing Information
+                </h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                    Understand music licensing, usage rights, and compliance requirements. Make informed decisions about using music in your projects.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- License Types -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">License Types</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Royalty-Free -->
+                <div class="license-card bg-gray-800 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-green-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Royalty-Free</h3>
+                    <p class="text-gray-300 mb-4">One-time payment for unlimited use in multiple projects without ongoing royalties.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Unlimited commercial use
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            No attribution required
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Multiple projects allowed
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            No geographic restrictions
+                        </div>
+                    </div>
+                    <div class="bg-green-500/20 border border-green-500/30 rounded-lg p-3">
+                        <p class="text-green-400 text-sm font-medium">Best for: Commercial projects, advertising, and unlimited use cases</p>
+                    </div>
+                </div>
+
+                <!-- Creative Commons -->
+                <div class="license-card bg-gray-800 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="users" class="w-6 h-6 text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Creative Commons</h3>
+                    <p class="text-gray-300 mb-4">Free licenses with specific usage conditions and attribution requirements.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Free to use
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Attribution required
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Various license types
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Community-driven
+                        </div>
+                    </div>
+                    <div class="bg-blue-500/20 border border-blue-500/30 rounded-lg p-3">
+                        <p class="text-blue-400 text-sm font-medium">Best for: Educational content, personal projects, and community sharing</p>
+                    </div>
+                </div>
+
+                <!-- Commercial License -->
+                <div class="license-card bg-gray-800 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="briefcase" class="w-6 h-6 text-purple-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Commercial License</h3>
+                    <p class="text-gray-300 mb-4">Premium licenses for high-value commercial projects with extended rights.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            High-value commercial use
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Extended usage rights
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Priority support
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Custom terms available
+                        </div>
+                    </div>
+                    <div class="bg-purple-500/20 border border-purple-500/30 rounded-lg p-3">
+                        <p class="text-purple-400 text-sm font-medium">Best for: High-budget productions, major brands, and exclusive use</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Usage Examples -->
+    <section class="py-12 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Usage Examples</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- YouTube Videos -->
+                <div class="usage-example bg-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="play" class="w-6 h-6 text-red-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">YouTube Videos</h3>
+                    <p class="text-gray-300 mb-4">Background music for vlogs, tutorials, and entertainment content.</p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Royalty-free tracks recommended
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Attribution may be required
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Check Content ID policies
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Podcasts -->
+                <div class="usage-example bg-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="mic" class="w-6 h-6 text-orange-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Podcasts</h3>
+                    <p class="text-gray-300 mb-4">Intro music, background tracks, and transition sounds.</p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Royalty-free or Creative Commons
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Include in show notes
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Check distribution rights
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commercial Ads -->
+                <div class="usage-example bg-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="tv" class="w-6 h-6 text-yellow-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Commercial Ads</h3>
+                    <p class="text-gray-300 mb-4">Television, radio, and digital advertising campaigns.</p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Commercial license required
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Clear usage rights needed
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Consider exclusivity
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Games -->
+                <div class="usage-example bg-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="gamepad-2" class="w-6 h-6 text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Video Games</h3>
+                    <p class="text-gray-300 mb-4">Background music, sound effects, and interactive audio.</p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Interactive use rights
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Loop and modify permissions
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Commercial license needed
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Educational Content -->
+                <div class="usage-example bg-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="book-open" class="w-6 h-6 text-green-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Educational Content</h3>
+                    <p class="text-gray-300 mb-4">Online courses, tutorials, and educational videos.</p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Creative Commons works well
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Attribution required
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Check educational use rights
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Streaming -->
+                <div class="usage-example bg-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="radio" class="w-6 h-6 text-pink-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Live Streaming</h3>
+                    <p class="text-gray-300 mb-4">Background music for Twitch, YouTube Live, and other platforms.</p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Royalty-free tracks
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Check platform policies
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Avoid copyrighted music
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance Guide -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Compliance Guide</h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Do's -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="check-circle" class="w-6 h-6 text-green-400 mr-3"></i>
+                        What You Can Do
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 mt-0.5"></i>
+                            <div>
+                                <p class="text-white font-medium">Read License Terms</p>
+                                <p class="text-gray-400 text-sm">Always read and understand the specific license terms before using music.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 mt-0.5"></i>
+                            <div>
+                                <p class="text-white font-medium">Provide Attribution</p>
+                                <p class="text-gray-400 text-sm">Credit artists when required by the license terms.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 mt-0.5"></i>
+                            <div>
+                                <p class="text-white font-medium">Keep Records</p>
+                                <p class="text-gray-400 text-sm">Maintain documentation of your music licenses and usage.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 mt-0.5"></i>
+                            <div>
+                                <p class="text-white font-medium">Respect Usage Limits</p>
+                                <p class="text-gray-400 text-sm">Stay within the scope of your license agreement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Don'ts -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="x-circle" class="w-6 h-6 text-red-400 mr-3"></i>
+                        What to Avoid
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i data-lucide="x" class="w-5 h-5 text-red-400 mr-3 mt-0.5"></i>
+                            <div>
+                                <p class="text-white font-medium">Ignore License Terms</p>
+                                <p class="text-gray-400 text-sm">Don't use music without understanding the license requirements.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="x" class="w-5 h-5 text-red-400 mr-3 mt-0.5"></i>
+                            <div>
+                                <p class="text-white font-medium">Skip Attribution</p>
+                                <p class="text-gray-400 text-sm">Don't forget to credit artists when required.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="x" class="w-5 h-5 text-red-400 mr-3 mt-0.5"></i>
+                            <div>
+                                <p class="text-white font-medium">Exceed Usage Rights</p>
+                                <p class="text-gray-400 text-sm">Don't use music beyond what your license allows.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="x" class="w-5 h-5 text-red-400 mr-3 mt-0.5"></i>
+                            <div>
+                                <p class="text-white font-medium">Assume All Rights</p>
+                                <p class="text-gray-400 text-sm">Don't assume you have unlimited rights to modify or distribute.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-12 bg-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-gray-700 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-white mb-3">What's the difference between royalty-free and Creative Commons?</h3>
+                    <p class="text-gray-300">Royalty-free music requires a one-time payment but allows unlimited use without ongoing fees. Creative Commons music is free but may have specific usage conditions and attribution requirements.</p>
+                </div>
+                
+                <div class="bg-gray-700 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-white mb-3">Do I need to credit the artist?</h3>
+                    <p class="text-gray-300">It depends on the license type. Royalty-free licenses typically don't require attribution, while Creative Commons licenses usually do. Always check the specific license terms.</p>
+                </div>
+                
+                <div class="bg-gray-700 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-white mb-3">Can I use the same track in multiple projects?</h3>
+                    <p class="text-gray-300">Most royalty-free licenses allow unlimited use across multiple projects. Creative Commons licenses may have restrictions. Check your specific license for details.</p>
+                </div>
+                
+                <div class="bg-gray-700 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-white mb-3">What if I need to modify the music?</h3>
+                    <p class="text-gray-300">Modification rights vary by license. Royalty-free licenses usually allow modifications, while Creative Commons licenses may have specific conditions. Always verify before making changes.</p>
+                </div>
+                
+                <div class="bg-gray-700 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-white mb-3">Is the license transferable?</h3>
+                    <p class="text-gray-300">Most licenses are non-transferable and tied to the original purchaser. If you're working for a client, they may need their own license.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-upload.html" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="music-dashboard.html" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="track-earnings.html" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="promote-music.html" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-browse.html" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="advanced-search.html" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="licensing-info.html" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="support-artists.html" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="about-us.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+    </script>
+</body>
+</html>

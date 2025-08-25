@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Music Platform</title>
+    <meta name="description" content="Learn about our mission to connect independent artists with content creators and build a sustainable music ecosystem.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .team-card {
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <a href="music.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">Music Platform</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="music-browse.html" class="text-gray-300 hover:text-white transition-colors">Browse</a>
+                    <a href="music-upload.html" class="text-gray-300 hover:text-white transition-colors">Upload</a>
+                    <a href="music-dashboard.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</button>
+                    <button class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-24 pb-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    About Us
+                </h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                    We're building a bridge between independent artists and content creators, creating a sustainable ecosystem where great music meets great content.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-6">Our Story</h2>
+                    <p class="text-gray-300 mb-6">
+                        Founded in 2023, our platform emerged from a simple observation: content creators needed high-quality, royalty-free music, while independent artists needed sustainable ways to monetize their work.
+                    </p>
+                    <p class="text-gray-300 mb-6">
+                        We saw an opportunity to create a direct connection between these two communities, eliminating the traditional barriers and middlemen that often prevented meaningful collaboration.
+                    </p>
+                    <p class="text-gray-300">
+                        Today, we're proud to have facilitated thousands of connections, helping artists earn over $500,000 while providing content creators with access to unique, high-quality music that enhances their projects.
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl p-8">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-white mb-2">2,500+</div>
+                                <div class="text-gray-300 text-sm">Independent Artists</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-white mb-2">15,000+</div>
+                                <div class="text-gray-300 text-sm">Content Creators</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-white mb-2">50,000+</div>
+                                <div class="text-gray-300 text-sm">Tracks Available</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-white mb-2">$500K+</div>
+                                <div class="text-gray-300 text-sm">Paid to Artists</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission -->
+    <section class="py-12 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4">Our Mission</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    To democratize access to high-quality music while creating sustainable income streams for independent artists.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- For Artists -->
+                <div class="stat-card bg-gray-700 rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="music" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">For Artists</h3>
+                    <p class="text-gray-300">Provide independent musicians with direct access to content creators, enabling them to monetize their work and build sustainable careers.</p>
+                </div>
+
+                <!-- For Creators -->
+                <div class="stat-card bg-gray-700 rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="video" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">For Creators</h3>
+                    <p class="text-gray-300">Offer content creators access to unique, high-quality music that enhances their projects while supporting independent artists.</p>
+                </div>
+
+                <!-- For the Community -->
+                <div class="stat-card bg-gray-700 rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="users" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">For the Community</h3>
+                    <p class="text-gray-300">Build a sustainable ecosystem where creativity thrives and meaningful connections are made between artists and creators.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Our Values</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Transparency -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mr-4">
+                            <i data-lucide="eye" class="w-6 h-6 text-green-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Transparency</h3>
+                    </div>
+                    <p class="text-gray-300">We believe in complete transparency in all our operations. Artists see exactly how much they earn, and creators know exactly what they're paying for.</p>
+                </div>
+
+                <!-- Fairness -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mr-4">
+                            <i data-lucide="scale" class="w-6 h-6 text-blue-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Fairness</h3>
+                    </div>
+                    <p class="text-gray-300">We ensure fair compensation for artists while keeping music accessible and affordable for content creators of all sizes.</p>
+                </div>
+
+                <!-- Quality -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mr-4">
+                            <i data-lucide="award" class="w-6 h-6 text-purple-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Quality</h3>
+                    </div>
+                    <p class="text-gray-300">We maintain high standards for all music on our platform, ensuring creators have access to professional-quality tracks.</p>
+                </div>
+
+                <!-- Community -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center mr-4">
+                            <i data-lucide="heart" class="w-6 h-6 text-yellow-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Community</h3>
+                    </div>
+                    <p class="text-gray-300">We foster a supportive community where artists and creators can connect, collaborate, and grow together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="py-12 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Meet Our Team</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="team-card bg-gray-700 rounded-xl p-6 text-center">
+                    <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="user" class="w-12 h-12 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Alex Chen</h3>
+                    <p class="text-purple-400 mb-4">Founder & CEO</p>
+                    <p class="text-gray-300 text-sm">Former music producer and tech entrepreneur with a passion for connecting artists with opportunities.</p>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-card bg-gray-700 rounded-xl p-6 text-center">
+                    <div class="w-24 h-24 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="user" class="w-12 h-12 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Sarah Johnson</h3>
+                    <p class="text-blue-400 mb-4">Head of Artist Relations</p>
+                    <p class="text-gray-300 text-sm">Independent musician and community builder dedicated to supporting artists' growth and success.</p>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-card bg-gray-700 rounded-xl p-6 text-center">
+                    <div class="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="user" class="w-12 h-12 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Marcus Rodriguez</h3>
+                    <p class="text-green-400 mb-4">Head of Creator Success</p>
+                    <p class="text-gray-300 text-sm">Content creator and platform expert focused on helping creators find the perfect music for their projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Our Journey</h2>
+            
+            <div class="space-y-8">
+                <!-- 2023 -->
+                <div class="flex items-start">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-6 flex-shrink-0">
+                        <span class="text-white font-bold">2023</span>
+                    </div>
+                    <div class="bg-gray-800 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Platform Launch</h3>
+                        <p class="text-gray-300">Launched with 100 artists and 1,000 tracks, connecting independent musicians with content creators for the first time.</p>
+                    </div>
+                </div>
+
+                <!-- 2024 Q1 -->
+                <div class="flex items-start">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mr-6 flex-shrink-0">
+                        <span class="text-white font-bold">Q1 2024</span>
+                    </div>
+                    <div class="bg-gray-800 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Rapid Growth</h3>
+                        <p class="text-gray-300">Reached 1,000 artists and 10,000 content creators. Introduced advanced search and licensing features.</p>
+                    </div>
+                </div>
+
+                <!-- 2024 Q2 -->
+                <div class="flex items-start">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mr-6 flex-shrink-0">
+                        <span class="text-white font-bold">Q2 2024</span>
+                    </div>
+                    <div class="bg-gray-800 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Artist Support Features</h3>
+                        <p class="text-gray-300">Launched tipping, subscriptions, and commission features to provide multiple ways for creators to support artists.</p>
+                    </div>
+                </div>
+
+                <!-- 2024 Q3 -->
+                <div class="flex items-start">
+                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mr-6 flex-shrink-0">
+                        <span class="text-white font-bold">Q3 2024</span>
+                    </div>
+                    <div class="bg-gray-800 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Global Expansion</h3>
+                        <p class="text-gray-300">Expanded to support artists and creators worldwide, with localized features and payment options.</p>
+                    </div>
+                </div>
+
+                <!-- 2024 Q4 -->
+                <div class="flex items-start">
+                    <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center mr-6 flex-shrink-0">
+                        <span class="text-white font-bold">Q4 2024</span>
+                    </div>
+                    <div class="bg-gray-800 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Future Vision</h3>
+                        <p class="text-gray-300">Continuing to innovate with AI-powered recommendations, collaborative tools, and enhanced creator-artist connections.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-12 gradient-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Join Our Community</h2>
+            <p class="text-xl text-gray-200 mb-8">
+                Whether you're an artist looking to share your music or a creator seeking the perfect soundtrack, we'd love to have you join our growing community.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="px-8 py-3 bg-white text-purple-600 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                    <i data-lucide="music" class="w-5 h-5 inline mr-2"></i>
+                    Upload Your Music
+                </button>
+                <button class="px-8 py-3 bg-transparent border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-colors">
+                    <i data-lucide="search" class="w-5 h-5 inline mr-2"></i>
+                    Browse Music
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-upload.html" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="music-dashboard.html" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="track-earnings.html" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="promote-music.html" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-browse.html" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="advanced-search.html" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="licensing-info.html" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="support-artists.html" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="about-us.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Music - Music Platform</title>
+    <meta name="description" content="Browse and discover royalty-free music from independent artists. Filter by genre, mood, and more.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .track-card {
+            transition: all 0.3s ease;
+        }
+        
+        .track-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .play-button {
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <a href="music.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">Music Platform</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="music-browse.html" class="text-white font-semibold">Browse</a>
+                    <a href="music-upload.html" class="text-gray-300 hover:text-white transition-colors">Upload</a>
+                    <a href="music-dashboard.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</button>
+                    <button class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-24 pb-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Discover Amazing Music
+                </h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                    Browse thousands of royalty-free tracks from independent artists. Find the perfect music for your next project.
+                </p>
+            </div>
+            
+            <!-- Search and Filters -->
+            <div class="max-w-4xl mx-auto">
+                <!-- Source Toggle -->
+                <div class="flex justify-center mb-6">
+                    <div class="bg-gray-800 rounded-lg p-1 flex">
+                        <button id="allSourcesBtn" class="px-4 py-2 rounded-md bg-purple-500 text-white font-medium transition-all">
+                            All Sources
+                        </button>
+                        <button id="platformBtn" class="px-4 py-2 rounded-md text-gray-300 hover:text-white transition-all">
+                            Platform Only
+                        </button>
+                        <button id="externalBtn" class="px-4 py-2 rounded-md text-gray-300 hover:text-white transition-all">
+                            External Sources
+                        </button>
+                    </div>
+                </div>
+                <div class="relative mb-6">
+                    <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                    <input
+                        type="text"
+                        placeholder="Search for music by genre, mood, artist, or title..."
+                        class="w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    >
+                </div>
+                
+                <!-- Filter Tags -->
+                <div class="flex flex-wrap gap-2 justify-center" id="genreFilters">
+                    <button id="genre-all" class="px-4 py-2 bg-purple-600 text-white rounded-full text-sm hover:bg-purple-700 transition-colors genre-filter" data-genre="">All Genres</button>
+                    <button id="genre-electronic" class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors genre-filter" data-genre="electronic">Electronic</button>
+                    <button id="genre-rock" class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors genre-filter" data-genre="rock">Rock</button>
+                    <button id="genre-pop" class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors genre-filter" data-genre="pop">Pop</button>
+                    <button id="genre-hip-hop" class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors genre-filter" data-genre="hip-hop">Hip Hop</button>
+                    <button id="genre-jazz" class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors genre-filter" data-genre="jazz">Jazz</button>
+                    <button id="genre-classical" class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors genre-filter" data-genre="classical">Classical</button>
+                    <button id="genre-ambient" class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors genre-filter" data-genre="ambient">Ambient</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Grid -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Sort Options -->
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-white">Featured Tracks</h2>
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-300">Sort by:</span>
+                    <select class="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option>Latest</option>
+                        <option>Popular</option>
+                        <option>Duration</option>
+                        <option>Artist</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Music Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="tracksGrid">
+                <!-- Tracks will be loaded dynamically from API -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="text-center py-16">
+                <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="music" class="w-12 h-12 text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">No Music Available Yet</h3>
+                <p class="text-gray-400 mb-8 max-w-md mx-auto">
+                    Be the first to upload your music and share it with the world! 
+                    Start building your audience and earning from your creativity.
+                </p>
+                <a href="music-upload.html" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <i data-lucide="upload" class="w-5 h-5 mr-2"></i>
+                    Upload Your First Track
+                </a>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button class="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Load More Tracks
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-upload.html" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="music-dashboard.html" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-browse.html" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External Download Modal -->
+    <div id="externalDownloadModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-800 rounded-lg max-w-md w-full p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-white">External Music Download</h3>
+                    <button id="closeModal" class="text-gray-400 hover:text-white">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-3 mb-4">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <i data-lucide="alert-triangle" class="w-5 h-5 text-yellow-400"></i>
+                            <span class="text-yellow-400 font-semibold">External Source</span>
+                        </div>
+                        <p class="text-yellow-200 text-sm">This track is hosted on an external website. You'll be redirected to download from the original source.</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-white mb-2" id="modalTrackTitle">Track Title</h4>
+                        <p class="text-gray-300 text-sm mb-2">by <span id="modalArtist">Artist Name</span></p>
+                        <p class="text-gray-400 text-sm">Source: <span id="modalSource">Source Name</span></p>
+                    </div>
+                    
+                    <div class="bg-gray-700 rounded-lg p-3 mb-4">
+                        <h5 class="font-semibold text-white mb-2">License Information</h5>
+                        <p class="text-gray-300 text-sm mb-2" id="modalLicenseInfo">License details will appear here</p>
+                        <p class="text-gray-400 text-xs">You are responsible for verifying the license and following its terms.</p>
+                    </div>
+                    
+                    <div class="bg-gray-700 rounded-lg p-3 mb-4">
+                        <h5 class="font-semibold text-white mb-2">Attribution Text</h5>
+                        <div class="bg-gray-600 rounded p-2 mb-2">
+                            <p class="text-gray-200 text-sm" id="modalAttribution">Attribution text will appear here</p>
+                        </div>
+                        <button id="copyAttribution" class="text-purple-400 hover:text-purple-300 text-sm flex items-center space-x-1">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                            <span>Copy Attribution</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-3">
+                    <button id="proceedToDownload" class="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all">
+                        Proceed to Download
+                    </button>
+                    <button id="cancelDownload" class="px-4 py-2 text-gray-300 hover:text-white border border-gray-600 rounded-lg transition-all">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <!-- Music Player Component -->
+    <div id="musicPlayer" class="fixed bottom-0 left-0 right-0 bg-gray-800 border-t border-gray-700 transform translate-y-full transition-transform duration-300 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Track Info -->
+                <div class="flex items-center space-x-4 flex-1">
+                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h4 id="playerTrackTitle" class="text-white font-semibold truncate">No track playing</h4>
+                        <p id="playerTrackArtist" class="text-gray-300 text-sm truncate">Unknown Artist</p>
+                    </div>
+                </div>
+                
+                <!-- Playback Controls -->
+                <div class="flex items-center space-x-4">
+                    <button id="prevBtn" class="text-gray-300 hover:text-white transition-colors">
+                        <i data-lucide="skip-back" class="w-5 h-5"></i>
+                    </button>
+                    <button id="playPauseBtn" class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:from-purple-600 hover:to-pink-600 transition-all">
+                        <i data-lucide="play" class="w-5 h-5 text-white" id="playPauseIcon"></i>
+                    </button>
+                    <button id="nextBtn" class="text-gray-300 hover:text-white transition-colors">
+                        <i data-lucide="skip-forward" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="flex-1 mx-4">
+                    <div class="flex items-center space-x-2">
+                        <span id="currentTime" class="text-gray-300 text-xs">0:00</span>
+                        <div class="flex-1 bg-gray-600 rounded-full h-1">
+                            <div id="progressBar" class="bg-gradient-to-r from-purple-500 to-pink-500 h-1 rounded-full transition-all duration-100" style="width: 0%"></div>
+                        </div>
+                        <span id="totalTime" class="text-gray-300 text-xs">0:00</span>
+                    </div>
+                </div>
+                
+                <!-- Volume and Queue -->
+                <div class="flex items-center space-x-3">
+                    <button id="volumeBtn" class="text-gray-300 hover:text-white transition-colors">
+                        <i data-lucide="volume-2" class="w-5 h-5"></i>
+                    </button>
+                    <button id="queueBtn" class="text-gray-300 hover:text-white transition-colors">
+                        <i data-lucide="list" class="w-5 h-5"></i>
+                    </button>
+                    <button id="minimizeBtn" class="text-gray-300 hover:text-white transition-colors">
+                        <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Audio Element -->
+        <audio id="audioElement" preload="metadata"></audio>
+    </div>
+
+    <!-- Queue Modal -->
+    <div id="queueModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-800 rounded-lg max-w-md w-full p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-white">Queue</h3>
+                    <button id="closeQueueModal" class="text-gray-400 hover:text-white">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <div id="queueList" class="space-y-2 max-h-64 overflow-y-auto">
+                    <!-- Queue items will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+
+        // Music Player Class
+        class MusicPlayer {
+            constructor() {
+                this.audio = document.getElementById('audioElement');
+                this.queue = [];
+                this.currentIndex = 0;
+                this.isPlaying = false;
+                this.volume = 0.7;
+                this.isMinimized = true;
+                
+                this.initializeEventListeners();
+                this.setupAudioEventListeners();
+            }
+
+            initializeEventListeners() {
+                // Play/Pause button
+                document.getElementById('playPauseBtn').addEventListener('click', () => {
+                    this.togglePlayPause();
+                });
+
+                // Previous/Next buttons
+                document.getElementById('prevBtn').addEventListener('click', () => {
+                    this.previousTrack();
+                });
+
+                document.getElementById('nextBtn').addEventListener('click', () => {
+                    this.nextTrack();
+                });
+
+                // Minimize button
+                document.getElementById('minimizeBtn').addEventListener('click', () => {
+                    this.toggleMinimize();
+                });
+
+                // Queue button
+                document.getElementById('queueBtn').addEventListener('click', () => {
+                    this.showQueue();
+                });
+
+                // Close queue modal
+                document.getElementById('closeQueueModal').addEventListener('click', () => {
+                    this.hideQueue();
+                });
+
+                // Volume button
+                document.getElementById('volumeBtn').addEventListener('click', () => {
+                    this.toggleMute();
+                });
+
+                // Progress bar click
+                document.getElementById('progressBar').parentElement.addEventListener('click', (e) => {
+                    this.seekTo(e);
+                });
+            }
+
+            setupAudioEventListeners() {
+                this.audio.addEventListener('loadedmetadata', () => {
+                    this.updateTotalTime();
+                });
+
+                this.audio.addEventListener('timeupdate', () => {
+                    this.updateProgress();
+                });
+
+                this.audio.addEventListener('ended', () => {
+                    this.nextTrack();
+                });
+
+                this.audio.addEventListener('error', (e) => {
+                    console.error('Audio error:', e);
+                    this.handleAudioError();
+                });
+            }
+
+            addToQueue(track) {
+                this.queue.push(track);
+                if (this.queue.length === 1) {
+                    this.currentIndex = 0;
+                }
+            }
+
+            playTrack(track) {
+                if (!track) return;
+
+                // Set audio source
+                this.audio.src = track.audioUrl;
+                
+                // Update UI
+                document.getElementById('playerTrackTitle').textContent = track.title;
+                document.getElementById('playerTrackArtist').textContent = track.artist;
+                
+                // Play audio
+                this.audio.play().then(() => {
+                    this.isPlaying = true;
+                    this.updatePlayPauseIcon();
+                }).catch(error => {
+                    console.error('Failed to play audio:', error);
+                    this.handleAudioError();
+                });
+            }
+
+            togglePlayPause() {
+                if (this.audio.src) {
+                    if (this.isPlaying) {
+                        this.audio.pause();
+                        this.isPlaying = false;
+                    } else {
+                        this.audio.play();
+                        this.isPlaying = true;
+                    }
+                    this.updatePlayPauseIcon();
+                }
+            }
+
+            previousTrack() {
+                if (this.queue.length > 1) {
+                    this.currentIndex = (this.currentIndex - 1 + this.queue.length) % this.queue.length;
+                    this.playTrack(this.queue[this.currentIndex]);
+                }
+            }
+
+            nextTrack() {
+                if (this.queue.length > 1) {
+                    this.currentIndex = (this.currentIndex + 1) % this.queue.length;
+                    this.playTrack(this.queue[this.currentIndex]);
+                }
+            }
+
+            toggleMinimize() {
+                const player = document.getElementById('musicPlayer');
+                this.isMinimized = !this.isMinimized;
+                
+                if (this.isMinimized) {
+                    player.classList.add('translate-y-full');
+                } else {
+                    player.classList.remove('translate-y-full');
+                }
+            }
+
+            showQueue() {
+                const modal = document.getElementById('queueModal');
+                const queueList = document.getElementById('queueList');
+                
+                queueList.innerHTML = this.queue.map((track, index) => `
+                    <div class="flex items-center justify-between p-2 bg-gray-700 rounded ${index === this.currentIndex ? 'border-l-4 border-purple-500' : ''}">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-white font-medium truncate">${track.title}</h4>
+                            <p class="text-gray-300 text-sm truncate">${track.artist}</p>
+                        </div>
+                        <button class="text-gray-400 hover:text-white ml-2" onclick="window.musicPlayer.removeFromQueue(${index})">
+                            <i data-lucide="x" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                `).join('');
+                
+                modal.classList.remove('hidden');
+                lucide.createIcons();
+            }
+
+            hideQueue() {
+                document.getElementById('queueModal').classList.add('hidden');
+            }
+
+            removeFromQueue(index) {
+                if (index === this.currentIndex && this.isPlaying) {
+                    this.audio.pause();
+                    this.isPlaying = false;
+                }
+                
+                this.queue.splice(index, 1);
+                
+                if (index < this.currentIndex) {
+                    this.currentIndex--;
+                }
+                
+                if (this.queue.length === 0) {
+                    this.resetPlayer();
+                } else if (index === this.currentIndex) {
+                    this.currentIndex = Math.min(this.currentIndex, this.queue.length - 1);
+                    this.playTrack(this.queue[this.currentIndex]);
+                }
+                
+                this.hideQueue();
+            }
+
+            toggleMute() {
+                this.audio.muted = !this.audio.muted;
+                const volumeIcon = document.getElementById('volumeBtn').querySelector('i');
+                
+                if (this.audio.muted) {
+                    volumeIcon.setAttribute('data-lucide', 'volume-x');
+                } else {
+                    volumeIcon.setAttribute('data-lucide', 'volume-2');
+                }
+                lucide.createIcons();
+            }
+
+            seekTo(event) {
+                const progressBar = event.currentTarget;
+                const rect = progressBar.getBoundingClientRect();
+                const percent = (event.clientX - rect.left) / rect.width;
+                this.audio.currentTime = percent * this.audio.duration;
+            }
+
+            updateProgress() {
+                const progress = (this.audio.currentTime / this.audio.duration) * 100;
+                document.getElementById('progressBar').style.width = `${progress}%`;
+                document.getElementById('currentTime').textContent = this.formatTime(this.audio.currentTime);
+            }
+
+            updateTotalTime() {
+                document.getElementById('totalTime').textContent = this.formatTime(this.audio.duration);
+            }
+
+            updatePlayPauseIcon() {
+                const icon = document.getElementById('playPauseIcon');
+                if (this.isPlaying) {
+                    icon.setAttribute('data-lucide', 'pause');
+                } else {
+                    icon.setAttribute('data-lucide', 'play');
+                }
+                lucide.createIcons();
+            }
+
+            formatTime(seconds) {
+                if (isNaN(seconds)) return '0:00';
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
+            }
+
+            handleAudioError() {
+                console.log('Audio playback failed - this is expected for demo tracks');
+                // In a real implementation, you'd handle this differently
+                this.isPlaying = false;
+                this.updatePlayPauseIcon();
+            }
+
+            resetPlayer() {
+                this.audio.src = '';
+                this.isPlaying = false;
+                document.getElementById('playerTrackTitle').textContent = 'No track playing';
+                document.getElementById('playerTrackArtist').textContent = 'Unknown Artist';
+                document.getElementById('currentTime').textContent = '0:00';
+                document.getElementById('totalTime').textContent = '0:00';
+                document.getElementById('progressBar').style.width = '0%';
+                this.updatePlayPauseIcon();
+            }
+        }
+
+        // Browse page functionality
+        class BrowsePage {
+            constructor() {
+                this.currentPage = 1;
+                this.currentSource = 'all'; // 'all', 'platform', 'external'
+                this.currentFilters = {
+                    genre: '',
+                    search: '',
+                    sort: 'latest'
+                };
+                this.tracksContainer = document.getElementById('tracksGrid');
+                this.loadMoreBtn = document.querySelector('.load-more-btn');
+                this.emptyState = document.getElementById('emptyState');
+                this.searchInput = document.querySelector('input[placeholder*="Search"]');
+                this.modal = document.getElementById('externalDownloadModal');
+                this.currentTrack = null;
+                this.currentTracks = []; // Store current tracks for findTrackById
+                
+                this.init();
+            }
+
+            async init() {
+                this.setupEventListeners();
+                await this.loadTracks();
+            }
+
+            setupEventListeners() {
+                // Source toggle buttons
+                document.getElementById('allSourcesBtn').addEventListener('click', () => {
+                    this.setActiveSource('all');
+                });
+                document.getElementById('platformBtn').addEventListener('click', () => {
+                    this.setActiveSource('platform');
+                });
+                document.getElementById('externalBtn').addEventListener('click', () => {
+                    this.setActiveSource('external');
+                });
+
+                // Search functionality
+                if (this.searchInput) {
+                    this.searchInput.addEventListener('input', this.debounce(() => {
+                        this.currentFilters.search = this.searchInput.value;
+                        this.currentPage = 1;
+                        this.loadTracks();
+                    }, 500));
+                }
+
+                // Load more button
+                const loadMoreBtn = document.querySelector('button');
+                if (loadMoreBtn && loadMoreBtn.textContent.includes('Load More Tracks')) {
+                    this.loadMoreBtn = loadMoreBtn;
+                    loadMoreBtn.addEventListener('click', () => {
+                        this.currentPage++;
+                        this.loadTracks(true);
+                    });
+                }
+
+                // Play buttons
+                document.addEventListener('click', (e) => {
+                    if (e.target.closest('.play-button')) {
+                        const trackId = e.target.closest('.play-button').dataset.trackId;
+                        this.playTrack(trackId);
+                    }
+                });
+
+                // Download buttons
+                document.addEventListener('click', (e) => {
+                    if (e.target.closest('.download-button')) {
+                        const trackId = e.target.closest('.download-button').dataset.trackId;
+                        const track = this.findTrackById(trackId);
+                        if (track && track.external) {
+                            this.showExternalDownloadModal(track);
+                        } else {
+                            this.downloadTrack(trackId);
+                        }
+                    }
+                });
+
+                // Modal event listeners
+                document.getElementById('closeModal').addEventListener('click', () => {
+                    this.hideModal();
+                });
+                document.getElementById('cancelDownload').addEventListener('click', () => {
+                    this.hideModal();
+                });
+                document.getElementById('proceedToDownload').addEventListener('click', () => {
+                    this.proceedToExternalDownload();
+                });
+                document.getElementById('copyAttribution').addEventListener('click', () => {
+                    this.copyAttribution();
+                });
+
+                // Close modal on outside click
+                this.modal.addEventListener('click', (e) => {
+                    if (e.target === this.modal) {
+                        this.hideModal();
+                    }
+                });
+
+                // Genre filter buttons
+                document.querySelectorAll('.genre-filter').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const genre = button.dataset.genre;
+                        this.setActiveGenre(genre);
+                    });
+                });
+            }
+
+            async loadTracks(append = false) {
+                try {
+                    console.log('Loading tracks...');
+                    let tracks = [];
+                    let totalTracks = 0;
+
+                    // Load platform tracks
+                    if (this.currentSource === 'all' || this.currentSource === 'platform') {
+                        const platformResponse = await fetch('https://streamautoclipper-jzqt3fyyg-904critic-techs-projects.vercel.app/api/music/tracks');
+                        const platformData = await platformResponse.json();
+                        if (platformData.success && platformData.tracks) {
+                            tracks = tracks.concat(platformData.tracks);
+                            totalTracks += platformData.tracks.length;
+                        }
+                    }
+
+                    // Load external tracks
+                    if (this.currentSource === 'all' || this.currentSource === 'external') {
+                        const externalResponse = await fetch('https://streamautoclipper-jzqt3fyyg-904critic-techs-projects.vercel.app/api/music/external');
+                        const externalData = await externalResponse.json();
+                        if (externalData.success && externalData.tracks) {
+                            tracks = tracks.concat(externalData.tracks);
+                            totalTracks += externalData.tracks.length;
+                        }
+                    }
+
+                                         console.log('Found tracks:', tracks.length);
+                     
+                     // Apply genre filter if set
+                     if (this.currentFilters.genre && this.currentFilters.genre !== '') {
+                         tracks = tracks.filter(track => 
+                             track.genre && track.genre.toLowerCase() === this.currentFilters.genre.toLowerCase()
+                         );
+                         console.log('After genre filter:', tracks.length);
+                     }
+                     
+                     if (tracks.length > 0) {
+                         // Store tracks for findTrackById
+                         this.currentTracks = tracks;
+                         
+                         if (append) {
+                             this.appendTracks(tracks);
+                         } else {
+                             this.renderTracks(tracks);
+                         }
+                        
+                        // Show tracks grid, hide empty state
+                        this.tracksContainer.style.display = 'grid';
+                        this.emptyState.style.display = 'none';
+                        
+                        // Show load more button if there are more tracks
+                        if (this.loadMoreBtn) {
+                            this.loadMoreBtn.style.display = 
+                                this.currentPage < Math.ceil(totalTracks / 12) ? 'block' : 'none';
+                        }
+                    } else {
+                        // No tracks available
+                        console.log('No tracks found, showing empty state');
+                        this.showEmptyState();
+                    }
+
+                } catch (error) {
+                    console.error('Failed to load tracks:', error);
+                    this.showEmptyState();
+                }
+            }
+
+            renderTracks(tracks) {
+                if (!this.tracksContainer) return;
+                
+                console.log('Rendering tracks:', tracks.length);
+                const trackCards = tracks.map(track => this.createTrackCard(track));
+                console.log('Generated track cards:', trackCards.length);
+                
+                this.tracksContainer.innerHTML = trackCards.join('');
+                console.log('Tracks container updated');
+            }
+
+            appendTracks(tracks) {
+                if (!this.tracksContainer) return;
+
+                const newTracksHTML = tracks.map(track => this.createTrackCard(track)).join('');
+                this.tracksContainer.insertAdjacentHTML('beforeend', newTracksHTML);
+            }
+
+            createTrackCard(track) {
+                const isExternal = track.external || track.source;
+                const sourceBadge = isExternal ? `
+                    <div class="absolute top-2 right-2">
+                        <span class="px-2 py-1 bg-yellow-500/20 border border-yellow-500/30 text-yellow-400 text-xs rounded-full flex items-center space-x-1">
+                            <i data-lucide="external-link" class="w-3 h-3"></i>
+                            <span>${track.source || 'External'}</span>
+                        </span>
+                    </div>
+                ` : '';
+                
+                const licenseBadge = isExternal ? `
+                    <div class="absolute top-2 left-2">
+                        <span class="px-2 py-1 bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs rounded-full">
+                            ${track.license || 'CC BY 4.0'}
+                        </span>
+                    </div>
+                ` : '';
+
+                return `
+                    <div class="track-card glass-effect rounded-xl p-6 relative">
+                        <div class="relative mb-4">
+                            <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                                <i data-lucide="music" class="w-12 h-12 text-white opacity-50"></i>
+                            </div>
+                            ${sourceBadge}
+                            ${licenseBadge}
+                            <button class="play-button absolute bottom-3 right-3 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all" data-track-id="${track.id}">
+                                <i data-lucide="play" class="w-5 h-5 text-white"></i>
+                            </button>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">${track.title}</h3>
+                        <p class="text-gray-300 text-sm mb-3">by ${track.artist}</p>
+                        ${isExternal ? `<p class="text-gray-400 text-xs mb-2">Source: ${track.source}</p>` : ''}
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-400 text-sm">${track.duration || '3:45'}</span>
+                            <div class="flex items-center space-x-2">
+                                <button class="text-gray-400 hover:text-white transition-colors">
+                                    <i data-lucide="heart" class="w-4 h-4"></i>
+                                </button>
+                                <button class="download-button text-gray-400 hover:text-white transition-colors" data-track-id="${track.id}">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            showEmptyState() {
+                if (this.tracksContainer) {
+                    this.tracksContainer.style.display = 'none';
+                }
+                if (this.emptyState) {
+                    this.emptyState.style.display = 'block';
+                }
+                if (this.loadMoreBtn) {
+                    this.loadMoreBtn.style.display = 'none';
+                }
+            }
+
+            async playTrack(trackId) {
+                try {
+                    // Find track in current tracks array
+                    const track = this.findTrackById(trackId);
+                    
+                    if (track) {
+                        // Check if this is an external track
+                        if (track.external || track.source) {
+                            // For external tracks, show download modal instead of playing
+                            this.showExternalDownloadModal(track);
+                            return;
+                        }
+                        
+                        // Initialize music player if not exists
+                        if (!window.musicPlayer) {
+                            window.musicPlayer = new MusicPlayer();
+                        }
+                        
+                        // Add to player queue and play
+                        window.musicPlayer.addToQueue(track);
+                        window.musicPlayer.playTrack(track);
+                        window.musicPlayer.toggleMinimize(); // Show player
+                        
+                        console.log('Playing track:', track.title);
+                    } else {
+                        console.log('Track not found');
+                    }
+                } catch (error) {
+                    console.error('Failed to play track:', error);
+                }
+            }
+
+                         setActiveSource(source) {
+                 this.currentSource = source;
+                 this.currentPage = 1;
+                 
+                 // Update button styles
+                 document.getElementById('allSourcesBtn').className = source === 'all' ? 
+                     'px-4 py-2 rounded-md bg-purple-500 text-white font-medium transition-all' : 
+                     'px-4 py-2 rounded-md text-gray-300 hover:text-white transition-all';
+                 document.getElementById('platformBtn').className = source === 'platform' ? 
+                     'px-4 py-2 rounded-md bg-purple-500 text-white font-medium transition-all' : 
+                     'px-4 py-2 rounded-md text-gray-300 hover:text-white transition-all';
+                 document.getElementById('externalBtn').className = source === 'external' ? 
+                     'px-4 py-2 rounded-md bg-purple-500 text-white font-medium transition-all' : 
+                     'px-4 py-2 rounded-md text-gray-300 hover:text-white transition-all';
+                 
+                 this.loadTracks();
+             }
+
+             setActiveGenre(genre) {
+                 this.currentFilters.genre = genre;
+                 this.currentPage = 1;
+                 
+                 // Update button styles
+                 document.querySelectorAll('.genre-filter').forEach(button => {
+                     const buttonGenre = button.dataset.genre;
+                     if (buttonGenre === genre) {
+                         button.className = 'px-4 py-2 bg-purple-600 text-white rounded-full text-sm hover:bg-purple-700 transition-colors genre-filter';
+                     } else {
+                         button.className = 'px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors genre-filter';
+                     }
+                 });
+                 
+                 this.loadTracks();
+             }
+
+            findTrackById(trackId) {
+                return this.currentTracks.find(track => track.id === trackId) || null;
+            }
+
+            async showExternalDownloadModal(track) {
+                this.currentTrack = track;
+                
+                // Populate modal with track info
+                document.getElementById('modalTrackTitle').textContent = track.title;
+                document.getElementById('modalArtist').textContent = track.artist;
+                document.getElementById('modalSource').textContent = track.source;
+                
+                // Generate attribution
+                try {
+                    const response = await fetch('https://streamautoclipper-jzqt3fyyg-904critic-techs-projects.vercel.app/api/music/attribution', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            trackId: track.id,
+                            trackTitle: track.title,
+                            artist: track.artist,
+                            source: track.source,
+                            sourceUrl: track.sourceUrl,
+                            license: track.license,
+                            licenseUrl: track.licenseUrl
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    if (data.success) {
+                        document.getElementById('modalAttribution').textContent = data.attribution.text;
+                        document.getElementById('modalLicenseInfo').textContent = data.attribution.licenseInfo;
+                    }
+                } catch (error) {
+                    console.error('Error generating attribution:', error);
+                }
+                
+                // Show modal
+                this.modal.classList.remove('hidden');
+                lucide.createIcons();
+            }
+
+            hideModal() {
+                this.modal.classList.add('hidden');
+                this.currentTrack = null;
+            }
+
+            proceedToExternalDownload() {
+                if (this.currentTrack && this.currentTrack.downloadUrl) {
+                    window.open(this.currentTrack.downloadUrl, '_blank');
+                    this.hideModal();
+                }
+            }
+
+            copyAttribution() {
+                const attributionText = document.getElementById('modalAttribution').textContent;
+                navigator.clipboard.writeText(attributionText).then(() => {
+                    const button = document.getElementById('copyAttribution');
+                    const originalText = button.innerHTML;
+                    button.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i><span>Copied!</span>';
+                    lucide.createIcons();
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        lucide.createIcons();
+                    }, 2000);
+                });
+            }
+
+            downloadTrack(trackId) {
+                // Handle platform track downloads
+                console.log('Downloading platform track:', trackId);
+            }
+
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+        }
+
+        // Initialize browse page
+        document.addEventListener('DOMContentLoaded', () => {
+            new BrowsePage();
+        });
+    </script>
+    
+    <!-- Music Player -->
+    <script src="music-player.js"></script>
+    
+    <!-- API Client -->
+    <script src="music-api-client.js"></script>
+</body>
+</html>

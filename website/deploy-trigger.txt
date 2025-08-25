@@ -1,0 +1,17 @@
+Last deployment trigger: 2024-12-19 15:30:00 UTC
+Redeployment requested by user
+eBay webhook added: /api/ebay-webhook.js
+Fixed content-type headers for eBay verification
+Updated to handle eBay marketplace account deletion challenge-response format
+
+BLOG SECTION ADDED - 2024-12-19 16:45:00 UTC
+- Added comprehensive blog section with 3 high-quality articles
+- Created /blog.html main blog listing page
+- Added individual blog posts in /blog/ directory:
+  * stream-performance-optimization.html (Technical guide)
+  * audience-engagement-strategies.html (Community building)
+  * multi-platform-streaming-strategy.html (Strategy guide)
+- Integrated blog navigation in main site
+- Added AdSense-compliant content (800-1000+ words per article)
+- SEO optimized with proper meta tags and structured data
+- Ready for AdSense approval with high-quality streaming content

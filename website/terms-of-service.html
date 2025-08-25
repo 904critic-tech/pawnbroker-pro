@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Music Platform</title>
+    <meta name="description" content="Read our terms of service to understand the rules and conditions for using our music platform.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .terms-section {
+            transition: all 0.3s ease;
+        }
+        
+        .terms-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <a href="music.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">Music Platform</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="music-browse.html" class="text-gray-300 hover:text-white transition-colors">Browse</a>
+                    <a href="music-upload.html" class="text-gray-300 hover:text-white transition-colors">Upload</a>
+                    <a href="music-dashboard.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</button>
+                    <button class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-24 pb-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Terms of Service
+                </h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                    Please read these terms carefully before using our music platform. By using our services, you agree to these terms.
+                </p>
+                <p class="text-gray-300 mt-4">Last updated: December 2024</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="py-8 bg-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gray-700 rounded-xl p-6">
+                <h2 class="text-xl font-bold text-white mb-4">Table of Contents</h2>
+                <ul class="space-y-2 text-gray-300">
+                    <li><a href="#acceptance" class="hover:text-purple-400 transition-colors">1. Acceptance of Terms</a></li>
+                    <li><a href="#description" class="hover:text-purple-400 transition-colors">2. Description of Service</a></li>
+                    <li><a href="#accounts" class="hover:text-purple-400 transition-colors">3. User Accounts</a></li>
+                    <li><a href="#content" class="hover:text-purple-400 transition-colors">4. User Content</a></li>
+                    <li><a href="#licensing" class="hover:text-purple-400 transition-colors">5. Licensing and Rights</a></li>
+                    <li><a href="#payments" class="hover:text-purple-400 transition-colors">6. Payments and Billing</a></li>
+                    <li><a href="#prohibited" class="hover:text-purple-400 transition-colors">7. Prohibited Uses</a></li>
+                    <li><a href="#intellectual" class="hover:text-purple-400 transition-colors">8. Intellectual Property</a></li>
+                    <li><a href="#termination" class="hover:text-purple-400 transition-colors">9. Termination</a></li>
+                    <li><a href="#disclaimer" class="hover:text-purple-400 transition-colors">10. Disclaimers</a></li>
+                    <li><a href="#limitation" class="hover:text-purple-400 transition-colors">11. Limitation of Liability</a></li>
+                    <li><a href="#governing" class="hover:text-purple-400 transition-colors">12. Governing Law</a></li>
+                    <li><a href="#changes" class="hover:text-purple-400 transition-colors">13. Changes to Terms</a></li>
+                    <li><a href="#contact" class="hover:text-purple-400 transition-colors">14. Contact Information</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="space-y-12">
+                <!-- Acceptance of Terms -->
+                <div id="acceptance" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="check-circle" class="w-6 h-6 text-green-400 mr-3"></i>
+                        1. Acceptance of Terms
+                    </h2>
+                    
+                    <div class="space-y-4 text-gray-300">
+                        <p>By accessing and using the Music Platform ("Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+                        
+                        <p>These Terms of Service ("Terms") govern your use of our website and services operated by Music Platform ("Company," "we," "us," or "our").</p>
+                        
+                        <p>You must be at least 13 years old to use this Service. If you are under 18, you must have your parent or guardian's permission to use the Service.</p>
+                    </div>
+                </div>
+
+                <!-- Description of Service -->
+                <div id="description" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="music" class="w-6 h-6 text-purple-400 mr-3"></i>
+                        2. Description of Service
+                    </h2>
+                    
+                    <div class="space-y-4 text-gray-300">
+                        <p>The Music Platform is a digital marketplace that connects independent artists with content creators. Our services include:</p>
+                        
+                        <ul class="list-disc list-inside space-y-2 ml-4">
+                            <li>Music upload and distribution for artists</li>
+                            <li>Music discovery and licensing for content creators</li>
+                            <li>Payment processing and revenue sharing</li>
+                            <li>Community features and communication tools</li>
+                            <li>Analytics and performance tracking</li>
+                        </ul>
+                        
+                        <p>We reserve the right to modify, suspend, or discontinue any part of the Service at any time with or without notice.</p>
+                    </div>
+                </div>
+
+                <!-- User Accounts -->
+                <div id="accounts" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="user" class="w-6 h-6 text-blue-400 mr-3"></i>
+                        3. User Accounts
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Account Creation</h3>
+                            <p class="text-gray-300 mb-4">To use certain features of the Service, you must create an account. You agree to:</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                                <li>Provide accurate, current, and complete information</li>
+                                <li>Maintain and update your account information</li>
+                                <li>Keep your password secure and confidential</li>
+                                <li>Accept responsibility for all activities under your account</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Account Security</h3>
+                            <p class="text-gray-300">You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must notify us immediately of any unauthorized use of your account.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Content -->
+                <div id="content" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="upload" class="w-6 h-6 text-yellow-400 mr-3"></i>
+                        4. User Content
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Content Ownership</h3>
+                            <p class="text-gray-300 mb-4">You retain ownership of any content you upload to the Service. By uploading content, you grant us a license to:</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                                <li>Host and display your content on our platform</li>
+                                <li>Distribute your content to other users according to your licensing terms</li>
+                                <li>Use your content for promotional purposes (with your permission)</li>
+                                <li>Process payments and manage licensing agreements</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Content Standards</h3>
+                            <p class="text-gray-300 mb-4">You agree not to upload content that:</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                                <li>Infringes on intellectual property rights</li>
+                                <li>Contains illegal, harmful, or offensive material</li>
+                                <li>Violates any applicable laws or regulations</li>
+                                <li>Contains malware, viruses, or other harmful code</li>
+                                <li>Is spam, misleading, or fraudulent</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Content Moderation</h3>
+                            <p class="text-gray-300">We reserve the right to review, modify, or remove any content that violates these terms or is otherwise objectionable. We may also suspend or terminate accounts that repeatedly violate our content policies.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Licensing and Rights -->
+                <div id="licensing" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="file-text" class="w-6 h-6 text-green-400 mr-3"></i>
+                        5. Licensing and Rights
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">License Types</h3>
+                            <p class="text-gray-300 mb-4">Our platform offers various licensing options:</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                                <li><strong>Royalty-Free:</strong> One-time payment for unlimited use</li>
+                                <li><strong>Commercial:</strong> Extended rights for commercial projects</li>
+                                <li><strong>Exclusive:</strong> Sole rights to use the music</li>
+                                <li><strong>Custom:</strong> Negotiated terms for specific projects</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">License Terms</h3>
+                            <p class="text-gray-300 mb-4">When you purchase a license:</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                                <li>You receive the rights specified in the license agreement</li>
+                                <li>The artist receives compensation for their work</li>
+                                <li>You must comply with the license terms and restrictions</li>
+                                <li>Licenses are non-transferable unless specified</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Copyright Protection</h3>
+                            <p class="text-gray-300">We respect intellectual property rights and expect our users to do the same. If you believe your copyright has been infringed, please contact us with detailed information about the alleged infringement.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payments and Billing -->
+                <div id="payments" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="credit-card" class="w-6 h-6 text-purple-400 mr-3"></i>
+                        6. Payments and Billing
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Payment Terms</h3>
+                            <p class="text-gray-300 mb-4">All payments are processed through secure third-party payment processors. By making a purchase, you agree to:</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                                <li>Provide accurate payment information</li>
+                                <li>Pay all applicable fees and taxes</li>
+                                <li>Authorize us to charge your payment method</li>
+                                <li>Accept that all sales are final unless otherwise specified</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Artist Revenue</h3>
+                            <p class="text-gray-300 mb-4">For artists, we handle revenue distribution as follows:</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                                <li>70% of net revenue goes to the artist</li>
+                                <li>30% covers platform fees and operational costs</li>
+                                <li>Payments are processed monthly</li>
+                                <li>Minimum payout threshold applies</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Refunds</h3>
+                            <p class="text-gray-300">Refunds are provided only in cases of technical issues or if the content does not match the description. Refund requests must be submitted within 30 days of purchase.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prohibited Uses -->
+                <div id="prohibited" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="x-circle" class="w-6 h-6 text-red-400 mr-3"></i>
+                        7. Prohibited Uses
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Prohibited Activities</h3>
+                            <p class="text-gray-300 mb-4">You agree not to use the Service to:</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                                <li>Violate any applicable laws or regulations</li>
+                                <li>Infringe on intellectual property rights</li>
+                                <li>Upload malicious software or harmful content</li>
+                                <li>Attempt to gain unauthorized access to our systems</li>
+                                <li>Interfere with the Service or other users' experience</li>
+                                <li>Use automated tools to scrape or collect data</li>
+                                <li>Impersonate others or provide false information</li>
+                                <li>Engage in spam, harassment, or abusive behavior</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Consequences</h3>
+                            <p class="text-gray-300">Violation of these terms may result in account suspension, termination, or legal action. We reserve the right to take appropriate action against any user who violates these terms.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intellectual Property -->
+                <div id="intellectual" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="copyright" class="w-6 h-6 text-blue-400 mr-3"></i>
+                        8. Intellectual Property
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Platform Rights</h3>
+                            <p class="text-gray-300 mb-4">The Service and its original content, features, and functionality are owned by Music Platform and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">User Content Rights</h3>
+                            <p class="text-gray-300">Users retain ownership of their uploaded content. However, by uploading content, you grant us a limited license to use, display, and distribute your content according to the terms specified in your licensing agreement.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Trademarks</h3>
+                            <p class="text-gray-300">The Music Platform name, logo, and related marks are trademarks of our company. You may not use these marks without our prior written consent.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Termination -->
+                <div id="termination" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="power-off" class="w-6 h-6 text-orange-400 mr-3"></i>
+                        9. Termination
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Account Termination</h3>
+                            <p class="text-gray-300 mb-4">You may terminate your account at any time by contacting us. We may terminate or suspend your account immediately, without prior notice, for conduct that we believe violates these Terms or is harmful to other users or the Service.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Effect of Termination</h3>
+                            <p class="text-gray-300 mb-4">Upon termination:</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                                <li>Your access to the Service will cease immediately</li>
+                                <li>Your account and profile information will be deleted</li>
+                                <li>Active licenses will remain valid according to their terms</li>
+                                <li>Outstanding payments will be processed according to our policies</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Survival</h3>
+                            <p class="text-gray-300">Certain provisions of these Terms will survive termination, including those relating to intellectual property, disclaimers, and limitation of liability.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimers -->
+                <div id="disclaimer" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="alert-triangle" class="w-6 h-6 text-yellow-400 mr-3"></i>
+                        10. Disclaimers
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Service Availability</h3>
+                            <p class="text-gray-300">The Service is provided "as is" and "as available" without warranties of any kind. We do not guarantee that the Service will be uninterrupted, secure, or error-free.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Content Disclaimer</h3>
+                            <p class="text-gray-300">We do not endorse, verify, or guarantee the accuracy, completeness, or usefulness of any content on our platform. Users are responsible for verifying the rights and permissions for any content they use.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Third-Party Services</h3>
+                            <p class="text-gray-300">Our Service may integrate with third-party services. We are not responsible for the content, privacy policies, or practices of any third-party services.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Limitation of Liability -->
+                <div id="limitation" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="shield" class="w-6 h-6 text-red-400 mr-3"></i>
+                        11. Limitation of Liability
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Liability Limits</h3>
+                            <p class="text-gray-300 mb-4">To the maximum extent permitted by law, Music Platform shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300 ml-4">
+                                <li>Loss of profits, data, or business opportunities</li>
+                                <li>Damages resulting from use of the Service</li>
+                                <li>Damages resulting from third-party content</li>
+                                <li>Damages resulting from service interruptions</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Maximum Liability</h3>
+                            <p class="text-gray-300">Our total liability to you for any claims arising from these Terms or your use of the Service shall not exceed the amount you paid us in the 12 months preceding the claim.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Essential Purpose</h3>
+                            <p class="text-gray-300">The limitations in this section are fundamental to the agreement between you and Music Platform and would be agreed to even if the exclusive remedy failed of its essential purpose.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Governing Law -->
+                <div id="governing" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="scale" class="w-6 h-6 text-green-400 mr-3"></i>
+                        12. Governing Law
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Applicable Law</h3>
+                            <p class="text-gray-300">These Terms shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of law provisions.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Dispute Resolution</h3>
+                            <p class="text-gray-300">Any disputes arising from these Terms or your use of the Service shall be resolved through binding arbitration in San Francisco, California, in accordance with the rules of the American Arbitration Association.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Class Action Waiver</h3>
+                            <p class="text-gray-300">You agree to resolve disputes individually and waive any right to participate in a class action lawsuit or class-wide arbitration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Changes to Terms -->
+                <div id="changes" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="refresh-cw" class="w-6 h-6 text-purple-400 mr-3"></i>
+                        13. Changes to Terms
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Modifications</h3>
+                            <p class="text-gray-300">We reserve the right to modify these Terms at any time. We will notify users of material changes by posting the updated Terms on our platform and updating the "Last updated" date.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Continued Use</h3>
+                            <p class="text-gray-300">Your continued use of the Service after any changes to these Terms constitutes acceptance of the new Terms. If you do not agree to the modified Terms, you should discontinue use of the Service.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Notification</h3>
+                            <p class="text-gray-300">For significant changes, we may also notify you via email or through other communication channels. It is your responsibility to keep your contact information updated.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div id="contact" class="terms-section bg-gray-800 rounded-xl p-8">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i data-lucide="mail" class="w-6 h-6 text-blue-400 mr-3"></i>
+                        14. Contact Information
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Questions About Terms</h3>
+                            <p class="text-gray-300 mb-4">If you have any questions about these Terms of Service, please contact us:</p>
+                            <div class="space-y-2 text-gray-300">
+                                <p><strong>Email:</strong> legal@musicplatform.com</p>
+                                <p><strong>Address:</strong> 123 Music Street, San Francisco, CA 94102</p>
+                                <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-3">Legal Notices</h3>
+                            <p class="text-gray-300">For legal notices or service of process, please send correspondence to our registered agent at the address listed above.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-upload.html" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="music-dashboard.html" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="track-earnings.html" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="promote-music.html" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-browse.html" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="advanced-search.html" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="licensing-info.html" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="support-artists.html" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="about-us.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

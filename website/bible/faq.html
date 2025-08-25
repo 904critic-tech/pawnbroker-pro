@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Guided Light App | StreamAutoClipper</title>
+    <meta name="description" content="Frequently Asked Questions about the Guided Light App - Get answers about features, privacy, and support.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="stylesheet" href="/styles.css" />
+    
+    <style>
+        :root {
+            --bg-1: #0f172a;
+            --bg-2: #1e293b;
+            --panel: rgba(15,23,42,0.6);
+            --text: #e5e7eb;
+            --muted: #94a3b8;
+            --blue: #3b82f6;
+            --green: #10b981;
+            --border: rgba(59,130,246,0.2);
+        }
+        
+        * { box-sizing: border-box; }
+        
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .nav {
+            position: sticky;
+            top: 0;
+            backdrop-filter: saturate(180%) blur(10px);
+            background: rgba(2,6,23,.7);
+            border-bottom: 1px solid var(--border);
+            z-index: 20;
+            padding: 1rem 0;
+        }
+        
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .brand a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--blue);
+            border-bottom: 3px solid var(--blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            color: var(--blue);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        h3 {
+            color: var(--text);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .faq-section {
+            margin-bottom: 40px;
+        }
+        
+        .faq-item {
+            margin-bottom: 25px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--panel);
+            backdrop-filter: blur(8px);
+        }
+        
+        .faq-question {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 15px 20px;
+            font-weight: bold;
+            color: var(--blue);
+            cursor: pointer;
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+        
+        .faq-answer {
+            padding: 20px;
+            background: var(--panel);
+        }
+        
+        .contact-info {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--blue);
+            margin-top: 30px;
+        }
+        
+        .feature-list {
+            background: rgba(16, 185, 129, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .faq-question, .faq-answer {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="brand">
+                <a href="https://streamautoclipper.shop/">
+                    ← Back to StreamAutoClipper
+                </a>
+            </div>
+            <div style="color: var(--muted); font-size: 14px;">
+                Guided Light App - FAQ
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq-section">
+            <h2>General Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">What is Guided Light?</div>
+                <div class="faq-answer">
+                    <p>Guided Light is a spiritual guidance app that provides daily Bible verses, personalized inspiration, and complete Bible access. It's designed to help users find daily spiritual guidance and inspiration through scripture and thoughtful reflections.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is Guided Light free to use?</div>
+                <div class="faq-answer">
+                    <p>Yes, Guided Light is completely free to download and use. The app is supported by non-intrusive banner advertisements that help us keep the app free for all users.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Do I need to create an account?</div>
+                <div class="faq-answer">
+                    <p>No, you don't need to create an account or provide any personal information to use Guided Light. The app works immediately after installation, and your preferences are stored locally on your device.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What devices are supported?</div>
+                <div class="faq-answer">
+                    <p>Guided Light is available for Android devices running Android 5.0 (API level 21) or higher. The app is optimized for both phones and tablets.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Features & Functionality</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">What features does Guided Light offer?</div>
+                <div class="faq-answer">
+                    <div class="feature-list">
+                        <strong>Core Features:</strong>
+                        <ul>
+                            <li>Daily spiritual guidance and inspiration</li>
+                            <li>Complete Bible text with all books and chapters</li>
+                            <li>Bible search functionality</li>
+                            <li>Verse sharing capabilities</li>
+                            <li>Favorite verses bookmarking</li>
+                            <li>Offline Bible access</li>
+                            <li>Non-intrusive banner advertisements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How does the daily guidance work?</div>
+                <div class="faq-answer">
+                    <p>The app provides personalized daily guidance using a unique algorithm that combines the current date with your app usage patterns. Each day, you'll receive a new Bible verse and spiritual reflection designed to inspire and guide you.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I search for specific Bible verses?</div>
+                <div class="faq-answer">
+                    <p>Yes! You can search for any Bible verse by keyword, book name, chapter, or verse number. The search feature is comprehensive and allows you to find exactly what you're looking for quickly.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I share Bible verses?</div>
+                <div class="faq-answer">
+                    <p>You can share individual verses or entire chapters using the share button. The app will format the verse with proper reference and attribution, making it easy to share on social media, messaging apps, or email.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I use the app offline?</div>
+                <div class="faq-answer">
+                    <p>Yes! Once you've loaded Bible content, it's cached on your device for offline access. You can read the Bible, view your daily guidance, and access your favorite verses even without an internet connection.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Privacy & Data</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">What information does the app collect?</div>
+                <div class="faq-answer">
+                    <p>Guided Light collects minimal information to provide a better user experience:</p>
+                    <ul>
+                        <li>App usage data (which features you use)</li>
+                        <li>Device information (for compatibility)</li>
+                        <li>App preferences and settings</li>
+                        <li>Advertising interaction data (through Google AdMob)</li>
+                    </ul>
+                    <p>We do NOT collect personal information like names, emails, or phone numbers.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is my data secure?</div>
+                <div class="faq-answer">
+                    <p>Yes, we take data security seriously. Most of your data is stored locally on your device. Any data transmitted is encrypted, and we follow industry best practices for data protection. You can read our complete Privacy Policy for more details.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I delete my data?</div>
+                <div class="faq-answer">
+                    <p>Yes, you can clear all app data at any time through your device settings. Simply go to Settings > Apps > Guided Light > Storage > Clear Data. This will remove all your preferences and cached content.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Advertising</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Why does the app show advertisements?</div>
+                <div class="faq-answer">
+                    <p>Advertisements help us keep Guided Light free for all users. The ads are non-intrusive banner ads that appear at the bottom of screens and don't interfere with your reading or app experience.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I remove the advertisements?</div>
+                <div class="faq-answer">
+                    <p>Currently, the app is supported by advertisements to remain free. However, you can control advertising preferences through your device settings and Google account settings.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Are the advertisements appropriate for a spiritual app?</div>
+                <div class="faq-answer">
+                    <p>We work with Google AdMob to ensure that advertisements are appropriate for our audience. AdMob has content policies that help filter out inappropriate content for spiritual and family-friendly apps.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Technical Support</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">The app is not loading properly. What should I do?</div>
+                <div class="faq-answer">
+                    <p>Try these troubleshooting steps:</p>
+                    <ol>
+                        <li>Check your internet connection</li>
+                        <li>Restart the app</li>
+                        <li>Clear the app cache (Settings > Apps > Guided Light > Storage > Clear Cache)</li>
+                        <li>Restart your device</li>
+                        <li>Reinstall the app if the issue persists</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">The app crashes frequently. How can I fix this?</div>
+                <div class="faq-answer">
+                    <p>If the app crashes frequently:</p>
+                    <ol>
+                        <li>Make sure your device has enough storage space</li>
+                        <li>Update to the latest version of the app</li>
+                        <li>Clear app data and cache</li>
+                        <li>Check if your device meets the minimum requirements</li>
+                        <li>Contact our support team if the issue continues</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I update the app?</div>
+                <div class="faq-answer">
+                    <p>App updates are automatically available through the Google Play Store. You'll receive a notification when updates are available, or you can manually check for updates in the Play Store.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can I use the app on multiple devices?</div>
+                <div class="faq-answer">
+                    <p>Yes, you can install Guided Light on multiple devices. However, your preferences and favorites are stored locally on each device, so they won't sync between devices automatically.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2>Content & Bible Versions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Which Bible translation does the app use?</div>
+                <div class="faq-answer">
+                    <p>Currently, Guided Light uses a widely-accepted Bible translation that provides clear, readable text. We're working on adding multiple Bible translations in future updates to give users more options.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Is the Bible content accurate?</div>
+                <div class="faq-answer">
+                    <p>We strive to provide accurate Bible content from reliable sources. However, we recommend consulting multiple sources for serious study and always refer to your preferred Bible translation for important matters.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Are there any missing books or chapters?</div>
+                <div class="faq-answer">
+                    <p>No, the app includes the complete Bible with all books, chapters, and verses. You have access to the full text of both the Old and New Testaments.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <h3>Still Have Questions?</h3>
+            <p>If you couldn't find the answer to your question here, please contact our support team:</p>
+            <ul>
+                <li><strong>Email Support:</strong> streamautoclipper@gmail.com</li>
+                <li><strong>Privacy Questions:</strong> streamautoclipper@gmail.com</li>
+                <li><strong>Legal Questions:</strong> streamautoclipper@gmail.com</li>
+                <li><strong>Website:</strong> <a href="https://streamautoclipper.shop" target="_blank">https://streamautoclipper.shop</a></li>
+            </ul>
+            <p>We typically respond to inquiries within 24-48 hours.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Guided Light App. FAQ for spiritual guidance mobile application.</p>
+        <p><a href="https://streamautoclipper.shop/bible/tos.html">Terms of Service</a> | <a href="https://streamautoclipper.shop/bible/privacy.html">Privacy Policy</a> | <a href="https://streamautoclipper.shop/bible/support.html">Support</a></p>
+    </div>
+</body>
+</html>

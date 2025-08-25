@@ -1,0 +1,24 @@
+{
+  "name": "guided-light-app",
+  "description": "A Daily Inspiration & Spiritual Guidance Mobile Application",
+  "status": "deployed",
+  "deployment": {
+    "url": "https://guided-light-31zp0x71m-904critic-techs-projects.vercel.app",
+    "inspect": "https://vercel.com/904critic-techs-projects/guided-light-app/4L9vCRDg5VXNvnD6ri9WvmAF9bby",
+    "deployed_at": "2024-12-19T00:00:00.000Z"
+  },
+  "features": [
+    "Daily Personalized Guidance",
+    "Bible Integration",
+    "Calming User Experience",
+    "Offline Functionality",
+    "Social & Sharing Features"
+  ],
+  "technology": [
+    "Flutter",
+    "Cross-Platform",
+    "Offline-First",
+    "Performance Optimized",
+    "Accessibility Compliant"
+  ]
+}

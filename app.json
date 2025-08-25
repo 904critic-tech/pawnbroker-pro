@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "623797a5-1c51-49d6-a113-ef8fdee1f12f"
+      }
+    },
+    "android": {
+      "package": "com.shumatew.pawnbrokerprobackend"
+    }
+  }
+}

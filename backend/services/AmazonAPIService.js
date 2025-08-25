@@ -3,15 +3,15 @@ const axios = require('axios');
 class AmazonAPIService {
   constructor() {
     // AWS Credentials for Product Advertising API (from environment variables)
-    this.accessKeyId = process.env.AMAZON_ACCESS_KEY_ID || 'your-access-key-id';
-    this.secretAccessKey = process.env.AMAZON_SECRET_ACCESS_KEY || 'your-secret-access-key';
+    this.accessKeyId = process.env.AMAZON_ACCESS_KEY_ID;
+    this.secretAccessKey = process.env.AMAZON_SECRET_ACCESS_KEY;
     this.region = process.env.AMAZON_REGION || 'us-east-1';
     
     // Amazon App Store API credentials (from environment variables)
-    this.clientId = process.env.AMAZON_CLIENT_ID || 'your-client-id';
-    this.clientSecret = process.env.AMAZON_CLIENT_SECRET || 'your-client-secret';
-    this.securityProfileId = process.env.AMAZON_SECURITY_PROFILE_ID || 'your-security-profile-id';
-    this.apiKey = process.env.AMAZON_API_KEY || 'your-api-key';
+    this.clientId = process.env.AMAZON_CLIENT_ID;
+    this.clientSecret = process.env.AMAZON_CLIENT_SECRET;
+    this.securityProfileId = process.env.AMAZON_SECURITY_PROFILE_ID;
+    this.apiKey = process.env.AMAZON_API_KEY;
     
     // Product Advertising API endpoints
     this.paapiEndpoint = 'https://webservices.amazon.com/paapi5/searchitems';

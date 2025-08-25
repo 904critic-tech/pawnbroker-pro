@@ -1,6 +1,23 @@
 # 🏪 PawnBroker Pro
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-green.svg)](https://github.com/yourusername/pawnbroker-pro)
+
 A comprehensive pawnshop management application that provides real-time market valuations for various items using multiple data sources including eBay, Amazon, and specialized price guides.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🔓 Open Source
+
+This project is open source and available under the MIT License. You are free to:
+- Use the code for commercial purposes
+- Modify and distribute the code
+- Use it privately
+- Sublicense it
+
+The source code is available on GitHub and can be used with AdMob monetization.
 
 ## 🚀 Features
 

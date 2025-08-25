@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Artists - Music Platform</title>
+    <meta name="description" content="Learn how to support independent artists and help them continue creating amazing music for your projects.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .support-card {
+            transition: all 0.3s ease;
+        }
+        
+        .support-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .artist-card {
+            transition: all 0.3s ease;
+        }
+        
+        .artist-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <a href="music.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">Music Platform</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="music-browse.html" class="text-gray-300 hover:text-white transition-colors">Browse</a>
+                    <a href="music-upload.html" class="text-gray-300 hover:text-white transition-colors">Upload</a>
+                    <a href="music-dashboard.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</button>
+                    <button class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-24 pb-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Support Artists
+                </h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                    Help independent artists continue creating amazing music. Your support makes a real difference in their creative journey.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Support Artists -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Why Support Artists?</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Direct Impact -->
+                <div class="support-card bg-gray-800 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="heart" class="w-6 h-6 text-green-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Direct Impact</h3>
+                    <p class="text-gray-300 mb-4">Your support goes directly to the artists, helping them invest in better equipment, studio time, and their creative process.</p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            100% to the artist
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            No middlemen
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Transparent payments
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More Music -->
+                <div class="support-card bg-gray-800 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="music" class="w-6 h-6 text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">More Music</h3>
+                    <p class="text-gray-300 mb-4">Supporting artists enables them to create more music, giving you access to a growing library of high-quality tracks.</p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Regular new releases
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Higher quality production
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Diverse genres
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community -->
+                <div class="support-card bg-gray-800 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="users" class="w-6 h-6 text-purple-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Build Community</h3>
+                    <p class="text-gray-300 mb-4">Supporting artists helps build a sustainable ecosystem where creators and musicians can thrive together.</p>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Sustainable ecosystem
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Direct connections
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Collaborative opportunities
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ways to Support -->
+    <section class="py-12 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Ways to Support Artists</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Purchase Tracks -->
+                <div class="support-card bg-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="shopping-cart" class="w-6 h-6 text-green-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Purchase Tracks</h3>
+                    <p class="text-gray-300 mb-4">Buy individual tracks or albums to support artists directly.</p>
+                    <div class="space-y-2 text-sm text-gray-400 mb-4">
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            High-quality downloads
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Unlimited usage rights
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Direct artist payment
+                        </div>
+                    </div>
+                    <button class="w-full px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">
+                        Browse Paid Tracks
+                    </button>
+                </div>
+
+                <!-- Tip Artists -->
+                <div class="support-card bg-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="gift" class="w-6 h-6 text-yellow-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Tip Artists</h3>
+                    <p class="text-gray-300 mb-4">Send tips to artists whose music you love and want to support.</p>
+                    <div class="space-y-2 text-sm text-gray-400 mb-4">
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Any amount you choose
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Personal message option
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            ️100% to the artist
+                        </div>
+                    </div>
+                    <button class="w-full px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors">
+                        Send a Tip
+                    </button>
+                </div>
+
+                <!-- Subscribe -->
+                <div class="support-card bg-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="star" class="w-6 h-6 text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Artist Subscriptions</h3>
+                    <p class="text-gray-300 mb-4">Subscribe to your favorite artists for exclusive content and early access.</p>
+                    <div class="space-y-2 text-sm text-gray-400 mb-4">
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Monthly recurring support
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Exclusive content access
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Direct artist communication
+                        </div>
+                    </div>
+                    <button class="w-full px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors">
+                        View Subscriptions
+                    </button>
+                </div>
+
+                <!-- Commission -->
+                <div class="support-card bg-gray-700 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="pen-tool" class="w-6 h-6 text-blue-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Commission Music</h3>
+                    <p class="text-gray-300 mb-4">Commission custom music for your specific project needs.</p>
+                    <div class="space-y-2 text-sm text-gray-400 mb-4">
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Custom compositions
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Project-specific music
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Exclusive rights available
+                        </div>
+                    </div>
+                    <button class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                        Request Commission
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Artists -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Featured Artists to Support</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Artist 1 -->
+                <div class="artist-card bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="music" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Sarah Chen</h3>
+                            <p class="text-gray-400 text-sm">Electronic Artist</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">Creating atmospheric electronic music for content creators and meditation apps.</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-400 text-sm">23 tracks</span>
+                        <span class="text-green-400 text-sm font-medium">$1,247 earned</span>
+                    </div>
+                    <div class="space-y-2">
+                        <button class="w-full px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors">
+                            <i data-lucide="heart" class="w-4 h-4 inline mr-2"></i>
+                            Support Sarah
+                        </button>
+                        <button class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors">
+                            View Tracks
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Artist 2 -->
+                <div class="artist-card bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="music" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Marcus Johnson</h3>
+                            <p class="text-gray-400 text-sm">Hip Hop Producer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">Producing beats and instrumentals for YouTubers and content creators.</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-400 text-sm">45 tracks</span>
+                        <span class="text-green-400 text-sm font-medium">$2,843 earned</span>
+                    </div>
+                    <div class="space-y-2">
+                        <button class="w-full px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors">
+                            <i data-lucide="heart" class="w-4 h-4 inline mr-2"></i>
+                            Support Marcus
+                        </button>
+                        <button class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors">
+                            View Tracks
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Artist 3 -->
+                <div class="artist-card bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="music" class="w-8 h-8 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Elena Rodriguez</h3>
+                            <p class="text-gray-400 text-sm">Ambient Composer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">Crafting peaceful ambient music for meditation and relaxation content.</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-400 text-sm">18 tracks</span>
+                        <span class="text-green-400 text-sm font-medium">$892 earned</span>
+                    </div>
+                    <div class="space-y-2">
+                        <button class="w-full px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors">
+                            <i data-lucide="heart" class="w-4 h-4 inline mr-2"></i>
+                            Support Elena
+                        </button>
+                        <button class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors">
+                            View Tracks
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stories -->
+    <section class="py-12 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Your Support Makes a Difference</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Story 1 -->
+                <div class="bg-gray-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Sarah's Studio Upgrade</h4>
+                            <p class="text-gray-400 text-sm">Electronic Artist</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">"Thanks to the support from content creators, I was able to upgrade my studio equipment and create higher quality tracks. Your tips and purchases directly funded new synthesizers and recording gear."</p>
+                    <div class="flex items-center text-sm text-green-400">
+                        <i data-lucide="trending-up" class="w-4 h-4 mr-1"></i>
+                        +300% track quality improvement
+                    </div>
+                </div>
+
+                <!-- Story 2 -->
+                <div class="bg-gray-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Marcus's Full-Time Career</h4>
+                            <p class="text-gray-400 text-sm">Hip Hop Producer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">"The support from this platform allowed me to quit my day job and focus on music full-time. I now release new beats weekly and can collaborate with content creators directly."</p>
+                    <div class="flex items-center text-sm text-green-400">
+                        <i data-lucide="trending-up" class="w-4 h-4 mr-1"></i>
+                        +500% monthly track releases
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Guidelines -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Support Guidelines</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-green-400 mr-3"></i>
+                        Safe and Secure
+                    </h3>
+                    <p class="text-gray-300 mb-4">All payments are processed securely through our platform. Artists receive their earnings directly, and we maintain transparent records of all transactions.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>• Secure payment processing</li>
+                        <li>• Direct artist payments</li>
+                        <li>• Transparent transaction records</li>
+                        <li>• No hidden fees</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                        <i data-lucide="users" class="w-6 h-6 text-blue-400 mr-3"></i>
+                        Community Guidelines
+                    </h3>
+                    <p class="text-gray-300 mb-4">We encourage respectful and supportive interactions between content creators and artists. Your support helps build a sustainable creative ecosystem.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>• Respect artist boundaries</li>
+                        <li>• Provide constructive feedback</li>
+                        <li>• Share and promote music you love</li>
+                        <li>• Build meaningful connections</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                        <i data-lucide="heart" class="w-6 h-6 text-red-400 mr-3"></i>
+                        Meaningful Support
+                    </h3>
+                    <p class="text-gray-300 mb-4">Every contribution, no matter the size, makes a difference. Whether it's a small tip or a commission, your support directly impacts an artist's ability to create.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>• Any amount is appreciated</li>
+                        <li>• Regular support is impactful</li>
+                        <li>• Personal messages are welcome</li>
+                        <li>• Share your favorite tracks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-upload.html" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="music-dashboard.html" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="track-earnings.html" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="promote-music.html" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-browse.html" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="advanced-search.html" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="licensing-info.html" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="support-artists.html" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="about-us.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+    </script>
+</body>
+</html>

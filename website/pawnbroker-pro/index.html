@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PawnBroker Pro - Market Pricing & Pawn Offers</title>
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#3498db" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="PawnBroker Pro" />
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png" />
+  
+
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #333;
+    }
+    
+    .app-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .header h1 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      color: #7f8c8d;
+    }
+    
+    .search-section {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .search-container {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .search-input {
+      flex: 1;
+      min-width: 250px;
+      padding: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: #3498db;
+    }
+    
+    .search-btn {
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .search-btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    .search-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .categories {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    
+    .category-chip {
+      padding: 8px 16px;
+      background: #f8f9fa;
+      border: 1px solid #e0e0e0;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+    
+    .category-chip:hover {
+      background: #e9ecef;
+    }
+    
+    .category-chip.active {
+      background: #3498db;
+      color: white;
+      border-color: #3498db;
+    }
+    
+    .popular-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .popular-item {
+      background: #f8f9fa;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .popular-item:hover {
+      background: #e9ecef;
+      transform: translateY(-2px);
+    }
+    
+    .popular-item-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    
+    .popular-item-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .popular-item-category {
+      font-size: 12px;
+      color: #6c757d;
+    }
+    
+    .results-section {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: none;
+    }
+    
+    .results-section.show {
+      display: block;
+    }
+    
+    .market-value-card {
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      color: white;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .market-value-label {
+      font-size: 18px;
+      opacity: 0.9;
+      margin-bottom: 10px;
+    }
+    
+    .market-value-amount {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    
+    .confidence-badge {
+      background: rgba(255,255,255,0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-block;
+    }
+    
+    .pawn-offer-card {
+      background: linear-gradient(135deg, #27ae60, #229954);
+      color: white;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .pawn-offer-label {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    
+    .pawn-offer-amount {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    
+    .recent-sales {
+      margin-top: 20px;
+    }
+    
+    .recent-sales-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+    
+    .sales-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    
+    .sale-item {
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 15px;
+      transition: transform 0.3s ease;
+    }
+    
+    .sale-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    
+    .sale-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+    
+    .sale-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #27ae60;
+      margin-bottom: 5px;
+    }
+    
+    .sale-condition {
+      font-size: 12px;
+      color: #6c757d;
+      margin-bottom: 5px;
+    }
+    
+    .sale-date {
+      font-size: 12px;
+      color: #6c757d;
+    }
+    
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      color: #6c757d;
+    }
+    
+    .loading.show {
+      display: block;
+    }
+    
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      display: none;
+    }
+    
+    .error.show {
+      display: block;
+    }
+    
+    .query-limit {
+      background: #fff3cd;
+      color: #856404;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      display: none;
+    }
+    
+    .query-limit.show {
+      display: block;
+    }
+    
+    .query-limit-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .query-limit-btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .watch-ad-btn {
+      background: #3498db;
+      color: white;
+    }
+    
+    .upgrade-btn {
+      background: #27ae60;
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      .search-container {
+        flex-direction: column;
+      }
+      
+      .search-input {
+        min-width: auto;
+      }
+      
+      .popular-items {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      }
+      
+      .market-value-amount {
+        font-size: 36px;
+      }
+      
+      .pawn-offer-amount {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="header">
+      <h1>🏪 PawnBroker Pro</h1>
+      <p>Market Pricing & Pawn Offers - Find What Items Are Worth</p>
+    </div>
+    
+    <div class="search-section">
+      <h2>🔍 Search for Items</h2>
+      <div class="search-container">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search for items (e.g., iPhone 13, gold ring, laptop...)" />
+        <button class="search-btn" id="searchBtn" onclick="searchItems()">Search</button>
+      </div>
+      
+      <div class="categories">
+        <div class="category-chip active" onclick="selectCategory('all')">All Items</div>
+        <div class="category-chip" onclick="selectCategory('Electronics')">Electronics</div>
+        <div class="category-chip" onclick="selectCategory('Jewelry')">Jewelry</div>
+        <div class="category-chip" onclick="selectCategory('Tools')">Tools</div>
+        <div class="category-chip" onclick="selectCategory('Musical Instruments')">Musical</div>
+        <div class="category-chip" onclick="selectCategory('Sports Equipment')">Sports</div>
+        <div class="category-chip" onclick="selectCategory('Collectibles')">Collectibles</div>
+        <div class="category-chip" onclick="selectCategory('Antiques')">Antiques</div>
+      </div>
+      
+      <div class="popular-items">
+        <div class="popular-item" onclick="searchPopularItem('iPhone 13 Pro')">
+          <div class="popular-item-icon">📱</div>
+          <div class="popular-item-name">iPhone 13 Pro</div>
+          <div class="popular-item-category">Electronics</div>
+        </div>
+        <div class="popular-item" onclick="searchPopularItem('Gold Ring')">
+          <div class="popular-item-icon">💍</div>
+          <div class="popular-item-name">Gold Ring</div>
+          <div class="popular-item-category">Jewelry</div>
+        </div>
+        <div class="popular-item" onclick="searchPopularItem('Guitar')">
+          <div class="popular-item-icon">🎸</div>
+          <div class="popular-item-name">Guitar</div>
+          <div class="popular-item-category">Musical</div>
+        </div>
+        <div class="popular-item" onclick="searchPopularItem('Diamond Necklace')">
+          <div class="popular-item-icon">💎</div>
+          <div class="popular-item-name">Diamond Necklace</div>
+          <div class="popular-item-category">Jewelry</div>
+        </div>
+        <div class="popular-item" onclick="searchPopularItem('Power Tools')">
+          <div class="popular-item-icon">🔧</div>
+          <div class="popular-item-name">Power Tools</div>
+          <div class="popular-item-category">Tools</div>
+        </div>
+        <div class="popular-item" onclick="searchPopularItem('Gaming Console')">
+          <div class="popular-item-icon">🎮</div>
+          <div class="popular-item-name">Gaming Console</div>
+          <div class="popular-item-category">Electronics</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>Analyzing market data...</p>
+    </div>
+    
+    <div class="error" id="error"></div>
+    
+    <div class="query-limit" id="queryLimit">
+      <h3>Daily Limit Reached</h3>
+      <p>You have reached your daily limit of 5 queries. Watch an ad for 3 more queries or upgrade to Pro for unlimited access.</p>
+      <div class="query-limit-actions">
+        <button class="query-limit-btn watch-ad-btn" onclick="watchAd()">Watch Ad</button>
+        <button class="query-limit-btn upgrade-btn" onclick="upgrade()">Upgrade</button>
+      </div>
+    </div>
+    
+    <div class="results-section" id="resultsSection">
+      <div class="market-value-card">
+        <div class="market-value-label">ESTIMATED MARKET VALUE</div>
+        <div class="market-value-amount" id="marketValue">$0</div>
+        <div class="confidence-badge" id="confidence">0% Confidence</div>
+      </div>
+      
+      <div class="pawn-offer-card">
+        <div class="pawn-offer-label">YOUR OFFER</div>
+        <div class="pawn-offer-amount" id="pawnOffer">$0</div>
+      </div>
+      
+      <div class="recent-sales">
+        <div class="recent-sales-title">Recent Sales Data</div>
+        <div class="sales-grid" id="salesGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentCategory = 'all';
+    let queryCount = 0;
+    const MAX_QUERIES = 5;
+    const API_BASE_URL = 'https://pawnbroker-l7okx8ar7-904critic-techs-projects.vercel.app/api'; // Your backend API
+    
+    function selectCategory(category) {
+      currentCategory = category;
+      document.querySelectorAll('.category-chip').forEach(chip => {
+        chip.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+    
+    function searchPopularItem(itemName) {
+      document.getElementById('searchInput').value = itemName;
+      searchItems();
+    }
+    
+    async function searchItems() {
+      const query = document.getElementById('searchInput').value.trim();
+      if (!query) {
+        showError('Please enter a search term');
+        return;
+      }
+      
+      // Check query limit
+      if (queryCount >= MAX_QUERIES) {
+        showQueryLimit();
+        return;
+      }
+      
+      queryCount++;
+      hideError();
+      hideQueryLimit();
+      showLoading();
+      hideResults();
+      
+      try {
+        // Call your real backend API - using the quick estimate endpoint
+        const response = await fetch(`${API_BASE_URL}/marketplace/quick/${encodeURIComponent(query)}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+        
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error('Backend API not available. Please ensure the backend server is deployed.');
+          }
+          throw new Error(`API Error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.success) {
+          displayResults(data.data);
+        } else {
+          showError(data.message || 'No market data found for this item. Try a different search term.');
+        }
+        
+      } catch (error) {
+        console.error('Search error:', error);
+        
+        if (error.message.includes('Backend API not available')) {
+          showError('Backend API not available. The server needs to be deployed. Please contact support.');
+        } else if (error.message.includes('Failed to fetch')) {
+          showError('Network error. Please check your connection and try again.');
+        } else {
+          showError('Network error. Please check your connection and try again.');
+        }
+      } finally {
+        hideLoading();
+      }
+    }
+    
+    function displayResults(data) {
+      const marketValue = data.marketValue || data.estimatedMarketValue;
+      const pawnValue = data.pawnValue || Math.round(marketValue * 0.3); // 30% of market value
+      const confidence = Math.round((data.confidence || 0.7) * 100);
+      
+      document.getElementById('marketValue').textContent = '$' + marketValue.toLocaleString();
+      document.getElementById('pawnOffer').textContent = '$' + pawnValue.toLocaleString();
+      document.getElementById('confidence').textContent = confidence + '% Confidence';
+      
+      // Display recent sales from real data
+      const salesGrid = document.getElementById('salesGrid');
+      salesGrid.innerHTML = '';
+      
+      const recentSales = data.recentSales || data.searchResults || [];
+      
+      if (recentSales.length > 0) {
+        recentSales.slice(0, 6).forEach(sale => {
+          const saleItem = document.createElement('div');
+          saleItem.className = 'sale-item';
+          saleItem.innerHTML = `
+            <div class="sale-title">${sale.title || sale.itemName}</div>
+            <div class="sale-price">$${(sale.price || sale.soldPrice).toLocaleString()}</div>
+            <div class="sale-condition">Condition: ${sale.condition || 'Unknown'}</div>
+            <div class="sale-date">Sold: ${sale.soldDate || sale.date || 'Recent'}</div>
+          `;
+          salesGrid.appendChild(saleItem);
+        });
+      } else {
+        // Show message if no recent sales data
+        const noDataItem = document.createElement('div');
+        noDataItem.className = 'sale-item';
+        noDataItem.innerHTML = `
+          <div class="sale-title">No Recent Sales Data</div>
+          <div class="sale-price">Market analysis complete</div>
+          <div class="sale-condition">Based on market trends</div>
+          <div class="sale-date">Updated: ${new Date().toLocaleDateString()}</div>
+        `;
+        salesGrid.appendChild(noDataItem);
+      }
+      
+      showResults();
+    }
+    
+    function showLoading() {
+      document.getElementById('loading').classList.add('show');
+    }
+    
+    function hideLoading() {
+      document.getElementById('loading').classList.remove('show');
+    }
+    
+    function showError(message) {
+      const error = document.getElementById('error');
+      error.textContent = message;
+      error.classList.add('show');
+    }
+    
+    function hideError() {
+      document.getElementById('error').classList.remove('show');
+    }
+    
+    function showQueryLimit() {
+      document.getElementById('queryLimit').classList.add('show');
+    }
+    
+    function hideQueryLimit() {
+      document.getElementById('queryLimit').classList.remove('show');
+    }
+    
+    function showResults() {
+      document.getElementById('resultsSection').classList.add('show');
+    }
+    
+    function hideResults() {
+      document.getElementById('resultsSection').classList.remove('show');
+    }
+    
+    function watchAd() {
+      alert('Ad functionality would be implemented here. For now, you can continue searching.');
+      queryCount = Math.max(0, queryCount - 3); // Reset some queries
+      hideQueryLimit();
+    }
+    
+    function upgrade() {
+      alert('Upgrade functionality would be implemented here. For now, you can continue searching.');
+      queryCount = 0; // Reset queries
+      hideQueryLimit();
+    }
+    
+    // Initialize app
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add enter key support for search
+      document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          searchItems();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

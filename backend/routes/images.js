@@ -28,9 +28,9 @@ const upload = multer({
 
 // Configure Cloudinary
 cloudinary.config({
-  cloud_name: 'ddbbqoz7m',
-  api_key: '347494445896686',
-  api_secret: '5F4VZfsYkfHCG1c11zJr9Qs9IE'
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || 'ddbbqoz7m',
+  api_key: process.env.CLOUDINARY_API_KEY || '347494445896686',
+  api_secret: process.env.CLOUDINARY_API_SECRET || '5F4VZfsYkfHCG1c11zJr9Qs9IE'
 });
 
 // @route   POST /api/images/recognize
@@ -53,14 +53,19 @@ router.post('/recognize', upload.single('image'), async (req, res) => {
     // Extract product information from analysis
     const productInfo = GoogleCloudVisionService.extractProductInfo(analysis);
 
-    // Upload image to Firebase Storage for future reference
+    // Upload image to Firebase Storage for future reference (optional)
     let imageUrl = null;
-    try {
-      const fileName = `recognition_${Date.now()}_${req.file.originalname}`;
-      imageUrl = await FirebaseService.uploadImage(req.file.buffer, fileName, req.file.mimetype);
-      console.log('📤 Image uploaded to Firebase Storage:', imageUrl);
-    } catch (uploadError) {
-      console.warn('⚠️ Failed to upload image to Firebase:', uploadError.message);
+    if (FirebaseService.isInitialized) {
+      try {
+        const fileName = `recognition_${Date.now()}_${req.file.originalname}`;
+        imageUrl = await FirebaseService.uploadImage(req.file.buffer, fileName, req.file.mimetype);
+        console.log('📤 Image uploaded to Firebase Storage:', imageUrl);
+      } catch (uploadError) {
+        console.warn('⚠️ Failed to upload image to Firebase:', uploadError.message);
+        // Continue without Firebase upload - not critical for recognition
+      }
+    } else {
+      console.log('ℹ️ Firebase not configured - skipping image upload');
     }
 
     const response = {

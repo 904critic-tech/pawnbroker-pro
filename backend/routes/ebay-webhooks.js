@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // eBay webhook verification token
-const VERIFICATION_TOKEN = 'pawnbroker-pro-ebay-webhook-2025';
+const VERIFICATION_TOKEN = process.env.EBAY_WEBHOOK_TOKEN || 'pawnbroker-pro-ebay-webhook-2025';
 
 // Handle webhook verification
 router.get('/verify', (req, res) => {

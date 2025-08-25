@@ -129,6 +129,210 @@ class eBayAPIService {
     }
   }
 
+  /**
+   * Get eBay items with images for AI learning and visual recognition
+   */
+  async getItemsWithImagesForAILearning(query, limit = 15) {
+    console.log(`📸 Getting eBay items with images for AI learning: ${query}`);
+    
+    try {
+      const items = await this.searchSoldItems(query, limit);
+      
+      if (!items || items.length === 0) {
+        return {
+          success: false,
+          message: 'No items found',
+          aiLearningData: null
+        };
+      }
+
+      // Filter items that have images
+      const itemsWithImages = items.filter(item => item.imageUrl);
+      
+      if (itemsWithImages.length === 0) {
+        return {
+          success: false,
+          message: 'No items with images found',
+          aiLearningData: null
+        };
+      }
+
+      const aiLearningData = {
+        query,
+        timestamp: new Date().toISOString(),
+        totalItems: itemsWithImages.length,
+        visualTrainingData: [],
+        brandPatterns: [],
+        modelPatterns: [],
+        conditionPatterns: []
+      };
+
+      // Process each item for AI learning
+      itemsWithImages.forEach(item => {
+        // Extract visual training data
+        aiLearningData.visualTrainingData.push({
+          title: item.title,
+          imageUrl: item.imageUrl,
+          price: item.price,
+          condition: item.condition,
+          soldDate: item.soldDate,
+          source: 'ebay-api'
+        });
+
+        // Extract brand and model patterns from title
+        const { brand, model } = this.extractBrandAndModelFromTitle(item.title);
+        if (brand) {
+          aiLearningData.brandPatterns.push({
+            brand,
+            title: item.title,
+            price: item.price,
+            imageUrl: item.imageUrl
+          });
+        }
+        if (model) {
+          aiLearningData.modelPatterns.push({
+            model,
+            brand,
+            title: item.title,
+            price: item.price,
+            imageUrl: item.imageUrl
+          });
+        }
+
+        // Extract condition patterns
+        if (item.condition) {
+          aiLearningData.conditionPatterns.push({
+            condition: item.condition,
+            title: item.title,
+            price: item.price,
+            imageUrl: item.imageUrl
+          });
+        }
+      });
+
+      return {
+        success: true,
+        aiLearningData,
+        items: itemsWithImages.slice(0, 10) // Return top 10 for reference
+      };
+
+    } catch (error) {
+      console.error('❌ eBay AI learning data extraction failed:', error.message);
+      return {
+        success: false,
+        message: error.message,
+        aiLearningData: null
+      };
+    }
+  }
+
+  /**
+   * Extract brand and model from eBay item title for AI learning
+   */
+  extractBrandAndModelFromTitle(title) {
+    const lowerTitle = title.toLowerCase();
+    let brand = null;
+    let model = null;
+
+    // Common brand patterns
+    const brandPatterns = [
+      { patterns: ['iphone', 'ipad', 'macbook', 'imac', 'mac', 'apple watch'], brand: 'Apple' },
+      { patterns: ['galaxy', 'samsung'], brand: 'Samsung' },
+      { patterns: ['pixel', 'google'], brand: 'Google' },
+      { patterns: ['oneplus'], brand: 'OnePlus' },
+      { patterns: ['mate', 'huawei', 'p series'], brand: 'Huawei' },
+      { patterns: ['xiaomi', 'mi'], brand: 'Xiaomi' },
+      { patterns: ['dell', 'dell xps', 'dell inspiron'], brand: 'Dell' },
+      { patterns: ['hp', 'hp pavilion', 'hp spectre'], brand: 'HP' },
+      { patterns: ['lenovo', 'lenovo thinkpad', 'lenovo yoga'], brand: 'Lenovo' },
+      { patterns: ['asus', 'asus zenbook', 'asus rog'], brand: 'ASUS' },
+      { patterns: ['acer', 'acer aspire', 'acer predator'], brand: 'Acer' },
+      { patterns: ['msi', 'msi gaming'], brand: 'MSI' },
+      { patterns: ['sony', 'sony vaio'], brand: 'Sony' },
+      { patterns: ['lg', 'lg gram'], brand: 'LG' },
+      { patterns: ['microsoft', 'microsoft surface'], brand: 'Microsoft' },
+      { patterns: ['canon', 'canon eos'], brand: 'Canon' },
+      { patterns: ['nikon', 'nikon d'], brand: 'Nikon' },
+      { patterns: ['gopro', 'gopro hero'], brand: 'GoPro' },
+      { patterns: ['dji', 'dji mavic'], brand: 'DJI' },
+      { patterns: ['garmin', 'garmin forerunner'], brand: 'Garmin' },
+      { patterns: ['fitbit', 'fitbit versa'], brand: 'Fitbit' },
+      { patterns: ['rolex', 'rolex submariner'], brand: 'Rolex' },
+      { patterns: ['omega', 'omega seamaster'], brand: 'Omega' }
+    ];
+
+    // Find brand
+    for (const brandPattern of brandPatterns) {
+      for (const pattern of brandPattern.patterns) {
+        if (lowerTitle.includes(pattern)) {
+          brand = brandPattern.brand;
+          break;
+        }
+      }
+      if (brand) break;
+    }
+
+    // Extract model (simplified - can be enhanced)
+    const words = title.split(' ');
+    for (const word of words) {
+      if (word.length > 2 && /^[A-Za-z0-9]+$/.test(word)) {
+        const commonWords = ['new', 'used', 'refurbished', 'original', 'genuine', 'authentic', 'like', 'condition', 'excellent', 'good', 'fair', 'poor'];
+        if (!commonWords.includes(word.toLowerCase())) {
+          model = word;
+          break;
+        }
+      }
+    }
+
+    return { brand, model };
+  }
+
+  /**
+   * Download images for AI training dataset
+   */
+  async downloadImagesForTraining(query, limit = 20) {
+    try {
+      console.log(`📸 Downloading eBay images for AI training: ${query}`);
+      
+      const result = await this.getItemsWithImagesForAILearning(query, limit);
+      
+      if (!result.success) {
+        return {
+          success: false,
+          message: result.message,
+          trainingImages: []
+        };
+      }
+
+      const trainingImages = result.aiLearningData.visualTrainingData.map(item => ({
+        title: item.title,
+        imageUrl: item.imageUrl,
+        price: item.price,
+        condition: item.condition,
+        metadata: {
+          query,
+          timestamp: new Date().toISOString(),
+          source: 'ebay-api'
+        }
+      }));
+
+      return {
+        success: true,
+        trainingImages,
+        totalImages: trainingImages.length,
+        query
+      };
+
+    } catch (error) {
+      console.error('Image download error:', error);
+      return {
+        success: false,
+        message: error.message,
+        trainingImages: []
+      };
+    }
+  }
+
   async healthCheck() {
     try {
       // Test with a simple search

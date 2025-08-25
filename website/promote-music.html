@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promote Your Music - Music Platform</title>
+    <meta name="description" content="Promote your music with our tools and strategies. Get discovered by content creators and grow your audience.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .promotion-card {
+            transition: all 0.3s ease;
+        }
+        
+        .promotion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <a href="music.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">Music Platform</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="music-browse.html" class="text-gray-300 hover:text-white transition-colors">Browse</a>
+                    <a href="music-upload.html" class="text-gray-300 hover:text-white transition-colors">Upload</a>
+                    <a href="music-dashboard.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</button>
+                    <button class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-24 pb-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Promote Your Music
+                </h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                    Get discovered by content creators worldwide. Use our promotion tools and strategies to grow your audience and increase your earnings.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotion Tools -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Promotion Tools</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Featured Placement -->
+                <div class="promotion-card bg-gray-800 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="star" class="w-6 h-6 text-purple-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Featured Placement</h3>
+                    <p class="text-gray-300 mb-4">Get your track featured on our homepage and browse page for maximum visibility.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Homepage spotlight for 7 days
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Top of browse results
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Social media promotion
+                        </div>
+                    </div>
+                    <button class="w-full px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors">
+                        $29.99 - 7 Days
+                    </button>
+                </div>
+
+                <!-- Social Media Kit -->
+                <div class="promotion-card bg-gray-800 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="share-2" class="w-6 h-6 text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Social Media Kit</h3>
+                    <p class="text-gray-300 mb-4">Professional social media assets to promote your music across all platforms.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Custom artwork templates
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Pre-written captions
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Hashtag suggestions
+                        </div>
+                    </div>
+                    <button class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                        $19.99 - One Time
+                    </button>
+                </div>
+
+                <!-- Email Campaign -->
+                <div class="promotion-card bg-gray-800 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="mail" class="w-6 h-6 text-green-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Email Campaign</h3>
+                    <p class="text-gray-300 mb-4">Reach our community of content creators with a targeted email campaign.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Newsletter feature
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Creator spotlight
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Direct download links
+                        </div>
+                    </div>
+                    <button class="w-full px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">
+                        $39.99 - Campaign
+                    </button>
+                </div>
+
+                <!-- Playlist Placement -->
+                <div class="promotion-card bg-gray-800 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="list" class="w-6 h-6 text-pink-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Playlist Placement</h3>
+                    <p class="text-gray-300 mb-4">Get your track added to curated playlists by genre and mood.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Genre-specific playlists
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Mood-based collections
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Featured playlist spot
+                        </div>
+                    </div>
+                    <button class="w-full px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors">
+                        $24.99 - 30 Days
+                    </button>
+                </div>
+
+                <!-- Analytics Boost -->
+                <div class="promotion-card bg-gray-800 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="bar-chart" class="w-6 h-6 text-yellow-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Analytics Boost</h3>
+                    <p class="text-gray-300 mb-4">Enhanced analytics and insights to track your promotion performance.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Detailed performance metrics
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Audience demographics
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Conversion tracking
+                        </div>
+                    </div>
+                    <button class="w-full px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors">
+                        $14.99 - Monthly
+                    </button>
+                </div>
+
+                <!-- Creator Network -->
+                <div class="promotion-card bg-gray-800 rounded-xl p-6">
+                    <div class="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="users" class="w-6 h-6 text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Creator Network</h3>
+                    <p class="text-gray-300 mb-4">Direct access to our network of content creators and influencers.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Creator directory access
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Direct messaging
+                        </div>
+                        <div class="flex items-center text-sm text-gray-400">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mr-2"></i>
+                            Collaboration opportunities
+                        </div>
+                    </div>
+                    <button class="w-full px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors">
+                        $49.99 - Monthly
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotion Strategies -->
+    <section class="py-12 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Promotion Strategies</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Strategy 1 -->
+                <div class="bg-gray-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">1</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Optimize Your Profile</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">Create a compelling artist profile with high-quality images, detailed descriptions, and links to your social media.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>• Use professional photos and artwork</li>
+                        <li>• Write engaging artist bio</li>
+                        <li>• Include social media links</li>
+                        <li>• Add genre and mood tags</li>
+                    </ul>
+                </div>
+
+                <!-- Strategy 2 -->
+                <div class="bg-gray-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">2</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Use Descriptive Titles</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">Choose track titles that are descriptive and searchable to help content creators find your music.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>• Include genre in title</li>
+                        <li>• Add mood descriptors</li>
+                        <li>• Use relevant keywords</li>
+                        <li>• Keep titles memorable</li>
+                    </ul>
+                </div>
+
+                <!-- Strategy 3 -->
+                <div class="bg-gray-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">3</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Engage with Community</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">Actively participate in the platform community by commenting, liking, and sharing other artists' work.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>• Comment on tracks you like</li>
+                        <li>• Follow other artists</li>
+                        <li>• Share music you enjoy</li>
+                        <li>• Participate in discussions</li>
+                    </ul>
+                </div>
+
+                <!-- Strategy 4 -->
+                <div class="bg-gray-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">4</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Cross-Promote</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">Leverage your existing social media presence to drive traffic to your tracks on the platform.</p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>• Share track links on social media</li>
+                        <li>• Create behind-the-scenes content</li>
+                        <li>• Collaborate with other artists</li>
+                        <li>• Use platform-specific hashtags</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Success Stories</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Story 1 -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Sarah Chen</h4>
+                            <p class="text-gray-400 text-sm">Electronic Artist</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">"Using the Featured Placement tool increased my downloads by 300% in just one week. The exposure was incredible!"</p>
+                    <div class="flex items-center text-sm text-green-400">
+                        <i data-lucide="trending-up" class="w-4 h-4 mr-1"></i>
+                        +300% downloads
+                    </div>
+                </div>
+
+                <!-- Story 2 -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Marcus Johnson</h4>
+                            <p class="text-gray-400 text-sm">Hip Hop Producer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">"The Creator Network helped me connect with YouTubers who now regularly use my beats. Game changer!"</p>
+                    <div class="flex items-center text-sm text-green-400">
+                        <i data-lucide="trending-up" class="w-4 h-4 mr-1"></i>
+                        +500% revenue
+                    </div>
+                </div>
+
+                <!-- Story 3 -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-semibold">Elena Rodriguez</h4>
+                            <p class="text-gray-400 text-sm">Ambient Composer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">"Playlist placement got my ambient tracks discovered by meditation app creators. Now I have steady licensing deals."</p>
+                    <div class="flex items-center text-sm text-green-400">
+                        <i data-lucide="trending-up" class="w-4 h-4 mr-1"></i>
+                        +200% licensing
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-upload.html" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="music-dashboard.html" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="track-earnings.html" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="promote-music.html" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-browse.html" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="advanced-search.html" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="licensing-info.html" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="support-artists.html" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="about-us.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+    </script>
+</body>
+</html>

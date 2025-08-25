@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Search - Music Platform</title>
+    <meta name="description" content="Advanced music search with filters, sorting, and detailed discovery tools for content creators.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .filter-card {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .search-result {
+            transition: all 0.3s ease;
+        }
+        
+        .search-result:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <a href="music.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">Music Platform</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="music-browse.html" class="text-gray-300 hover:text-white transition-colors">Browse</a>
+                    <a href="music-upload.html" class="text-gray-300 hover:text-white transition-colors">Upload</a>
+                    <a href="music-dashboard.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</button>
+                    <button class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-24 pb-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Advanced Search
+                </h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                    Find the perfect music for your project with our advanced search tools. Filter by genre, mood, duration, and more.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Interface -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-4 gap-8">
+                <!-- Filters Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="bg-gray-800 rounded-xl p-6 sticky top-24">
+                        <h2 class="text-xl font-bold text-white mb-6">Filters</h2>
+                        
+                        <!-- Search Input -->
+                        <div class="mb-6">
+                            <label class="block text-white font-medium mb-2">Search</label>
+                            <div class="relative">
+                                <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4"></i>
+                                <input type="text" id="searchInput" placeholder="Search tracks, artists..." class="w-full pl-10 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <!-- Genre Filter -->
+                        <div class="mb-6">
+                            <label class="block text-white font-medium mb-2">Genre</label>
+                            <select id="genreFilter" class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="">All Genres</option>
+                                <option value="electronic">Electronic</option>
+                                <option value="rock">Rock</option>
+                                <option value="pop">Pop</option>
+                                <option value="hip-hop">Hip Hop</option>
+                                <option value="jazz">Jazz</option>
+                                <option value="classical">Classical</option>
+                                <option value="ambient">Ambient</option>
+                                <option value="folk">Folk</option>
+                                <option value="country">Country</option>
+                                <option value="r&b">R&B</option>
+                                <option value="reggae">Reggae</option>
+                                <option value="blues">Blues</option>
+                                <option value="world">World</option>
+                            </select>
+                        </div>
+
+                        <!-- Mood Filter -->
+                        <div class="mb-6">
+                            <label class="block text-white font-medium mb-2">Mood</label>
+                            <select id="moodFilter" class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="">All Moods</option>
+                                <option value="energetic">Energetic</option>
+                                <option value="relaxing">Relaxing</option>
+                                <option value="happy">Happy</option>
+                                <option value="melancholic">Melancholic</option>
+                                <option value="dramatic">Dramatic</option>
+                                <option value="mysterious">Mysterious</option>
+                                <option value="uplifting">Uplifting</option>
+                                <option value="dark">Dark</option>
+                            </select>
+                        </div>
+
+                        <!-- Duration Filter -->
+                        <div class="mb-6">
+                            <label class="block text-white font-medium mb-2">Duration</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" value="0-60" class="text-purple-500 focus:ring-purple-500">
+                                    <span class="ml-2 text-gray-300">0-1 min</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" value="60-180" class="text-purple-500 focus:ring-purple-500">
+                                    <span class="ml-2 text-gray-300">1-3 min</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" value="180-300" class="text-purple-500 focus:ring-purple-500">
+                                    <span class="ml-2 text-gray-300">3-5 min</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" value="300+" class="text-purple-500 focus:ring-purple-500">
+                                    <span class="ml-2 text-gray-300">5+ min</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- BPM Filter -->
+                        <div class="mb-6">
+                            <label class="block text-white font-medium mb-2">BPM Range</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                <input type="number" id="bpmMin" placeholder="Min" class="px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <input type="number" id="bpmMax" placeholder="Max" class="px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <!-- License Filter -->
+                        <div class="mb-6">
+                            <label class="block text-white font-medium mb-2">License</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" value="royalty-free" class="text-purple-500 focus:ring-purple-500">
+                                    <span class="ml-2 text-gray-300">Royalty-Free</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" value="creative-commons" class="text-purple-500 focus:ring-purple-500">
+                                    <span class="ml-2 text-gray-300">Creative Commons</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" value="commercial" class="text-purple-500 focus:ring-purple-500">
+                                    <span class="ml-2 text-gray-300">Commercial</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Price Filter -->
+                        <div class="mb-6">
+                            <label class="block text-white font-medium mb-2">Price</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" value="free" class="text-purple-500 focus:ring-purple-500">
+                                    <span class="ml-2 text-gray-300">Free</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" value="paid" class="text-purple-500 focus:ring-purple-500">
+                                    <span class="ml-2 text-gray-300">Paid</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Clear Filters -->
+                        <button id="clearFilters" class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors">
+                            Clear All Filters
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search Results -->
+                <div class="lg:col-span-3">
+                    <!-- Sort and View Options -->
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-gray-300">Sort by:</span>
+                            <select id="sortBy" class="px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="relevance">Relevance</option>
+                                <option value="newest">Newest</option>
+                                <option value="popular">Most Popular</option>
+                                <option value="duration">Duration</option>
+                                <option value="price">Price</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button id="gridView" class="p-2 bg-purple-500 text-white rounded-lg">
+                                <i data-lucide="grid" class="w-4 h-4"></i>
+                            </button>
+                            <button id="listView" class="p-2 bg-gray-700 text-gray-300 rounded-lg hover:bg-gray-600">
+                                <i data-lucide="list" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Results Count -->
+                    <div class="mb-6">
+                        <p class="text-gray-300">Showing <span id="resultsCount">0</span> results</p>
+                    </div>
+
+                    <!-- Search Results Grid -->
+                    <div id="searchResults" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Results will be populated here -->
+                    </div>
+
+                    <!-- Load More -->
+                    <div class="text-center mt-8">
+                        <button id="loadMore" class="px-8 py-4 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors">
+                            Load More Results
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-upload.html" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="music-dashboard.html" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="track-earnings.html" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="promote-music.html" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="music-browse.html" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="advanced-search.html" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="licensing-info.html" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="support-artists.html" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="about-us.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+
+        // Advanced Search functionality
+        class AdvancedSearch {
+            constructor() {
+                this.currentPage = 1;
+                this.currentView = 'grid';
+                this.filters = {
+                    search: '',
+                    genre: '',
+                    mood: '',
+                    duration: [],
+                    bpmMin: '',
+                    bpmMax: '',
+                    license: [],
+                    price: []
+                };
+                
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.loadSampleResults();
+            }
+
+            setupEventListeners() {
+                // Search input
+                document.getElementById('searchInput').addEventListener('input', (e) => {
+                    this.filters.search = e.target.value;
+                    this.performSearch();
+                });
+
+                // Genre filter
+                document.getElementById('genreFilter').addEventListener('change', (e) => {
+                    this.filters.genre = e.target.value;
+                    this.performSearch();
+                });
+
+                // Mood filter
+                document.getElementById('moodFilter').addEventListener('change', (e) => {
+                    this.filters.mood = e.target.value;
+                    this.performSearch();
+                });
+
+                // Duration checkboxes
+                document.querySelectorAll('input[type="checkbox"][value^="0-"], input[type="checkbox"][value^="60-"], input[type="checkbox"][value^="180-"], input[type="checkbox"][value^="300+"]').forEach(checkbox => {
+                    checkbox.addEventListener('change', () => {
+                        this.updateDurationFilter();
+                        this.performSearch();
+                    });
+                });
+
+                // BPM inputs
+                document.getElementById('bpmMin').addEventListener('input', (e) => {
+                    this.filters.bpmMin = e.target.value;
+                    this.performSearch();
+                });
+                document.getElementById('bpmMax').addEventListener('input', (e) => {
+                    this.filters.bpmMax = e.target.value;
+                    this.performSearch();
+                });
+
+                // License checkboxes
+                document.querySelectorAll('input[type="checkbox"][value="royalty-free"], input[type="checkbox"][value="creative-commons"], input[type="checkbox"][value="commercial"]').forEach(checkbox => {
+                    checkbox.addEventListener('change', () => {
+                        this.updateLicenseFilter();
+                        this.performSearch();
+                    });
+                });
+
+                // Price checkboxes
+                document.querySelectorAll('input[type="checkbox"][value="free"], input[type="checkbox"][value="paid"]').forEach(checkbox => {
+                    checkbox.addEventListener('change', () => {
+                        this.updatePriceFilter();
+                        this.performSearch();
+                    });
+                });
+
+                // Sort dropdown
+                document.getElementById('sortBy').addEventListener('change', (e) => {
+                    this.performSearch();
+                });
+
+                // View toggles
+                document.getElementById('gridView').addEventListener('click', () => {
+                    this.setView('grid');
+                });
+                document.getElementById('listView').addEventListener('click', () => {
+                    this.setView('list');
+                });
+
+                // Clear filters
+                document.getElementById('clearFilters').addEventListener('click', () => {
+                    this.clearAllFilters();
+                });
+
+                // Load more
+                document.getElementById('loadMore').addEventListener('click', () => {
+                    this.loadMoreResults();
+                });
+            }
+
+            updateDurationFilter() {
+                this.filters.duration = [];
+                document.querySelectorAll('input[type="checkbox"][value^="0-"], input[type="checkbox"][value^="60-"], input[type="checkbox"][value^="180-"], input[type="checkbox"][value^="300+"]').forEach(checkbox => {
+                    if (checkbox.checked) {
+                        this.filters.duration.push(checkbox.value);
+                    }
+                });
+            }
+
+            updateLicenseFilter() {
+                this.filters.license = [];
+                document.querySelectorAll('input[type="checkbox"][value="royalty-free"], input[type="checkbox"][value="creative-commons"], input[type="checkbox"][value="commercial"]').forEach(checkbox => {
+                    if (checkbox.checked) {
+                        this.filters.license.push(checkbox.value);
+                    }
+                });
+            }
+
+            updatePriceFilter() {
+                this.filters.price = [];
+                document.querySelectorAll('input[type="checkbox"][value="free"], input[type="checkbox"][value="paid"]').forEach(checkbox => {
+                    if (checkbox.checked) {
+                        this.filters.price.push(checkbox.value);
+                    }
+                });
+            }
+
+            clearAllFilters() {
+                // Reset all form elements
+                document.getElementById('searchInput').value = '';
+                document.getElementById('genreFilter').value = '';
+                document.getElementById('moodFilter').value = '';
+                document.getElementById('bpmMin').value = '';
+                document.getElementById('bpmMax').value = '';
+                
+                // Uncheck all checkboxes
+                document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+
+                // Reset filters object
+                this.filters = {
+                    search: '',
+                    genre: '',
+                    mood: '',
+                    duration: [],
+                    bpmMin: '',
+                    bpmMax: '',
+                    license: [],
+                    price: []
+                };
+
+                this.performSearch();
+            }
+
+            setView(view) {
+                this.currentView = view;
+                const resultsContainer = document.getElementById('searchResults');
+                const gridBtn = document.getElementById('gridView');
+                const listBtn = document.getElementById('listView');
+
+                if (view === 'grid') {
+                    resultsContainer.className = 'grid md:grid-cols-2 lg:grid-cols-3 gap-6';
+                    gridBtn.className = 'p-2 bg-purple-500 text-white rounded-lg';
+                    listBtn.className = 'p-2 bg-gray-700 text-gray-300 rounded-lg hover:bg-gray-600';
+                } else {
+                    resultsContainer.className = 'space-y-4';
+                    gridBtn.className = 'p-2 bg-gray-700 text-gray-300 rounded-lg hover:bg-gray-600';
+                    listBtn.className = 'p-2 bg-purple-500 text-white rounded-lg';
+                }
+
+                this.renderResults(this.currentResults || []);
+            }
+
+            async performSearch() {
+                // Simulate API call with filters
+                const results = await this.searchTracks(this.filters);
+                this.currentResults = results;
+                this.renderResults(results);
+                this.updateResultsCount(results.length);
+            }
+
+            async searchTracks(filters) {
+                // Simulate API call - in real implementation, this would call your backend
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                // Sample results based on filters
+                const sampleTracks = [
+                    {
+                        id: '1',
+                        title: 'Midnight Dreams',
+                        artist: 'Sarah Chen',
+                        genre: 'Electronic',
+                        mood: 'Mysterious',
+                        duration: '3:45',
+                        bpm: 128,
+                        license: 'royalty-free',
+                        price: 'free',
+                        downloads: 342,
+                        thumbnail: 'https://via.placeholder.com/300x300/667eea/ffffff?text=MD'
+                    },
+                    {
+                        id: '2',
+                        title: 'Ocean Waves',
+                        artist: 'Marcus Johnson',
+                        genre: 'Ambient',
+                        mood: 'Relaxing',
+                        duration: '4:20',
+                        bpm: 75,
+                        license: 'creative-commons',
+                        price: 'free',
+                        downloads: 287,
+                        thumbnail: 'https://via.placeholder.com/300x300/764ba2/ffffff?text=OW'
+                    },
+                    {
+                        id: '3',
+                        title: 'Urban Beat',
+                        artist: 'Elena Rodriguez',
+                        genre: 'Hip Hop',
+                        mood: 'Energetic',
+                        duration: '2:55',
+                        bpm: 95,
+                        license: 'commercial',
+                        price: 'paid',
+                        downloads: 198,
+                        thumbnail: 'https://via.placeholder.com/300x300/f093fb/ffffff?text=UB'
+                    }
+                ];
+
+                // Apply filters
+                return sampleTracks.filter(track => {
+                    if (filters.search && !track.title.toLowerCase().includes(filters.search.toLowerCase()) && !track.artist.toLowerCase().includes(filters.search.toLowerCase())) {
+                        return false;
+                    }
+                    if (filters.genre && track.genre.toLowerCase() !== filters.genre.toLowerCase()) {
+                        return false;
+                    }
+                    if (filters.mood && track.mood.toLowerCase() !== filters.mood.toLowerCase()) {
+                        return false;
+                    }
+                    if (filters.license.length > 0 && !filters.license.includes(track.license)) {
+                        return false;
+                    }
+                    if (filters.price.length > 0 && !filters.price.includes(track.price)) {
+                        return false;
+                    }
+                    return true;
+                });
+            }
+
+            renderResults(tracks) {
+                const container = document.getElementById('searchResults');
+                const sortBy = document.getElementById('sortBy').value;
+
+                // Sort tracks
+                tracks.sort((a, b) => {
+                    switch (sortBy) {
+                        case 'newest':
+                            return b.id - a.id;
+                        case 'popular':
+                            return b.downloads - a.downloads;
+                        case 'duration':
+                            return this.parseDuration(a.duration) - this.parseDuration(b.duration);
+                        case 'price':
+                            return a.price === 'free' ? -1 : 1;
+                        default:
+                            return 0;
+                    }
+                });
+
+                if (this.currentView === 'grid') {
+                    container.innerHTML = tracks.map(track => this.createGridCard(track)).join('');
+                } else {
+                    container.innerHTML = tracks.map(track => this.createListCard(track)).join('');
+                }
+
+                // Reinitialize icons
+                lucide.createIcons();
+            }
+
+            createGridCard(track) {
+                return `
+                    <div class="search-result bg-gray-800 rounded-xl p-6">
+                        <div class="relative mb-4">
+                            <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                                <i data-lucide="music" class="w-12 h-12 text-white opacity-50"></i>
+                            </div>
+                            <div class="absolute top-2 right-2">
+                                <span class="px-2 py-1 bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs rounded-full">
+                                    ${track.license.replace('-', ' ').toUpperCase()}
+                                </span>
+                            </div>
+                            <button class="play-button absolute bottom-3 right-3 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all" data-track-id="${track.id}">
+                                <i data-lucide="play" class="w-5 h-5 text-white"></i>
+                            </button>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">${track.title}</h3>
+                        <p class="text-gray-300 text-sm mb-3">by ${track.artist}</p>
+                        <div class="flex items-center justify-between text-sm text-gray-400 mb-3">
+                            <span>${track.genre}</span>
+                            <span>${track.duration}</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-400 text-sm">${track.downloads} downloads</span>
+                            <div class="flex items-center space-x-2">
+                                <button class="text-gray-400 hover:text-white transition-colors">
+                                    <i data-lucide="heart" class="w-4 h-4"></i>
+                                </button>
+                                <button class="download-button text-gray-400 hover:text-white transition-colors" data-track-id="${track.id}">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            createListCard(track) {
+                return `
+                    <div class="search-result bg-gray-800 rounded-xl p-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="music" class="w-8 h-8 text-white opacity-50"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-lg font-semibold text-white mb-1">${track.title}</h3>
+                                <p class="text-gray-300 text-sm mb-2">by ${track.artist}</p>
+                                <div class="flex items-center space-x-4 text-sm text-gray-400">
+                                    <span>${track.genre}</span>
+                                    <span>${track.mood}</span>
+                                    <span>${track.duration}</span>
+                                    <span>${track.bpm} BPM</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-1 bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs rounded-full">
+                                    ${track.license.replace('-', ' ').toUpperCase()}
+                                </span>
+                                <button class="play-button p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors" data-track-id="${track.id}">
+                                    <i data-lucide="play" class="w-4 h-4"></i>
+                                </button>
+                                <button class="download-button p-2 bg-gray-700 text-gray-300 rounded-lg hover:bg-gray-600 transition-colors" data-track-id="${track.id}">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            parseDuration(duration) {
+                const parts = duration.split(':');
+                return parseInt(parts[0]) * 60 + parseInt(parts[1]);
+            }
+
+            updateResultsCount(count) {
+                document.getElementById('resultsCount').textContent = count;
+            }
+
+            async loadSampleResults() {
+                await this.performSearch();
+            }
+
+            async loadMoreResults() {
+                this.currentPage++;
+                // In a real implementation, this would load more results from the API
+                console.log('Loading more results...');
+            }
+        }
+
+        // Initialize advanced search
+        document.addEventListener('DOMContentLoaded', () => {
+            new AdvancedSearch();
+        });
+    </script>
+</body>
+</html>

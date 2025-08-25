@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawnBroker Pro - Screenshots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a2e;
+            color: white;
+            padding: 20px;
+        }
+        
+        .screenshot-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .phone-frame {
+            width: 375px;
+            height: 812px;
+            background: #000;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #1a1a2e;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .status-bar {
+            height: 44px;
+            background: #1a1a2e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #16213e, #0f3460);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            background: linear-gradient(45deg, #e94560, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .search-container {
+            background: #16213e;
+            margin: 20px;
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #0f3460;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .search-input::placeholder {
+            color: #888;
+        }
+        
+        .camera-button {
+            background: linear-gradient(45deg, #e94560, #ff6b6b);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .search-button {
+            background: #0f3460;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .results-container {
+            background: #16213e;
+            margin: 20px;
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        .result-item {
+            background: #0f3460;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .result-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .result-price {
+            font-size: 24px;
+            color: #e94560;
+            font-weight: 700;
+        }
+        
+        .result-source {
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #16213e;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            border-top: 1px solid #0f3460;
+        }
+        
+        .nav-item {
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+        }
+        
+        .nav-item.active {
+            color: #e94560;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .camera-screen {
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .camera-viewfinder {
+            width: 280px;
+            height: 280px;
+            border: 3px solid #e94560;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .camera-controls {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .capture-button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #e94560;
+            border: 5px solid white;
+            cursor: pointer;
+        }
+        
+        .settings-screen {
+            padding: 20px;
+        }
+        
+        .settings-item {
+            background: #16213e;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .settings-label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .toggle {
+            width: 50px;
+            height: 30px;
+            background: #e94560;
+            border-radius: 15px;
+            position: relative;
+        }
+        
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            right: 2px;
+        }
+        
+        .screenshot-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #e94560;
+        }
+    </style>
+</head>
+<body>
+    <div class="screenshot-container">
+        <!-- Home Screen -->
+        <div>
+            <div class="screenshot-title">Home Screen</div>
+            <div class="phone-frame">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>📶 📶 📶</span>
+                    </div>
+                    <div class="header">
+                        <h1>PawnBroker Pro</h1>
+                        <p>Professional Market Valuation Tool</p>
+                    </div>
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search for items (e.g., iPhone 13, Rolex Submariner)">
+                        <button class="camera-button">📷 Scan Item with Camera</button>
+                        <button class="search-button">🔍 Search Market Values</button>
+                    </div>
+                    <div class="bottom-nav">
+                        <div class="nav-item active">
+                            <div class="nav-icon">🏠</div>
+                            <div>Home</div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon">📊</div>
+                            <div>History</div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon">⚙️</div>
+                            <div>Settings</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Results -->
+        <div>
+            <div class="screenshot-title">Search Results</div>
+            <div class="phone-frame">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>📶 📶 📶</span>
+                    </div>
+                    <div class="header">
+                        <h1>Market Values</h1>
+                        <p>iPhone 13 Pro Max</p>
+                    </div>
+                    <div class="results-container">
+                        <div class="result-item">
+                            <div class="result-title">eBay Average</div>
+                            <div class="result-price">$899.99</div>
+                            <div class="result-source">Based on 1,247 recent sales</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-title">Amazon Used</div>
+                            <div class="result-price">$849.99</div>
+                            <div class="result-source">Refurbished condition</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-title">Pawn Shop Estimate</div>
+                            <div class="result-price">$650.00</div>
+                            <div class="result-source">Typical pawn value</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-title">Retail Value</div>
+                            <div class="result-price">$1,099.99</div>
+                            <div class="result-source">New condition</div>
+                        </div>
+                    </div>
+                    <div class="bottom-nav">
+                        <div class="nav-item active">
+                            <div class="nav-icon">🏠</div>
+                            <div>Home</div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon">📊</div>
+                            <div>History</div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon">⚙️</div>
+                            <div>Settings</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Camera Screen -->
+        <div>
+            <div class="screenshot-title">Camera Scanner</div>
+            <div class="phone-frame">
+                <div class="screen">
+                    <div class="camera-screen">
+                        <div class="camera-viewfinder"></div>
+                        <div class="camera-controls">
+                            <div style="color: white; font-size: 24px;">📷</div>
+                            <div class="capture-button"></div>
+                            <div style="color: white; font-size: 24px;">🔄</div>
+                        </div>
+                        <div style="color: white; margin-top: 20px; text-align: center;">
+                            <div>Point camera at item</div>
+                            <div style="font-size: 14px; color: #888; margin-top: 5px;">AI will identify and value</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Screen -->
+        <div>
+            <div class="screenshot-title">Settings</div>
+            <div class="phone-frame">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>📶 📶 📶</span>
+                    </div>
+                    <div class="header">
+                        <h1>Settings</h1>
+                        <p>Customize your experience</p>
+                    </div>
+                    <div class="settings-screen">
+                        <div class="settings-item">
+                            <div class="settings-label">Push Notifications</div>
+                            <div class="toggle"></div>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-label">Location Services</div>
+                            <div class="toggle"></div>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-label">Data Sync</div>
+                            <div class="toggle"></div>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-label">Dark Mode</div>
+                            <div class="toggle"></div>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-label">Privacy Policy</div>
+                            <div style="color: #e94560;">></div>
+                        </div>
+                        <div class="settings-item">
+                            <div class="settings-label">Terms of Service</div>
+                            <div style="color: #e94560;">></div>
+                        </div>
+                    </div>
+                    <div class="bottom-nav">
+                        <div class="nav-item">
+                            <div class="nav-icon">🏠</div>
+                            <div>Home</div>
+                        </div>
+                        <div class="nav-item">
+                            <div class="nav-icon">📊</div>
+                            <div>History</div>
+                        </div>
+                        <div class="nav-item active">
+                            <div class="nav-icon">⚙️</div>
+                            <div>Settings</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

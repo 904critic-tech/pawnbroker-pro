@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Music - Music Platform</title>
+    <meta name="description" content="Browse and discover royalty-free music from independent artists. Filter by genre, mood, and more.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .track-card {
+            transition: all 0.3s ease;
+        }
+        
+        .track-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .play-button {
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">Music Platform</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="browse.html" class="text-white font-semibold">Browse</a>
+                    <a href="upload.html" class="text-gray-300 hover:text-white transition-colors">Upload</a>
+                    <a href="dashboard.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</button>
+                    <button class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-24 pb-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Discover Amazing Music
+                </h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                    Browse thousands of royalty-free tracks from independent artists. Find the perfect music for your next project.
+                </p>
+            </div>
+            
+            <!-- Search and Filters -->
+            <div class="max-w-4xl mx-auto">
+                <div class="relative mb-6">
+                    <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                    <input
+                        type="text"
+                        placeholder="Search for music by genre, mood, artist, or title..."
+                        class="w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    >
+                </div>
+                
+                <!-- Filter Tags -->
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <button class="px-4 py-2 bg-purple-600 text-white rounded-full text-sm hover:bg-purple-700 transition-colors">All Genres</button>
+                    <button class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors">Electronic</button>
+                    <button class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors">Rock</button>
+                    <button class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors">Pop</button>
+                    <button class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors">Hip Hop</button>
+                    <button class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors">Jazz</button>
+                    <button class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors">Classical</button>
+                    <button class="px-4 py-2 glass-effect text-white rounded-full text-sm hover:bg-white/20 transition-colors">Ambient</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Grid -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Sort Options -->
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-white">Featured Tracks</h2>
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-300">Sort by:</span>
+                    <select class="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option>Latest</option>
+                        <option>Popular</option>
+                        <option>Duration</option>
+                        <option>Artist</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Music Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Track 1 -->
+                <div class="track-card glass-effect rounded-xl p-6">
+                    <div class="relative mb-4">
+                        <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-12 h-12 text-white opacity-50"></i>
+                        </div>
+                        <button class="play-button absolute bottom-3 right-3 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
+                            <i data-lucide="play" class="w-5 h-5 text-white"></i>
+                        </button>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Midnight Dreams</h3>
+                    <p class="text-gray-300 text-sm mb-3">by Alex Rivers</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400 text-sm">3:45</span>
+                        <div class="flex items-center space-x-2">
+                            <button class="text-gray-400 hover:text-white transition-colors">
+                                <i data-lucide="heart" class="w-4 h-4"></i>
+                            </button>
+                            <button class="text-gray-400 hover:text-white transition-colors">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Track 2 -->
+                <div class="track-card glass-effect rounded-xl p-6">
+                    <div class="relative mb-4">
+                        <div class="w-full h-48 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-12 h-12 text-white opacity-50"></i>
+                        </div>
+                        <button class="play-button absolute bottom-3 right-3 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
+                            <i data-lucide="play" class="w-5 h-5 text-white"></i>
+                        </button>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Ocean Waves</h3>
+                    <p class="text-gray-300 text-sm mb-3">by Sarah Chen</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400 text-sm">4:12</span>
+                        <div class="flex items-center space-x-2">
+                            <button class="text-gray-400 hover:text-white transition-colors">
+                                <i data-lucide="heart" class="w-4 h-4"></i>
+                            </button>
+                            <button class="text-gray-400 hover:text-white transition-colors">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Track 3 -->
+                <div class="track-card glass-effect rounded-xl p-6">
+                    <div class="relative mb-4">
+                        <div class="w-full h-48 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-12 h-12 text-white opacity-50"></i>
+                        </div>
+                        <button class="play-button absolute bottom-3 right-3 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
+                            <i data-lucide="play" class="w-5 h-5 text-white"></i>
+                        </button>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Urban Beat</h3>
+                    <p class="text-gray-300 text-sm mb-3">by DJ Marcus</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400 text-sm">2:58</span>
+                        <div class="flex items-center space-x-2">
+                            <button class="text-gray-400 hover:text-white transition-colors">
+                                <i data-lucide="heart" class="w-4 h-4"></i>
+                            </button>
+                            <button class="text-gray-400 hover:text-white transition-colors">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Track 4 -->
+                <div class="track-card glass-effect rounded-xl p-6">
+                    <div class="relative mb-4">
+                        <div class="w-full h-48 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-12 h-12 text-white opacity-50"></i>
+                        </div>
+                        <button class="play-button absolute bottom-3 right-3 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
+                            <i data-lucide="play" class="w-5 h-5 text-white"></i>
+                        </button>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Sunset Vibes</h3>
+                    <p class="text-gray-300 text-sm mb-3">by Luna Sky</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400 text-sm">5:23</span>
+                        <div class="flex items-center space-x-2">
+                            <button class="text-gray-400 hover:text-white transition-colors">
+                                <i data-lucide="heart" class="w-4 h-4"></i>
+                            </button>
+                            <button class="text-gray-400 hover:text-white transition-colors">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Track 5 -->
+                <div class="track-card glass-effect rounded-xl p-6">
+                    <div class="relative mb-4">
+                        <div class="w-full h-48 bg-gradient-to-br from-pink-500 to-red-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-12 h-12 text-white opacity-50"></i>
+                        </div>
+                        <button class="play-button absolute bottom-3 right-3 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
+                            <i data-lucide="play" class="w-5 h-5 text-white"></i>
+                        </button>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Electric Dreams</h3>
+                    <p class="text-gray-300 text-sm mb-3">by Neon Pulse</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400 text-sm">3:31</span>
+                        <div class="flex items-center space-x-2">
+                            <button class="text-gray-400 hover:text-white transition-colors">
+                                <i data-lucide="heart" class="w-4 h-4"></i>
+                            </button>
+                            <button class="text-gray-400 hover:text-white transition-colors">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Track 6 -->
+                <div class="track-card glass-effect rounded-xl p-6">
+                    <div class="relative mb-4">
+                        <div class="w-full h-48 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
+                            <i data-lucide="music" class="w-12 h-12 text-white opacity-50"></i>
+                        </div>
+                        <button class="play-button absolute bottom-3 right-3 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
+                            <i data-lucide="play" class="w-5 h-5 text-white"></i>
+                        </button>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Mystic Journey</h3>
+                    <p class="text-gray-300 text-sm mb-3">by Cosmic Flow</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-400 text-sm">6:45</span>
+                        <div class="flex items-center space-x-2">
+                            <button class="text-gray-400 hover:text-white transition-colors">
+                                <i data-lucide="heart" class="w-4 h-4"></i>
+                            </button>
+                            <button class="text-gray-400 hover:text-white transition-colors">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button class="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Load More Tracks
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="upload.html" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="dashboard.html" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="browse.html" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- API Client -->
+    <script src="api-client.js"></script>
+    
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+
+        // Browse page functionality
+        class BrowsePage {
+            constructor() {
+                this.currentPage = 1;
+                this.currentFilters = {
+                    genre: '',
+                    search: '',
+                    sort: 'latest'
+                };
+                this.tracksContainer = document.querySelector('.tracks-grid');
+                this.loadMoreBtn = document.querySelector('.load-more-btn');
+                this.searchInput = document.querySelector('#search-input');
+                this.genreFilter = document.querySelector('#genre-filter');
+                this.sortSelect = document.querySelector('#sort-select');
+                
+                this.init();
+            }
+
+            async init() {
+                // Test API connection
+                try {
+                    const health = await musicAPI.healthCheck();
+                    console.log('API Health:', health);
+                } catch (error) {
+                    console.error('API not available:', error);
+                }
+
+                this.setupEventListeners();
+                this.loadTracks();
+            }
+
+            setupEventListeners() {
+                // Search functionality
+                if (this.searchInput) {
+                    this.searchInput.addEventListener('input', this.debounce(() => {
+                        this.currentFilters.search = this.searchInput.value;
+                        this.currentPage = 1;
+                        this.loadTracks();
+                    }, 500));
+                }
+
+                // Genre filter
+                if (this.genreFilter) {
+                    this.genreFilter.addEventListener('change', () => {
+                        this.currentFilters.genre = this.genreFilter.value;
+                        this.currentPage = 1;
+                        this.loadTracks();
+                    });
+                }
+
+                // Sort functionality
+                if (this.sortSelect) {
+                    this.sortSelect.addEventListener('change', () => {
+                        this.currentFilters.sort = this.sortSelect.value;
+                        this.currentPage = 1;
+                        this.loadTracks();
+                    });
+                }
+
+                // Load more button
+                if (this.loadMoreBtn) {
+                    this.loadMoreBtn.addEventListener('click', () => {
+                        this.currentPage++;
+                        this.loadTracks(true);
+                    });
+                }
+
+                // Play buttons
+                document.addEventListener('click', (e) => {
+                    if (e.target.closest('.play-button')) {
+                        const trackId = e.target.closest('.play-button').dataset.trackId;
+                        this.playTrack(trackId);
+                    }
+                });
+            }
+
+            async loadTracks(append = false) {
+                try {
+                    const response = await musicAPI.getTracks({
+                        page: this.currentPage,
+                        limit: 12,
+                        ...this.currentFilters
+                    });
+
+                    if (append) {
+                        this.appendTracks(response.tracks);
+                    } else {
+                        this.renderTracks(response.tracks);
+                    }
+
+                    // Update load more button
+                    if (this.loadMoreBtn) {
+                        this.loadMoreBtn.style.display = 
+                            this.currentPage < response.pagination.totalPages ? 'block' : 'none';
+                    }
+
+                } catch (error) {
+                    console.error('Failed to load tracks:', error);
+                    // Fallback to static content
+                    this.showFallbackContent();
+                }
+            }
+
+            renderTracks(tracks) {
+                if (!this.tracksContainer) return;
+
+                this.tracksContainer.innerHTML = tracks.map(track => this.createTrackCard(track)).join('');
+            }
+
+            appendTracks(tracks) {
+                if (!this.tracksContainer) return;
+
+                const newTracksHTML = tracks.map(track => this.createTrackCard(track)).join('');
+                this.tracksContainer.insertAdjacentHTML('beforeend', newTracksHTML);
+            }
+
+            createTrackCard(track) {
+                return `
+                    <div class="glass-effect rounded-2xl p-6 hover:transform hover:scale-105 transition-all duration-300">
+                        <div class="relative mb-4">
+                            <img src="${track.thumbnailUrl || 'https://via.placeholder.com/300x300/667eea/ffffff?text=' + encodeURIComponent(track.title)}" 
+                                 alt="${track.title}" 
+                                 class="w-full h-48 object-cover rounded-lg">
+                            <button class="play-button absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 hover:opacity-100 transition-opacity rounded-lg"
+                                    data-track-id="${track.id}">
+                                <i data-lucide="play" class="w-12 h-12 text-white"></i>
+                            </button>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">${track.title}</h3>
+                        <p class="text-gray-300 text-sm mb-3">by ${track.artist}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-400 text-sm">${musicAPI.formatDuration(track.duration)}</span>
+                            <div class="flex items-center space-x-2">
+                                <button class="text-gray-400 hover:text-white transition-colors">
+                                    <i data-lucide="heart" class="w-4 h-4"></i>
+                                </button>
+                                <button class="text-gray-400 hover:text-white transition-colors">
+                                    <i data-lucide="download" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-3 flex items-center justify-between text-xs text-gray-400">
+                            <span>${musicAPI.formatNumber(track.plays)} plays</span>
+                            <span>${musicAPI.formatNumber(track.downloads)} downloads</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            async playTrack(trackId) {
+                try {
+                    // Record stream
+                    await musicAPI.recordStream(trackId);
+                    
+                    // Get track details
+                    const track = await musicAPI.getTrack(trackId);
+                    
+                    // Add to player queue
+                    if (window.musicPlayer) {
+                        window.musicPlayer.addToQueue(track);
+                        window.musicPlayer.play();
+                    }
+                    
+                    console.log('Playing track:', track.title);
+                } catch (error) {
+                    console.error('Failed to play track:', error);
+                }
+            }
+
+            showFallbackContent() {
+                if (!this.tracksContainer) return;
+                
+                this.tracksContainer.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <div class="text-gray-400 mb-4">
+                            <i data-lucide="music-off" class="w-16 h-16 mx-auto"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">No tracks available</h3>
+                        <p class="text-gray-400">Check back later for new music!</p>
+                    </div>
+                `;
+            }
+
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+        }
+
+        // Initialize browse page
+        document.addEventListener('DOMContentLoaded', () => {
+            new BrowsePage();
+        });
+    </script>
+    
+    <!-- Music Player -->
+    <script src="player.js"></script>
+</body>
+</html>

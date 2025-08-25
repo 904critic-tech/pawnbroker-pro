@@ -1,0 +1,83 @@
+# Cursor AI Website Development Rules
+
+## 🌐 GLOBAL WEBSITE ACCESS
+
+### From ANY Project:
+- **ALWAYS use the global website system** when working on projects
+- **Access website folder** from any project location
+- **Add projects to website** without breaking existing functionality
+- **Maintain site stability** across all development work
+
+### Global Commands (Available from ANY project):
+```bash
+# Add current project to website
+node scripts/global-website.js add-project <project-name>
+
+# List all projects in website
+node scripts/global-website.js list-projects
+
+# Check website status
+node scripts/global-website.js status
+```
+
+## Website Folder Access Guidelines
+
+### Core Principles:
+- NEVER modify the main index.html, styles.css, or critical site files directly
+- ALWAYS work in the `website/` subfolder for experimental changes
+- Create backups before making any modifications
+- Test changes in isolation before applying to main site
+- **Use global access** when working from other projects
+
+### Safe Development Workflow:
+1. **For new features**: Work exclusively in the `website/` folder
+2. **For testing**: Use the `public-site/` folder for staging
+3. **For backups**: Always create timestamped backups before major changes
+4. **For deployment**: Only merge tested changes from subfolders to main files
+5. **For cross-project work**: Use global website manager
+
+### File Structure Rules:
+- `website/` - Development and experimental work
+- `public-site/` - Staging and testing environment
+- `website/projects/` - Projects added from other locations
+- Root files - Production files (modify with extreme caution)
+
+### Before Making Changes:
+1. Check if the feature exists in `website/` folder
+2. Create a backup of any files you plan to modify
+3. Test changes in isolation first
+4. Document all changes made
+5. **If working from another project**: Use global website manager
+
+### Critical Files (DO NOT MODIFY DIRECTLY):
+- index.html (main site)
+- styles.css (main styles)
+- Any files in root directory
+- API endpoints in api/ folder
+
+### Safe Modification Process:
+1. Copy files to `website/` folder
+2. Make changes there
+3. Test thoroughly
+4. Only then apply to main files
+
+### Cross-Project Development:
+1. **From any project**: Use `node scripts/global-website.js add-project <name>`
+2. **Project gets copied** to `website/projects/` folder
+3. **No interference** with existing website functionality
+4. **Safe integration** without downtime
+
+## Error Prevention:
+- Always verify file paths before making changes
+- Check for syntax errors before saving
+- Ensure responsive design is maintained
+- Test across different screen sizes
+- Verify all links and functionality work
+- **Use global system** for cross-project work
+
+## Backup Strategy:
+- Create timestamped backups before major changes
+- Use descriptive backup names
+- Keep backups in a dedicated folder
+- Document what each backup contains
+- **Global backups** available from any project location

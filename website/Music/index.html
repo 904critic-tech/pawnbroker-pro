@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Platform - Royalty-Free Music for Content Creators</title>
+    <meta name="description" content="Discover high-quality, royalty-free music from independent artists. Support artists directly through tipping while getting worry-free music for your content.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">Music Platform</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-300 hover:text-white transition-colors">Features</a>
+                    <a href="#artists" class="text-gray-300 hover:text-white transition-colors">For Artists</a>
+                    <a href="#creators" class="text-gray-300 hover:text-white transition-colors">For Creators</a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</button>
+                    <button class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+            <div class="absolute top-40 right-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: -2s;"></div>
+            <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: -4s;"></div>
+        </div>
+        
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Discover Amazing
+                <span class="block text-gradient">Royalty-Free Music</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Support independent artists directly while getting high-quality, worry-free music for your content. 
+                100% royalty-free with automatic licensing.
+            </p>
+            
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto mb-8">
+                <div class="relative">
+                    <i data-lucide="search" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6"></i>
+                    <input
+                        type="text"
+                        placeholder="Search for music by genre, mood, or artist..."
+                        class="w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-lg"
+                    >
+                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full transition-all duration-300 hover:from-purple-600 hover:to-pink-600 transform hover:scale-105">
+                        Search
+                    </button>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <i data-lucide="play" class="w-5 h-5 mr-2"></i>
+                    Browse Music
+                </button>
+                <button class="inline-flex items-center justify-center px-8 py-4 glass-effect hover:bg-white/20 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105">
+                    <i data-lucide="music" class="w-5 h-5 mr-2"></i>
+                    Upload Your Music
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Why Choose Our Platform?
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    We&apos;re building a community where artists thrive and creators get amazing music
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="download" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">100% Royalty-Free</h3>
+                    <p class="text-gray-300">
+                        Download music with automatic licensing. No copyright strikes, no legal worries. 
+                        Perfect for content creators.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-red-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="heart" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Support Artists Directly</h3>
+                    <p class="text-gray-300">
+                        Tip artists directly and keep 100% of your support. No middlemen, 
+                        no complex royalty structures.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Vibrant Community</h3>
+                    <p class="text-gray-300">
+                        Connect with independent artists, discover new music, and be part of 
+                        a growing creative community.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="gift" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Interactive Features</h3>
+                    <p class="text-gray-300">
+                        Live streaming, animated gifts, real-time interactions. 
+                        Make supporting artists fun and engaging.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="star" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">High Quality</h3>
+                    <p class="text-gray-300">
+                        Curated library of professional-grade music. Multiple formats, 
+                        high-quality audio, and detailed metadata.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="glass-effect rounded-2xl p-8 hover:transform hover:scale-105 transition-all duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-4">Easy Discovery</h3>
+                    <p class="text-gray-300">
+                        Advanced search, smart recommendations, and curated playlists. 
+                        Find the perfect track for your project.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="animate-pulse-slow">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">0</div>
+                    <div class="text-gray-200">Tracks Available</div>
+                </div>
+                <div class="animate-pulse-slow" style="animation-delay: -0.5s;">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">0</div>
+                    <div class="text-gray-200">Independent Artists</div>
+                </div>
+                <div class="animate-pulse-slow" style="animation-delay: -1s;">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">Growing</div>
+                    <div class="text-gray-200">Content Creator Community</div>
+                </div>
+                <div class="animate-pulse-slow" style="animation-delay: -1.5s;">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2">Direct</div>
+                    <div class="text-gray-200">Artist Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                Ready to Discover Amazing Music?
+            </h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Join content creators and independent artists in our growing community
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Start Browsing
+                </button>
+                <button class="inline-flex items-center justify-center px-8 py-4 glass-effect hover:bg-white/20 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105">
+                    Join as Artist
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+    </script>
+    
+    <!-- Music Player -->
+    <script src="player.js"></script>
+</body>
+</html>

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Audio Library - No Copyright Music</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .youtube-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .channel-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .channel-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+                 .channel-header p {
+             font-size: 1.1rem;
+             opacity: 0.9;
+             margin-bottom: 20px;
+         }
+         
+         .channel-links {
+             display: flex;
+             justify-content: center;
+             gap: 15px;
+             flex-wrap: wrap;
+         }
+        
+        .channel-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .filters {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        .filter-group select,
+        .filter-group input {
+            padding: 8px 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .video-embed {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: #000;
+        }
+        
+        .video-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .video-artist {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .video-stats {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .video-description {
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .video-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            background: #f0f2f5;
+            color: #555;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .video-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #f0f2f5;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #e4e6e9;
+        }
+        
+        .attribution-info {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .attribution-info h4 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .attribution-info p {
+            color: #666;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin-bottom: 5px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .no-results h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                min-width: auto;
+            }
+            
+            .channel-header h1 {
+                font-size: 2rem;
+            }
+            
+            .channel-stats {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="youtube-container">
+        <!-- Channel Header -->
+        <div class="channel-header">
+            <h1>🎵 Free Music Collection</h1>
+            <p>Curated selection of no-copyright, royalty-free music from Audio Library for your content</p>
+            <div class="channel-links">
+                <a href="https://www.youtube.com/channel/UCht8qITGkBvXKsR1Byln-wA" target="_blank" class="btn btn-primary">
+                    📺 Audio Library YouTube Channel
+                </a>
+                <a href="https://www.audiolibrary.com.co/" target="_blank" class="btn btn-secondary">
+                    🌐 Audio Library Website
+                </a>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="source-filter">Source</label>
+                    <select id="source-filter">
+                        <option value="">All Sources</option>
+                        <option value="youtube">YouTube Audio Library</option>
+                        <option value="website">Audio Library Website</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="genre-filter">Genre</label>
+                    <select id="genre-filter">
+                        <option value="">All Genres</option>
+                        <option value="dance-electronic">Dance & Electronic</option>
+                        <option value="ambient">Ambient</option>
+                        <option value="cinematic">Cinematic</option>
+                        <option value="lo-fi">Lo-Fi</option>
+                        <option value="epic">Epic</option>
+                        <option value="folk">Folk</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="mood-filter">Mood</label>
+                    <select id="mood-filter">
+                        <option value="">All Moods</option>
+                        <option value="dark">Dark</option>
+                        <option value="bright">Bright</option>
+                        <option value="inspirational">Inspirational</option>
+                        <option value="dramatic">Dramatic</option>
+                        <option value="calm">Calm</option>
+                        <option value="energetic">Energetic</option>
+                        <option value="chill">Chill</option>
+                        <option value="intense">Intense</option>
+                        <option value="warm">Warm</option>
+                    </select>
+                </div>
+                <div class="filter-group search-box">
+                    <label for="search-input">Search</label>
+                    <input type="text" id="search-input" placeholder="Search for music...">
+                </div>
+            </div>
+        </div>
+
+        <!-- Videos Grid -->
+        <div id="videos-container">
+            <div class="loading">Loading videos...</div>
+        </div>
+    </div>
+
+    <!-- Download Modal -->
+    <div id="download-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Download Music</h2>
+            <div id="download-info"></div>
+        </div>
+    </div>
+
+    <script>
+        // YouTube Audio Library Integration
+        class YouTubeAudioLibrary {
+            constructor() {
+                this.videos = [];
+                this.filteredVideos = [];
+                this.init();
+            }
+
+            async init() {
+                await this.loadVideos();
+                this.setupEventListeners();
+                this.renderVideos();
+            }
+
+            async loadVideos() {
+                try {
+                    const response = await fetch('/api/music/audiolibrary/all');
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.videos = data.content;
+                        this.filteredVideos = [...this.videos];
+                    } else {
+                        console.error('Failed to load content:', data.error);
+                    }
+                } catch (error) {
+                    console.error('Error loading content:', error);
+                }
+            }
+
+            setupEventListeners() {
+                // Filter event listeners
+                document.getElementById('source-filter').addEventListener('change', () => this.filterVideos());
+                document.getElementById('genre-filter').addEventListener('change', () => this.filterVideos());
+                document.getElementById('mood-filter').addEventListener('change', () => this.filterVideos());
+                document.getElementById('search-input').addEventListener('input', () => this.filterVideos());
+
+                // Modal event listeners
+                const modal = document.getElementById('download-modal');
+                const closeBtn = document.querySelector('.close');
+                
+                closeBtn.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                });
+
+                window.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            }
+
+            filterVideos() {
+                const source = document.getElementById('source-filter').value;
+                const genre = document.getElementById('genre-filter').value;
+                const mood = document.getElementById('mood-filter').value;
+                const search = document.getElementById('search-input').value.toLowerCase();
+
+                this.filteredVideos = this.videos.filter(video => {
+                    const matchesSource = !source || video.source === source;
+                    const matchesGenre = !genre || video.genre === genre;
+                    const matchesMood = !mood || video.mood === mood;
+                    const matchesSearch = !search || 
+                        video.title.toLowerCase().includes(search) ||
+                        (video.artist && video.artist.toLowerCase().includes(search)) ||
+                        (video.description && video.description.toLowerCase().includes(search)) ||
+                        (video.tags && video.tags.some(tag => tag.toLowerCase().includes(search)));
+
+                    return matchesSource && matchesGenre && matchesMood && matchesSearch;
+                });
+
+                this.renderVideos();
+            }
+
+            renderVideos() {
+                const container = document.getElementById('videos-container');
+                
+                if (this.filteredVideos.length === 0) {
+                    container.innerHTML = `
+                        <div class="no-results">
+                            <h3>No videos found</h3>
+                            <p>Try adjusting your filters or search terms</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = `
+                    <div class="videos-grid">
+                        ${this.filteredVideos.map(video => this.renderVideoCard(video)).join('')}
+                    </div>
+                `;
+
+                // Add event listeners to download buttons
+                this.filteredVideos.forEach(video => {
+                    const downloadBtn = document.querySelector(`[data-video-id="${video.videoId}"]`);
+                    if (downloadBtn) {
+                        downloadBtn.addEventListener('click', () => this.showDownloadModal(video));
+                    }
+                });
+            }
+
+            renderVideoCard(video) {
+                const isYouTube = video.source === 'youtube';
+                const isWebsite = video.source === 'website';
+                
+                let embedContent = '';
+                if (isYouTube) {
+                    embedContent = `
+                        <iframe 
+                            src="${video.embedUrl}?rel=0&modestbranding=1" 
+                            allowfullscreen>
+                        </iframe>
+                    `;
+                } else if (isWebsite) {
+                    embedContent = `
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-size: 1.2rem; font-weight: bold;">
+                            🎵 ${video.title}
+                        </div>
+                    `;
+                }
+                
+                let statsContent = '';
+                if (isYouTube && video.views) {
+                    statsContent = `
+                        <div class="video-stats">
+                            <span>👁️ ${this.formatNumber(video.views)}</span>
+                            <span>❤️ ${this.formatNumber(video.likes)}</span>
+                        </div>
+                    `;
+                }
+                
+                let actionButtons = '';
+                if (isYouTube) {
+                    actionButtons = `
+                        <button class="btn btn-primary" data-video-id="${video.videoId}">
+                            📥 Download
+                        </button>
+                        <a href="https://www.youtube.com/watch?v=${video.videoId}" 
+                           target="_blank" class="btn btn-secondary">
+                            🎥 Watch on YouTube
+                        </a>
+                    `;
+                } else if (isWebsite) {
+                    actionButtons = `
+                        <a href="${video.downloadUrl}" 
+                           target="_blank" class="btn btn-primary">
+                            📥 Download from Audio Library
+                        </a>
+                        ${video.externalLinks && video.externalLinks.youtube ? 
+                            `<a href="${video.externalLinks.youtube}" 
+                                target="_blank" class="btn btn-secondary">
+                                🎥 Watch on YouTube
+                            </a>` : ''
+                        }
+                    `;
+                }
+                
+                return `
+                    <div class="video-card">
+                        <div class="video-embed">
+                            ${embedContent}
+                        </div>
+                        <div class="video-info">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <h3 class="video-title">${video.title}</h3>
+                                <span class="tag" style="background: ${isYouTube ? '#ff0000' : '#667eea'}; color: white;">
+                                    ${isYouTube ? 'YouTube' : 'Website'}
+                                </span>
+                            </div>
+                            <div class="video-artist">by ${video.artist}</div>
+                            
+                            <div class="video-meta">
+                                <span>${video.duration}</span>
+                                ${statsContent}
+                            </div>
+                            
+                            <p class="video-description">${video.description}</p>
+                            
+                            <div class="video-tags">
+                                ${video.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                            
+                            <div class="video-actions">
+                                ${actionButtons}
+                            </div>
+                            
+                            <div class="attribution-info">
+                                <h4>📋 Attribution Required</h4>
+                                <p><strong>${video.attribution.text}</strong></p>
+                                <p>${video.attribution.requirements}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            async showDownloadModal(video) {
+                try {
+                    const response = await fetch(`/api/music/youtube/${video.videoId}/download`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        const modal = document.getElementById('download-modal');
+                        const downloadInfo = document.getElementById('download-info');
+                        
+                        downloadInfo.innerHTML = `
+                            <div style="margin-bottom: 20px;">
+                                <h3>${data.downloadInfo.title}</h3>
+                                <p><strong>Artist:</strong> ${data.downloadInfo.artist}</p>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <h4>Download Instructions:</h4>
+                                <ol style="margin-left: 20px; line-height: 1.6;">
+                                    ${data.downloadInfo.downloadInstructions.map(instruction => 
+                                        `<li>${instruction}</li>`
+                                    ).join('')}
+                                </ol>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <a href="${data.downloadInfo.downloadUrl}" 
+                                   target="_blank" 
+                                   class="btn btn-primary" 
+                                   style="display: inline-block;">
+                                    🎵 Go to YouTube Video
+                                </a>
+                            </div>
+                            
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                                <h4>📋 Attribution Information:</h4>
+                                <p><strong>${data.downloadInfo.attribution.text}</strong></p>
+                                <p>${data.downloadInfo.attribution.requirements}</p>
+                                <p><strong>License:</strong> ${data.downloadInfo.license}</p>
+                            </div>
+                        `;
+                        
+                        modal.style.display = 'block';
+                    } else {
+                        alert('Failed to generate download information');
+                    }
+                } catch (error) {
+                    console.error('Error showing download modal:', error);
+                    alert('Error generating download information');
+                }
+            }
+
+            formatNumber(num) {
+                if (num >= 1000000) {
+                    return (num / 1000000).toFixed(1) + 'M';
+                } else if (num >= 1000) {
+                    return (num / 1000).toFixed(1) + 'K';
+                }
+                return num.toString();
+            }
+        }
+
+        // Initialize the YouTube Audio Library
+        document.addEventListener('DOMContentLoaded', () => {
+            new YouTubeAudioLibrary();
+        });
+    </script>
+
+    <!-- Modal Styles -->
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+    </style>
+</body>
+</html>

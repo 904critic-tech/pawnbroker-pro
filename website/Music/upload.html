@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Music - Music Platform</title>
+    <meta name="description" content="Upload your music and share it with the world. Support independent artists through direct tipping.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .upload-area {
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .upload-area.dragover {
+            border-color: #8b5cf6;
+            background-color: rgba(139, 92, 246, 0.1);
+        }
+        
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="music" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">Music Platform</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="browse.html" class="text-gray-300 hover:text-white transition-colors">Browse</a>
+                    <a href="upload.html" class="text-white font-semibold">Upload</a>
+                    <a href="dashboard.html" class="text-gray-300 hover:text-white transition-colors">Dashboard</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 text-gray-300 hover:text-white transition-colors">Login</button>
+                    <button class="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="pt-24 pb-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Share Your Music
+                </h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                    Upload your tracks and connect with content creators worldwide. Earn through direct fan support and build your audience.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Upload Progress -->
+            <div id="uploadProgress" class="hidden mb-8">
+                <div class="bg-gray-800 rounded-lg p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-white">Uploading...</h3>
+                        <span id="uploadPercentage" class="text-purple-400 font-semibold">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div id="progressBar" class="progress-bar bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <p id="uploadStatus" class="text-gray-300 text-sm mt-2">Preparing upload...</p>
+                </div>
+            </div>
+
+            <!-- Upload Form -->
+            <div class="glass-effect rounded-xl p-8">
+                <h2 class="text-2xl font-bold text-white mb-6">Upload Your Track</h2>
+                
+                <!-- File Upload Area -->
+                <div class="mb-8">
+                    <label class="block text-gray-300 text-sm font-medium mb-4">Audio File</label>
+                    <div id="uploadArea" class="upload-area border-2 border-dashed border-gray-600 rounded-lg p-8 text-center hover:border-purple-500 transition-all cursor-pointer">
+                        <div class="space-y-4">
+                            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto">
+                                <i data-lucide="upload" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-lg font-semibold text-white mb-2">Drop your audio file here</p>
+                                <p class="text-gray-400 mb-4">or click to browse</p>
+                                <p class="text-sm text-gray-500">Supports: MP3, WAV, FLAC (Max 50MB)</p>
+                            </div>
+                        </div>
+                        <input type="file" id="audioFile" accept=".mp3,.wav,.flac" class="hidden">
+                    </div>
+                    <div id="fileInfo" class="hidden mt-4 p-4 bg-gray-800 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="music" class="w-5 h-5 text-purple-400"></i>
+                                <span id="fileName" class="text-white font-medium"></span>
+                            </div>
+                            <button id="removeFile" class="text-red-400 hover:text-red-300 transition-colors">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                        <div id="fileDetails" class="mt-2 text-sm text-gray-400"></div>
+                    </div>
+                </div>
+
+                <!-- Track Information Form -->
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <label class="block text-gray-300 text-sm font-medium mb-2">Track Title *</label>
+                        <input type="text" id="trackTitle" class="form-input w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter track title">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-300 text-sm font-medium mb-2">Artist Name *</label>
+                        <input type="text" id="artistName" class="form-input w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter artist name">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-300 text-sm font-medium mb-2">Genre *</label>
+                        <select id="genre" class="form-input w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <option value="">Select genre</option>
+                            <option value="electronic">Electronic</option>
+                            <option value="rock">Rock</option>
+                            <option value="pop">Pop</option>
+                            <option value="hip-hop">Hip Hop</option>
+                            <option value="jazz">Jazz</option>
+                            <option value="classical">Classical</option>
+                            <option value="ambient">Ambient</option>
+                            <option value="folk">Folk</option>
+                            <option value="country">Country</option>
+                            <option value="blues">Blues</option>
+                            <option value="reggae">Reggae</option>
+                            <option value="world">World</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-300 text-sm font-medium mb-2">Mood</label>
+                        <select id="mood" class="form-input w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <option value="">Select mood</option>
+                            <option value="energetic">Energetic</option>
+                            <option value="calm">Calm</option>
+                            <option value="happy">Happy</option>
+                            <option value="melancholic">Melancholic</option>
+                            <option value="dramatic">Dramatic</option>
+                            <option value="romantic">Romantic</option>
+                            <option value="mysterious">Mysterious</option>
+                            <option value="uplifting">Uplifting</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="mb-8">
+                    <label class="block text-gray-300 text-sm font-medium mb-2">Description</label>
+                    <textarea id="description" rows="4" class="form-input w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Tell us about your track..."></textarea>
+                </div>
+
+                <!-- Tags -->
+                <div class="mb-8">
+                    <label class="block text-gray-300 text-sm font-medium mb-2">Tags</label>
+                    <input type="text" id="tags" class="form-input w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Add tags separated by commas (e.g., instrumental, chill, lo-fi)">
+                    <p class="text-sm text-gray-500 mt-2">Tags help users discover your music</p>
+                </div>
+
+                <!-- Licensing -->
+                <div class="mb-8 p-6 bg-gray-800 rounded-lg">
+                    <h3 class="text-lg font-semibold text-white mb-4">Licensing Agreement</h3>
+                    <div class="space-y-3 text-sm text-gray-300">
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"></i>
+                            <span>Your music will be available for royalty-free use by content creators</span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"></i>
+                            <span>You retain full copyright ownership of your music</span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"></i>
+                            <span>Earn money through direct fan tipping and support</span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="check" class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0"></i>
+                            <span>Get exposure to a global community of content creators</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex justify-end">
+                    <button id="submitUpload" class="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                        Upload Track
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-12 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4">Why Upload Your Music?</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Join thousands of artists who are already earning and growing their audience on our platform.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="dollar-sign" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Earn Direct Support</h3>
+                    <p class="text-gray-300">Receive 100% of tips from fans who love your music. No platform fees, no middlemen.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="users" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Global Exposure</h3>
+                    <p class="text-gray-300">Reach content creators worldwide who are actively looking for royalty-free music.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="bar-chart" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Track Performance</h3>
+                    <p class="text-gray-300">Get detailed analytics on plays, downloads, and earnings to grow your audience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Music Platform</h3>
+                    <p class="text-gray-300 text-sm">
+                        Empowering independent artists and content creators through direct support and royalty-free music.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Artists</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="upload.html" class="hover:text-white transition-colors">Upload Music</a></li>
+                        <li><a href="dashboard.html" class="hover:text-white transition-colors">Artist Dashboard</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Track Earnings</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Promote Your Music</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">For Creators</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="browse.html" class="hover:text-white transition-colors">Browse Music</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Advanced Search</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Licensing Info</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Support Artists</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-300 text-sm">
+                <p>&copy; 2024 Music Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-gray-900/80');
+            } else {
+                nav.classList.remove('bg-gray-900/80');
+            }
+        });
+        
+        // File upload functionality
+        const uploadArea = document.getElementById('uploadArea');
+        const audioFile = document.getElementById('audioFile');
+        const fileInfo = document.getElementById('fileInfo');
+        const fileName = document.getElementById('fileName');
+        const fileDetails = document.getElementById('fileDetails');
+        const removeFile = document.getElementById('removeFile');
+        const submitUpload = document.getElementById('submitUpload');
+        const uploadProgress = document.getElementById('uploadProgress');
+        const progressBar = document.getElementById('progressBar');
+        const uploadPercentage = document.getElementById('uploadPercentage');
+        const uploadStatus = document.getElementById('uploadStatus');
+        
+        // Drag and drop functionality
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+        
+        uploadArea.addEventListener('click', function() {
+            audioFile.click();
+        });
+        
+        audioFile.addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+        
+        removeFile.addEventListener('click', function() {
+            audioFile.value = '';
+            fileInfo.classList.add('hidden');
+            submitUpload.disabled = true;
+        });
+        
+        function handleFile(file) {
+            // Validate file type
+            const allowedTypes = ['audio/mp3', 'audio/wav', 'audio/flac', 'audio/mpeg'];
+            if (!allowedTypes.includes(file.type)) {
+                alert('Please select a valid audio file (MP3, WAV, or FLAC)');
+                return;
+            }
+            
+            // Validate file size (50MB max)
+            if (file.size > 50 * 1024 * 1024) {
+                alert('File size must be less than 50MB');
+                return;
+            }
+            
+            // Display file info
+            fileName.textContent = file.name;
+            const fileSize = (file.size / (1024 * 1024)).toFixed(2);
+            fileDetails.textContent = `${fileSize} MB`;
+            fileInfo.classList.remove('hidden');
+            submitUpload.disabled = false;
+        }
+        
+        // Form submission
+        submitUpload.addEventListener('click', function() {
+            // Validate form
+            const trackTitle = document.getElementById('trackTitle').value;
+            const artistName = document.getElementById('artistName').value;
+            const genre = document.getElementById('genre').value;
+            
+            if (!trackTitle || !artistName || !genre) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            if (!audioFile.files[0]) {
+                alert('Please select an audio file');
+                return;
+            }
+            
+            // Show upload progress
+            uploadProgress.classList.remove('hidden');
+            submitUpload.disabled = true;
+            
+            // Simulate upload progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+                
+                progressBar.style.width = progress + '%';
+                uploadPercentage.textContent = Math.round(progress) + '%';
+                
+                if (progress < 30) {
+                    uploadStatus.textContent = 'Uploading file...';
+                } else if (progress < 60) {
+                    uploadStatus.textContent = 'Processing audio...';
+                } else if (progress < 90) {
+                    uploadStatus.textContent = 'Generating license...';
+                } else {
+                    uploadStatus.textContent = 'Upload complete!';
+                }
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        alert('Track uploaded successfully!');
+                        uploadProgress.classList.add('hidden');
+                        // Reset form
+                        document.querySelector('form').reset();
+                        fileInfo.classList.add('hidden');
+                        submitUpload.disabled = true;
+                    }, 1000);
+                }
+            }, 200);
+        });
+    </script>
+    
+    <!-- Music Player -->
+    <script src="player.js"></script>
+</body>
+</html>

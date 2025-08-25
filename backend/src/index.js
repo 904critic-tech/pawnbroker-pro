@@ -30,7 +30,7 @@ const connectDB = require('../config/database');
 
 // Import middleware
 const errorHandler = require('../middleware/errorHandler');
-const { auth: authMiddleware } = require('../middleware/auth');
+const { auth: authMiddleware, optionalAuth } = require('../middleware/auth');
 const inputValidation = require('../middleware/inputValidation');
 
 const app = express();
@@ -107,7 +107,7 @@ app.get('/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/items', authMiddleware, itemRoutes);
 app.use('/api/market', authMiddleware, marketRoutes);
-app.use('/api/images', authMiddleware, imageRoutes);
+app.use('/api/images', optionalAuth, imageRoutes);
 app.use('/api/users', authMiddleware, userRoutes);
 app.use('/api/ebay', ebayRoutes);
 app.use('/api/camelcamelcamel', camelCamelCamelRoutes);
@@ -134,10 +134,16 @@ app.use('*', (req, res) => {
 app.use(errorHandler);
 
 // Start server
-app.listen(PORT, () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 PawnBroker Pro API server running on port ${PORT}`);
   console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`🔗 Health check: http://localhost:${PORT}/health`);
+  console.log(`🌐 Network access: http://10.0.0.7:${PORT}/health`);
+  console.log(`🔍 Server address:`, server.address());
+});
+
+server.on('error', (error) => {
+  console.error('❌ Server error:', error);
 });
 
 // Graceful shutdown

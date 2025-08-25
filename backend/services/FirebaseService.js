@@ -2,6 +2,8 @@ const admin = require('firebase-admin');
 const path = require('path');
 
 class FirebaseService {
+  static isInitialized = false;
+
   constructor() {
     // Initialize Firebase Admin SDK only if credentials are available
     if (!admin.apps.length) {
@@ -25,16 +27,20 @@ class FirebaseService {
           });
           console.log('✅ Firebase Admin SDK initialized successfully');
           this.isInitialized = true;
+          FirebaseService.isInitialized = true;
         } catch (error) {
           console.error('❌ Firebase Admin SDK initialization failed:', error);
           this.isInitialized = false;
+          FirebaseService.isInitialized = false;
         }
       } else {
         console.log('⚠️ Firebase credentials not configured - Firebase features will be disabled');
         this.isInitialized = false;
+        FirebaseService.isInitialized = false;
       }
     } else {
       this.isInitialized = true;
+      FirebaseService.isInitialized = true;
     }
 
     // Initialize Firebase services only if SDK is initialized

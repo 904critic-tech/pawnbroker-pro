@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guided Light App - Daily Inspiration & Spiritual Guidance</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A daily inspiration & spiritual guidance mobile application built with Flutter. Features personalized daily reflections, Bible integration, offline functionality, and a calming celestial design.">
+    <meta name="keywords" content="spiritual guidance, daily inspiration, Bible app, Flutter app, meditation, prayer, religious app">
+    <meta name="author" content="StreamAutoClipper">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Guided Light App - Daily Inspiration & Spiritual Guidance">
+    <meta property="og:description" content="A daily inspiration & spiritual guidance mobile application built with Flutter. Features personalized daily reflections, Bible integration, offline functionality, and a calming celestial design.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://streamautoclipper.shop/bible.html">
+    <meta property="og:image" content="https://streamautoclipper.shop/logo.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Guided Light App - Daily Inspiration & Spiritual Guidance">
+    <meta name="twitter:description" content="A daily inspiration & spiritual guidance mobile application built with Flutter.">
+    <meta name="twitter:image" content="https://streamautoclipper.shop/logo.png">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7869206132163225" crossorigin="anonymous"></script>
+    
+    <!-- Infolinks Ad Network -->
+    <script type="text/javascript"> var infolinks_pid = 3439510; var infolinks_wsid = 0; </script> <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #4a5568;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: #4a5568;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bg-light {
+            background: #f7fafc;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .feature-card p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* Technology Section */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .tech-item h4 {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item p {
+            color: #4a5568;
+            font-size: 0.875rem;
+        }
+
+        /* Policy Links Section */
+        .policy-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .policy-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .policy-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .policy-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .policy-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .policy-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .policy-card p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .policy-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .policy-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #a0aec0;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-section a:hover {
+            color: #e2e8f0;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #4a5568;
+            padding-top: 1rem;
+            text-align: center;
+            color: #a0aec0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        /* AdSense Compliance */
+        .ad-container {
+            margin: 2rem 0;
+            text-align: center;
+            min-height: 90px;
+            background: #f7fafc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed #cbd5e0;
+        }
+
+        /* Loading States */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Signup Form Styles */
+        .signup-section {
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .signup-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            text-align: center;
+        }
+
+        .signup-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .signup-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .signup-card h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .signup-card p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .signup-form {
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2d3748;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .signup-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .signup-success {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .signup-success i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .signup-success h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-section {
+            margin-top: 3rem;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="https://streamautoclipper.shop" class="logo">
+                <i class="fas fa-home"></i>
+                StreamAutoClipper
+            </a>
+            <ul class="nav-links">
+                <li><a href="https://streamautoclipper.shop">Home</a></li>
+                <li><a href="https://streamautoclipper.shop/projects.html">Projects</a></li>
+                <li><a href="https://streamautoclipper.shop/bible.html">Bible App</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Guided Light App</h1>
+            <p>A daily inspiration & spiritual guidance mobile application built with Flutter. Features personalized daily reflections, Bible integration, offline functionality, and a calming celestial design for users seeking spiritual nourishment.</p>
+            <div class="cta-buttons">
+                <a href="#testing" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up for Testing
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    <i class="fas fa-star"></i>
+                    Explore Features
+                </a>
+                <a href="#legal" class="btn btn-secondary">
+                    <i class="fas fa-shield-alt"></i>
+                    Legal & Support
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Key Features</h2>
+                <p>Discover what makes the Guided Light App a unique spiritual companion</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Daily Personalized Guidance</h3>
+                    <p>Custom daily reflections and inspiration based on user's birth date. Personalized greetings that adapt to time of day and curated spiritual content that resonates with individual users.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Bible Integration</h3>
+                    <p>Daily Bible verse selection with proper references, full Bible navigation with search functionality, multiple Bible translations support, and verse bookmarking and sharing capabilities.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Calming User Experience</h3>
+                    <p>Celestial design with soft blues and gentle golds, smooth animations and transitions, light uplifting interface that promotes peace and reflection, and accessibility-focused design.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wifi-slash"></i>
+                    </div>
+                    <h3>Offline Functionality</h3>
+                    <p>Complete offline access to daily guidance, local Bible content storage, data synchronization when online, and robust data management system for seamless experience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Social & Sharing Features</h3>
+                    <p>Share inspirational verses and reflections, community features for spiritual growth, prayer request functionality, and content sharing across social platforms.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Cross-Platform</h3>
+                    <p>Built with Flutter for iOS and Android compatibility, offline-first approach with comprehensive offline support, performance optimized with fast loading times, and accessibility compliant design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Highlights</h2>
+                <p>Built with modern technology for optimal performance and user experience</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>Flutter</h4>
+                    <p>Cross-platform development framework</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Offline-First</h4>
+                    <p>Comprehensive offline support with local database</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Performance Optimized</h4>
+                    <p>Fast loading times and efficient memory usage</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Accessibility Compliant</h4>
+                    <p>Designed for users with disabilities</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Modern Architecture</h4>
+                    <p>Clean code structure with Provider state management</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Comprehensive Testing</h4>
+                    <p>Unit, widget, and integration test coverage</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Target Audience</h2>
+                <p>Designed for individuals seeking spiritual growth and daily inspiration</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Spiritual Seekers</h3>
+                    <p>Individuals seeking daily spiritual guidance, Bible study tools, and peaceful moments of reflection. Perfect for users of all ages who appreciate a gentle, non-denominational approach to spiritual growth.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h3>Daily Inspiration</h3>
+                    <p>Users looking for personalized daily reflections and inspiration based on their unique characteristics. The app creates a peaceful, celestial experience for users seeking daily spiritual nourishment.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Bible Study</h3>
+                    <p>Individuals who want comprehensive Bible study tools with multiple translations, search functionality, bookmarking, and sharing capabilities. Perfect for both beginners and advanced Bible students.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testing Section -->
+    <section class="section bg-light" id="testing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Test the App</h2>
+                <p>Experience the Guided Light App before its public release</p>
+            </div>
+            
+            <!-- Sign Up for Testing -->
+            <div class="signup-section">
+                <div class="signup-card">
+                    <div class="signup-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3>Sign Up for Testing</h3>
+                    <p>Join our internal testing program to get early access to the Guided Light App. You'll receive the download link once you're added to our testing group.</p>
+                    
+                                         <form id="testingSignupForm" class="signup-form">
+                         <div class="form-group">
+                             <label for="testerEmail">Google Play Email Address *</label>
+                             <input type="email" id="testerEmail" name="email" required placeholder="Enter your Google Play email address">
+                         </div>
+                         <button type="submit" class="signup-btn">
+                             <i class="fas fa-paper-plane"></i>
+                             Sign Up for Testing
+                         </button>
+                     </form>
+                    
+                    <div id="signupSuccess" class="signup-success" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <h4>Thank you for signing up!</h4>
+                        <p>We'll add you to our testing program and send you the download link within 24-48 hours.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Download Section (Hidden until signed up) -->
+            <div id="downloadSection" class="download-section" style="display: none;">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fab fa-google-play"></i>
+                        </div>
+                        <h3>Download the App</h3>
+                        <p>You're now part of our testing program! Click below to download the Guided Light App from Google Play's internal testing track.</p>
+                        <a href="https://play.google.com/apps/internaltest/4700616956633623397" class="policy-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-download"></i>
+                            Download App
+                        </a>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h3>Report Issues</h3>
+                        <p>Found a bug or have suggestions for improvement? Your feedback is invaluable to us. Report issues through the app or contact our support team directly.</p>
+                        <a href="https://streamautoclipper.shop/bible/support.html" class="policy-link">
+                            <i class="fas fa-headset"></i>
+                            Contact Support
+                        </a>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Testing Guidelines</h3>
+                        <p>Please test all features thoroughly and provide detailed feedback. Your input helps us create the best possible experience for all users.</p>
+                        <a href="https://streamautoclipper.shop/bible/support.html" class="policy-link">
+                            <i class="fas fa-book"></i>
+                            View Guidelines
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Status Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Development Status</h2>
+                <p>Currently in active development with a comprehensive 8-phase development plan</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Modern Development</h3>
+                    <p>The app follows modern mobile development best practices with a focus on user experience, content accuracy, and spiritual sensitivity. Built with clean, maintainable code.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>8-Phase Plan</h3>
+                    <p>Comprehensive development roadmap covering core features, Bible integration, offline functionality, social features, testing, optimization, and deployment phases.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Quality Focus</h3>
+                    <p>Emphasis on performance, accessibility, and user experience. Extensive testing ensures reliability and smooth operation across all devices and platforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policy Links Section -->
+    <section class="section" id="legal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Legal & Support</h2>
+                <p>Important information and support resources</p>
+            </div>
+            <div class="policy-links">
+                <div class="policy-card">
+                    <div class="policy-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Terms of Service</h3>
+                    <p>Read our terms and conditions for using the Guided Light App</p>
+                    <a href="https://streamautoclipper.shop/bible/tos.html" class="policy-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        View Terms
+                    </a>
+                </div>
+                <div class="policy-card">
+                    <div class="policy-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Privacy Policy</h3>
+                    <p>Learn how we protect your privacy and handle your data</p>
+                    <a href="https://streamautoclipper.shop/bible/privacy.html" class="policy-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        View Privacy Policy
+                    </a>
+                </div>
+                <div class="policy-card">
+                    <div class="policy-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>FAQ</h3>
+                    <p>Find answers to frequently asked questions about the app</p>
+                    <a href="https://streamautoclipper.shop/bible/faq.html" class="policy-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        View FAQ
+                    </a>
+                </div>
+                <div class="policy-card">
+                    <div class="policy-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Support</h3>
+                    <p>Get help and contact our support team</p>
+                    <a href="https://streamautoclipper.shop/bible/support.html" class="policy-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        Get Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <h2>Ready to Experience Spiritual Growth?</h2>
+            <p>The Guided Light App is designed to be your daily companion for spiritual nourishment and inspiration.</p>
+            <div class="cta-buttons">
+                <a href="#testing" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up for Testing
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    <i class="fas fa-star"></i>
+                    Learn More
+                </a>
+                <a href="https://streamautoclipper.shop/projects.html" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Guided Light App</h3>
+                    <p>A daily inspiration & spiritual guidance mobile application built with Flutter. Features personalized daily reflections, Bible integration, offline functionality, and a calming celestial design.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="https://streamautoclipper.shop">Home</a></p>
+                    <p><a href="https://streamautoclipper.shop/projects.html">Projects</a></p>
+                    <p><a href="https://streamautoclipper.shop/bible.html">Bible App</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal & Support</h3>
+                    <p><a href="https://streamautoclipper.shop/bible/tos.html">Terms of Service</a></p>
+                    <p><a href="https://streamautoclipper.shop/bible/privacy.html">Privacy Policy</a></p>
+                    <p><a href="https://streamautoclipper.shop/bible/faq.html">FAQ</a></p>
+                    <p><a href="https://streamautoclipper.shop/bible/support.html">Support</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><a href="mailto:streamautoclipper@gmail.com">streamautoclipper@gmail.com</a></p>
+                    <p><a href="https://streamautoclipper.shop">streamautoclipper.shop</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 StreamAutoClipper. All rights reserved. | Guided Light App - Daily Inspiration & Spiritual Guidance</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <a href="#" class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Scroll-based Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards and other elements
+        document.querySelectorAll('.feature-card, .tech-item, .policy-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Loading States
+        document.addEventListener('DOMContentLoaded', () => {
+            // Remove loading states after page loads
+            document.body.classList.remove('loading');
+        });
+
+        // Error Handling
+        window.addEventListener('error', (e) => {
+            console.error('Page error:', e.error);
+        });
+
+        // Performance Monitoring
+        window.addEventListener('load', () => {
+            if ('performance' in window) {
+                const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                console.log(`Page load time: ${loadTime}ms`);
+            }
+        });
+
+        // Accessibility Improvements
+        document.addEventListener('keydown', (e) => {
+            // Escape key to close mobile menu
+            if (e.key === 'Escape' && navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            }
+        });
+
+        // AdSense Compliance Check
+        function checkAdSenseCompliance() {
+            const adContainers = document.querySelectorAll('.ad-container');
+            adContainers.forEach(container => {
+                // Ensure proper spacing around ads
+                const margin = window.getComputedStyle(container).margin;
+                if (parseInt(margin) < 20) {
+                    container.style.margin = '2rem 0';
+                }
+            });
+        }
+
+        // Run compliance check after page load
+        window.addEventListener('load', checkAdSenseCompliance);
+
+        // Testing Signup Form Handler
+        const testingSignupForm = document.getElementById('testingSignupForm');
+        const signupSuccess = document.getElementById('signupSuccess');
+        const downloadSection = document.getElementById('downloadSection');
+
+        if (testingSignupForm) {
+            testingSignupForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                const submitBtn = this.querySelector('.signup-btn');
+                const originalText = submitBtn.innerHTML;
+                
+                // Show loading state
+                submitBtn.innerHTML = '<span class="spinner"></span> Submitting...';
+                submitBtn.disabled = true;
+                
+                try {
+                                         // Prepare data for API
+                     const signupData = {
+                         email: formData.get('email')
+                     };
+                    
+                    // Send to API
+                    const response = await fetch('/api/testing-signup', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(signupData)
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (response.ok) {
+                        // Show success message
+                        testingSignupForm.style.display = 'none';
+                        signupSuccess.style.display = 'block';
+                        
+                        // Show download section after a delay
+                        setTimeout(() => {
+                            downloadSection.style.display = 'block';
+                        }, 2000);
+                    } else {
+                        throw new Error(result.error || 'Signup failed');
+                    }
+                    
+                } catch (error) {
+                    console.error('Signup error:', error);
+                    alert('Signup failed: ' + error.message);
+                    
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+
+
+    </script>
+</body>
+</html>

@@ -4,45 +4,48 @@
     "slug": "pawnbroker-pro-android",
     "version": "1.0.0",
     "orientation": "portrait",
-    // "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
-          "splash": {
-        // "image": "./assets/splash.png",
-        "resizeMode": "contain",
-        "backgroundColor": "#1a1a2e"
-      },
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a1a2e"
+    },
     "assetBundlePatterns": [
       "**/*"
     ],
     "android": {
       "adaptiveIcon": {
-        // "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#1a1a2e"
       },
       "package": "com.pawnbrokerpro.android",
-      "googleMobileAdsAppId": "ca-app-pub-7869206132163225~6227378217",
       "permissions": [
-        "CAMERA",
-        "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE",
-        "INTERNET",
-        "ACCESS_NETWORK_STATE"
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.RECORD_AUDIO"
       ],
       "versionCode": 1
     },
     "plugins": [
-      [
-        "expo-camera",
-        {
-          "cameraPermission": "Allow PawnBroker Pro to access your camera to identify items."
-        }
-      ],
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "Allow PawnBroker Pro to access your photo library to select item images."
-        }
-      ]
-    ]
+      "expo-camera",
+      "expo-image-picker",
+      "expo-media-library",
+      "expo-file-system",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "55edd6d0-a6d6-4266-be3c-f54c67fdc18b"
+      },
+      "legal": {
+        "privacyPolicy": "https://streamautoclipper.shop/pawnbroker-privacy.html",
+        "termsOfService": "https://streamautoclipper.shop/pawnbroker-terms.html",
+        "supportEmail": "streamautoclipper@gmail.com"
+      }
+    }
   }
 }
