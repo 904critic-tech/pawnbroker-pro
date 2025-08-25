@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royalty-Free Music Collection - Legal Downloads</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .music-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+                 .collection-info {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+             gap: 20px;
+             margin-bottom: 30px;
+         }
+         
+         .info-card {
+             background: white;
+             border-radius: 10px;
+             padding: 20px;
+             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+             text-align: center;
+         }
+         
+         .info-card h3 {
+             color: #333;
+             margin-bottom: 10px;
+         }
+         
+         .info-card p {
+             color: #666;
+             margin-bottom: 15px;
+         }
+         
+         .external-sources {
+             background: #f8f9fa;
+             padding: 40px 20px;
+             margin-top: 40px;
+             border-top: 1px solid #e9ecef;
+         }
+         
+         .external-sources h3 {
+             text-align: center;
+             color: #333;
+             margin-bottom: 10px;
+         }
+         
+         .external-sources p {
+             text-align: center;
+             color: #666;
+             margin-bottom: 20px;
+         }
+         
+         .source-links {
+             display: flex;
+             justify-content: center;
+             gap: 20px;
+             flex-wrap: wrap;
+         }
+         
+         .source-link {
+             display: inline-block;
+             padding: 10px 20px;
+             background: #667eea;
+             color: white;
+             text-decoration: none;
+             border-radius: 8px;
+             font-weight: 600;
+             transition: background 0.3s ease;
+         }
+         
+         .source-link:hover {
+             background: #5a6fd8;
+         }
+        
+        .filters {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        .filter-group select,
+        .filter-group input {
+            padding: 8px 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .filter-group select:focus,
+        .filter-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .track-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .track-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+                 .track-preview {
+             position: relative;
+             width: 100%;
+             height: 150px;
+             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             color: white;
+             font-size: 1.2rem;
+             font-weight: bold;
+         }
+         
+         .audio-player-container {
+             width: 100%;
+             height: 100%;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+             padding: 20px;
+         }
+         
+         .audio-player {
+             width: 100%;
+             max-width: 300px;
+             margin-bottom: 10px;
+         }
+         
+         .audio-player::-webkit-media-controls-panel {
+             background-color: rgba(255, 255, 255, 0.9);
+             border-radius: 8px;
+         }
+         
+         .audio-player::-webkit-media-controls-play-button {
+             background-color: #667eea;
+             border-radius: 50%;
+         }
+         
+         .player-info {
+             text-align: center;
+             color: white;
+         }
+         
+         .track-title-preview {
+             display: block;
+             font-size: 1rem;
+             font-weight: 600;
+             margin-bottom: 5px;
+         }
+         
+         .track-artist-preview {
+             display: block;
+             font-size: 0.9rem;
+             opacity: 0.9;
+         }
+        
+        .track-info {
+            padding: 20px;
+        }
+        
+        .track-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .track-artist {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .track-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .track-description {
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .track-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            background: #f0f2f5;
+            color: #555;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .track-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #f0f2f5;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #e4e6e9;
+        }
+        
+        .license-info {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .license-info h4 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .license-info p {
+            color: #666;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin-bottom: 5px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .no-results h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .tracks-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                min-width: auto;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="music-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🎵 Royalty-Free Music Collection</h1>
+            <p>Legally licensed music for your videos, podcasts, and creative projects</p>
+            <p style="font-size: 0.9rem; opacity: 0.8;">All tracks are properly licensed and safe for commercial use</p>
+        </div>
+
+        <!-- Music Collection Info -->
+        <div class="collection-info">
+            <div class="info-card">
+                <h3>🎼 Curated Collection</h3>
+                <p>Hand-picked royalty-free music from trusted sources, all properly licensed for your use</p>
+            </div>
+            <div class="info-card">
+                <h3>🎹 Multiple Sources</h3>
+                <p>Music from Free Music Archive, Incompetech, Pixabay, and other legitimate sources</p>
+            </div>
+            <div class="info-card">
+                <h3>🎨 Legal & Safe</h3>
+                <p>All tracks are properly licensed and safe for commercial use with clear attribution</p>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="source-filter">Source</label>
+                    <select id="source-filter">
+                        <option value="">All Sources</option>
+                        <option value="freemusicarchive">Free Music Archive</option>
+                        <option value="incompetech">Incompetech (Kevin MacLeod)</option>
+                        <option value="pixabay">Pixabay Music</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="genre-filter">Genre</label>
+                    <select id="genre-filter">
+                        <option value="">All Genres</option>
+                        <option value="hip-hop">Hip-Hop</option>
+                        <option value="ambient">Ambient</option>
+                        <option value="acoustic">Acoustic</option>
+                        <option value="classical">Classical</option>
+                        <option value="electronic">Electronic</option>
+                        <option value="corporate">Corporate</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="mood-filter">Mood</label>
+                    <select id="mood-filter">
+                        <option value="">All Moods</option>
+                        <option value="upbeat">Upbeat</option>
+                        <option value="ethereal">Ethereal</option>
+                        <option value="calm">Calm</option>
+                        <option value="dramatic">Dramatic</option>
+                        <option value="energetic">Energetic</option>
+                        <option value="professional">Professional</option>
+                    </select>
+                </div>
+                <div class="filter-group search-box">
+                    <label for="search-input">Search</label>
+                    <input type="text" id="search-input" placeholder="Search for music...">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tracks Grid -->
+        <div id="tracks-container">
+            <div class="loading">Loading royalty-free music...</div>
+        </div>
+    </div>
+
+    <script>
+        // Royalty-Free Music Integration
+        class RoyaltyFreeMusic {
+            constructor() {
+                this.tracks = [];
+                this.filteredTracks = [];
+                this.init();
+            }
+
+            async init() {
+                await this.loadTracks();
+                this.setupEventListeners();
+                this.renderTracks();
+            }
+
+            async loadTracks() {
+                try {
+                    const response = await fetch('/api/music/royalty-free/all');
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.tracks = data.content;
+                        this.filteredTracks = [...this.tracks];
+                    } else {
+                        console.error('Failed to load tracks:', data.error);
+                    }
+                } catch (error) {
+                    console.error('Error loading tracks:', error);
+                }
+            }
+
+                         setupEventListeners() {
+                 // Filter event listeners
+                 document.getElementById('source-filter').addEventListener('change', () => this.filterTracks());
+                 document.getElementById('genre-filter').addEventListener('change', () => this.filterTracks());
+                 document.getElementById('mood-filter').addEventListener('change', () => this.filterTracks());
+                 document.getElementById('search-input').addEventListener('input', () => this.filterTracks());
+                 
+                 // Audio player event listeners
+                 document.addEventListener('click', (e) => {
+                     if (e.target.classList.contains('play-preview-btn')) {
+                         const trackId = e.target.dataset.trackId;
+                         this.playPreview(trackId);
+                     }
+                 });
+             }
+             
+             playPreview(trackId) {
+                 const track = this.tracks.find(t => t.id === trackId);
+                 if (track) {
+                     // Find the audio element in the same card
+                     const card = document.querySelector(`[data-track-id="${trackId}"]`).closest('.track-card');
+                     const audioElement = card.querySelector('.audio-player');
+                     
+                     if (audioElement) {
+                         // Stop all other audio players
+                         document.querySelectorAll('.audio-player').forEach(audio => {
+                             if (audio !== audioElement) {
+                                 audio.pause();
+                                 audio.currentTime = 0;
+                             }
+                         });
+                         
+                         // Play this audio
+                         audioElement.play();
+                     }
+                 }
+             }
+
+            filterTracks() {
+                const source = document.getElementById('source-filter').value;
+                const genre = document.getElementById('genre-filter').value;
+                const mood = document.getElementById('mood-filter').value;
+                const search = document.getElementById('search-input').value.toLowerCase();
+
+                this.filteredTracks = this.tracks.filter(track => {
+                    const matchesSource = !source || track.source === source;
+                    const matchesGenre = !genre || track.genre === genre;
+                    const matchesMood = !mood || track.mood === mood;
+                    const matchesSearch = !search || 
+                        track.title.toLowerCase().includes(search) ||
+                        (track.artist && track.artist.toLowerCase().includes(search)) ||
+                        (track.description && track.description.toLowerCase().includes(search)) ||
+                        (track.tags && track.tags.some(tag => tag.toLowerCase().includes(search)));
+
+                    return matchesSource && matchesGenre && matchesMood && matchesSearch;
+                });
+
+                this.renderTracks();
+            }
+
+            renderTracks() {
+                const container = document.getElementById('tracks-container');
+                
+                if (this.filteredTracks.length === 0) {
+                    container.innerHTML = `
+                        <div class="no-results">
+                            <h3>No tracks found</h3>
+                            <p>Try adjusting your filters or search terms</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = `
+                    <div class="tracks-grid">
+                        ${this.filteredTracks.map(track => this.renderTrackCard(track)).join('')}
+                    </div>
+                `;
+            }
+
+                         renderTrackCard(track) {
+                 const sourceColors = {
+                     'freemusicarchive': '#ff6b6b',
+                     'incompetech': '#4ecdc4',
+                     'pixabay': '#45b7d1'
+                 };
+ 
+                 const sourceColor = sourceColors[track.source] || '#667eea';
+ 
+                 return `
+                     <div class="track-card">
+                         <div class="track-preview" style="background: linear-gradient(135deg, ${sourceColor} 0%, ${sourceColor}dd 100%);">
+                             <div class="audio-player-container">
+                                 <audio controls class="audio-player" preload="none">
+                                     <source src="${track.audioUrl || '/api/music/preview/' + track.id}" type="audio/mpeg">
+                                     Your browser does not support the audio element.
+                                 </audio>
+                                 <div class="player-info">
+                                     <span class="track-title-preview">${track.title}</span>
+                                     <span class="track-artist-preview">by ${track.artist}</span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="track-info">
+                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                 <h3 class="track-title">${track.title}</h3>
+                                 <span class="tag" style="background: ${sourceColor}; color: white;">
+                                     ${track.sourceName}
+                                 </span>
+                             </div>
+                             <div class="track-artist">by ${track.artist}</div>
+                             
+                             <div class="track-meta">
+                                 <span>${track.duration}</span>
+                                 <span>${track.license}</span>
+                             </div>
+                             
+                             <p class="track-description">${track.description}</p>
+                             
+                             <div class="track-tags">
+                                 ${track.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                             </div>
+                             
+                             <div class="track-actions">
+                                 <a href="${track.downloadUrl}" 
+                                    target="_blank" 
+                                    class="btn btn-primary">
+                                     📥 Download
+                                 </a>
+                                 <button class="btn btn-secondary play-preview-btn" data-track-id="${track.id}">
+                                     🎧 Play Preview
+                                 </button>
+                             </div>
+                             
+                             <div class="license-info">
+                                 <h4>📋 License Information</h4>
+                                 <p><strong>${track.attribution.text}</strong></p>
+                                 <p>${track.attribution.requirements}</p>
+                                 <p><strong>License:</strong> ${track.license}</p>
+                             </div>
+                         </div>
+                     </div>
+                 `;
+             }
+        }
+
+                 // Initialize the Royalty-Free Music
+         document.addEventListener('DOMContentLoaded', () => {
+             new RoyaltyFreeMusic();
+         });
+     </script>
+     
+     <!-- External Sources Footer -->
+     <div class="external-sources">
+         <div class="container">
+             <h3>🎵 Music Sources</h3>
+             <p>This collection features music from these trusted sources:</p>
+             <div class="source-links">
+                 <a href="https://freemusicarchive.org/" target="_blank" class="source-link">
+                     🎼 Free Music Archive
+                 </a>
+                 <a href="https://incompetech.com/" target="_blank" class="source-link">
+                     🎹 Incompetech (Kevin MacLeod)
+                 </a>
+                 <a href="https://pixabay.com/music/" target="_blank" class="source-link">
+                     🎨 Pixabay Music
+                 </a>
+             </div>
+         </div>
+     </div>
+ </body>
+ </html>
