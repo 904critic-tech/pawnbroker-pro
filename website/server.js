@@ -41,9 +41,7 @@ app.get('/youtube-audio-library.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'youtube-audio-library.html'));
 });
 
-app.get('/royalty-free-music.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'royalty-free-music.html'));
-});
+
 
 app.get('/about-us.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'about-us.html'));
