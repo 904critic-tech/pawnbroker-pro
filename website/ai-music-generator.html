@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Music Generator - StreamAutoClipper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .music-visualizer {
+            background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899);
+            height: 4px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .waveform {
+            height: 60px;
+            background: linear-gradient(90deg, #1f2937, #374151);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .waveform-bar {
+            background: linear-gradient(180deg, #8b5cf6, #a855f7);
+            width: 2px;
+            margin: 0 1px;
+            border-radius: 1px;
+            transition: height 0.1s ease;
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="/" class="text-xl font-bold text-purple-400">🎵 StreamAutoClipper</a>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="/music.html" class="text-gray-300 hover:text-white transition-colors">Music Platform</a>
+                    <a href="/ai-music-generator.html" class="text-purple-400 font-semibold">AI Generator</a>
+                    <a href="/" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                🤖 AI Music Generator
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                Create unique, royalty-free music instantly with our AI-powered generator. 
+                Perfect for content creators, streamers, and musicians.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button id="generate-btn" class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+                    🎵 Generate Music
+                </button>
+                <button id="batch-generate-btn" class="bg-gray-700 hover:bg-gray-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+                    🎼 Generate Batch
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Generator Controls -->
+    <section class="py-16 bg-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gray-700 rounded-xl p-8">
+                <h2 class="text-3xl font-bold mb-8 text-center">🎛️ Generation Controls</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Track Title</label>
+                        <input type="text" id="track-title" placeholder="Enter track title..." 
+                               class="w-full px-4 py-3 bg-gray-600 border border-gray-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Genre</label>
+                        <select id="genre-select" class="w-full px-4 py-3 bg-gray-600 border border-gray-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="ambient">Ambient</option>
+                            <option value="electronic">Electronic</option>
+                            <option value="acoustic">Acoustic</option>
+                            <option value="jazz">Jazz</option>
+                            <option value="classical">Classical</option>
+                            <option value="lofi">Lo-Fi</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Duration (seconds)</label>
+                        <input type="number" id="duration" value="60" min="30" max="300" 
+                               class="w-full px-4 py-3 bg-gray-600 border border-gray-500 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button id="custom-generate-btn" class="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+                        🎵 Generate Custom Track
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Generated Tracks -->
+    <section class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 text-center">🎼 Generated Tracks</h2>
+            
+            <!-- Loading State -->
+            <div id="loading" class="text-center py-12 hidden">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mx-auto mb-4"></div>
+                <p class="text-gray-300">Generating music with AI...</p>
+            </div>
+
+            <!-- Tracks Grid -->
+            <div id="tracks-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Generated tracks will appear here -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="text-center py-12">
+                <div class="text-6xl mb-4">🎵</div>
+                <h3 class="text-xl font-semibold mb-2">No tracks generated yet</h3>
+                <p class="text-gray-400">Click "Generate Music" to create your first AI-generated track!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio Player Modal -->
+    <div id="player-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gray-800 rounded-xl p-8 max-w-2xl w-full">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold">🎵 Now Playing</h3>
+                    <button id="close-modal" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+                </div>
+                
+                <div id="player-content" class="space-y-6">
+                    <!-- Player content will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class AIMusicGenerator {
+            constructor() {
+                this.tracks = [];
+                this.audioContext = null;
+                this.currentTrack = null;
+                this.isPlaying = false;
+                
+                this.initializeEventListeners();
+                this.loadGenres();
+            }
+
+            initializeEventListeners() {
+                document.getElementById('generate-btn').addEventListener('click', () => this.generateRandomTrack());
+                document.getElementById('batch-generate-btn').addEventListener('click', () => this.generateBatch());
+                document.getElementById('custom-generate-btn').addEventListener('click', () => this.generateCustomTrack());
+                document.getElementById('close-modal').addEventListener('click', () => this.closeModal());
+                
+                // Close modal when clicking outside
+                document.getElementById('player-modal').addEventListener('click', (e) => {
+                    if (e.target.id === 'player-modal') this.closeModal();
+                });
+            }
+
+            async loadGenres() {
+                try {
+                    const response = await fetch('/api/ai-music/genres');
+                    const data = await response.json();
+                    if (data.success) {
+                        console.log('Available genres:', data.genres);
+                    }
+                } catch (error) {
+                    console.error('Failed to load genres:', error);
+                }
+            }
+
+            showLoading() {
+                document.getElementById('loading').classList.remove('hidden');
+                document.getElementById('empty-state').classList.add('hidden');
+            }
+
+            hideLoading() {
+                document.getElementById('loading').classList.add('hidden');
+            }
+
+            async generateRandomTrack() {
+                this.showLoading();
+                
+                try {
+                    const titles = [
+                        'Digital Dreams', 'Neon Nights', 'Crystal Clear', 'Ocean Waves',
+                        'Mountain Echo', 'City Lights', 'Desert Wind', 'Forest Whisper',
+                        'Starlight', 'Moonbeam', 'Sunset', 'Dawn', 'Twilight', 'Midnight'
+                    ];
+                    
+                    const title = titles[Math.floor(Math.random() * titles.length)];
+                    const genres = ['ambient', 'electronic', 'acoustic', 'jazz', 'classical', 'lofi'];
+                    const genre = genres[Math.floor(Math.random() * genres.length)];
+                    const duration = 60 + Math.floor(Math.random() * 120);
+                    
+                    const response = await fetch('/api/ai-music/generate', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ title, genre, duration })
+                    });
+                    
+                    const data = await response.json();
+                    if (data.success) {
+                        this.tracks.unshift(data.track);
+                        this.renderTracks();
+                        this.hideLoading();
+                    }
+                } catch (error) {
+                    console.error('Failed to generate track:', error);
+                    this.hideLoading();
+                }
+            }
+
+            async generateBatch() {
+                this.showLoading();
+                
+                try {
+                    const response = await fetch('/api/ai-music/generate-batch', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ count: 6 })
+                    });
+                    
+                    const data = await response.json();
+                    if (data.success) {
+                        this.tracks = [...data.tracks, ...this.tracks];
+                        this.renderTracks();
+                        this.hideLoading();
+                    }
+                } catch (error) {
+                    console.error('Failed to generate batch:', error);
+                    this.hideLoading();
+                }
+            }
+
+            async generateCustomTrack() {
+                const title = document.getElementById('track-title').value.trim();
+                const genre = document.getElementById('genre-select').value;
+                const duration = parseInt(document.getElementById('duration').value);
+                
+                if (!title) {
+                    alert('Please enter a track title');
+                    return;
+                }
+                
+                this.showLoading();
+                
+                try {
+                    const response = await fetch('/api/ai-music/generate', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ title, genre, duration })
+                    });
+                    
+                    const data = await response.json();
+                    if (data.success) {
+                        this.tracks.unshift(data.track);
+                        this.renderTracks();
+                        this.hideLoading();
+                        
+                        // Clear form
+                        document.getElementById('track-title').value = '';
+                    }
+                } catch (error) {
+                    console.error('Failed to generate custom track:', error);
+                    this.hideLoading();
+                }
+            }
+
+            renderTracks() {
+                const grid = document.getElementById('tracks-grid');
+                const emptyState = document.getElementById('empty-state');
+                
+                if (this.tracks.length === 0) {
+                    grid.innerHTML = '';
+                    emptyState.classList.remove('hidden');
+                    return;
+                }
+                
+                emptyState.classList.add('hidden');
+                grid.innerHTML = this.tracks.map(track => this.createTrackCard(track)).join('');
+            }
+
+            createTrackCard(track) {
+                const duration = Math.floor(track.duration / 60) + ':' + (track.duration % 60).toString().padStart(2, '0');
+                
+                return `
+                    <div class="bg-gray-800 rounded-xl p-6 hover:bg-gray-700 transition-colors">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-1">${track.title}</h3>
+                                <p class="text-gray-400">by ${track.artist}</p>
+                            </div>
+                            <span class="bg-purple-600 text-white px-2 py-1 rounded text-sm">AI</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="waveform mb-3">
+                                ${track.waveform.map((amp, i) => 
+                                    `<div class="waveform-bar inline-block" style="height: ${Math.abs(amp * 50) + 5}px;"></div>`
+                                ).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex space-x-2">
+                                <span class="bg-gray-600 text-gray-300 px-2 py-1 rounded text-sm">${track.genre}</span>
+                                <span class="bg-gray-600 text-gray-300 px-2 py-1 rounded text-sm">${track.tempo} BPM</span>
+                            </div>
+                            <span class="text-gray-400">${duration}</span>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <button onclick="aiGenerator.playTrack('${track.id}')" 
+                                    class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg transition-colors">
+                                ▶️ Play
+                            </button>
+                            <button onclick="aiGenerator.downloadTrack('${track.id}')" 
+                                    class="flex-1 bg-gray-600 hover:bg-gray-500 text-white py-2 px-4 rounded-lg transition-colors">
+                                📥 Download
+                            </button>
+                        </div>
+                        
+                        <div class="mt-4 text-xs text-gray-500">
+                            <p>🎵 ${track.attribution}</p>
+                            <p>📄 ${track.license}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            async playTrack(trackId) {
+                const track = this.tracks.find(t => t.id === trackId);
+                if (!track) return;
+                
+                this.currentTrack = track;
+                this.showPlayerModal(track);
+                
+                // Initialize audio context if needed
+                if (!this.audioContext) {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                
+                // Resume audio context if suspended
+                if (this.audioContext.state === 'suspended') {
+                    await this.audioContext.resume();
+                }
+                
+                this.synthesizeAndPlay(track);
+            }
+
+            showPlayerModal(track) {
+                const modal = document.getElementById('player-modal');
+                const content = document.getElementById('player-content');
+                
+                content.innerHTML = `
+                    <div class="text-center">
+                        <h4 class="text-xl font-semibold mb-2">${track.title}</h4>
+                        <p class="text-gray-400 mb-4">by ${track.artist}</p>
+                        
+                        <div class="waveform mb-6">
+                            ${track.waveform.map((amp, i) => 
+                                `<div class="waveform-bar inline-block" style="height: ${Math.abs(amp * 50) + 5}px;"></div>`
+                            ).join('')}
+                        </div>
+                        
+                        <div class="flex justify-center space-x-4 mb-6">
+                            <span class="bg-gray-600 text-gray-300 px-3 py-1 rounded">${track.genre}</span>
+                            <span class="bg-gray-600 text-gray-300 px-3 py-1 rounded">${track.tempo} BPM</span>
+                            <span class="bg-gray-600 text-gray-300 px-3 py-1 rounded">${track.scale}</span>
+                        </div>
+                        
+                        <div class="space-y-2 text-sm text-gray-400">
+                            <p>🎵 ${track.attribution}</p>
+                            <p>📄 ${track.license}</p>
+                            <p>🎼 Generated on ${new Date(track.createdAt).toLocaleDateString()}</p>
+                        </div>
+                    </div>
+                `;
+                
+                modal.classList.remove('hidden');
+            }
+
+            closeModal() {
+                document.getElementById('player-modal').classList.add('hidden');
+                this.stopPlayback();
+            }
+
+            async synthesizeAndPlay(track) {
+                try {
+                    this.isPlaying = true;
+                    
+                    // Create oscillator for melody
+                    const oscillator = this.audioContext.createOscillator();
+                    const gainNode = this.audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(this.audioContext.destination);
+                    
+                    // Set oscillator type based on genre
+                    const oscillatorType = track.genre === 'ambient' ? 'sine' : 
+                                         track.genre === 'electronic' ? 'square' : 'triangle';
+                    oscillator.type = oscillatorType;
+                    
+                    // Play melody notes
+                    let currentTime = this.audioContext.currentTime;
+                    const noteDuration = 60 / track.tempo; // Convert BPM to seconds per beat
+                    
+                    track.melody.forEach((note, index) => {
+                        const frequency = this.midiToFrequency(note.note);
+                        const duration = note.duration * noteDuration;
+                        
+                        oscillator.frequency.setValueAtTime(frequency, currentTime);
+                        gainNode.gain.setValueAtTime(note.velocity * 0.3, currentTime);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, currentTime + duration);
+                        
+                        currentTime += duration;
+                    });
+                    
+                    oscillator.start(this.audioContext.currentTime);
+                    oscillator.stop(currentTime);
+                    
+                    // Stop playback after track duration
+                    setTimeout(() => {
+                        this.isPlaying = false;
+                    }, track.duration * 1000);
+                    
+                } catch (error) {
+                    console.error('Failed to synthesize audio:', error);
+                    this.isPlaying = false;
+                }
+            }
+
+            midiToFrequency(midiNote) {
+                return 440 * Math.pow(2, (midiNote - 69) / 12);
+            }
+
+            stopPlayback() {
+                this.isPlaying = false;
+                // In a real implementation, you'd stop all audio nodes
+            }
+
+            downloadTrack(trackId) {
+                const track = this.tracks.find(t => t.id === trackId);
+                if (!track) return;
+                
+                // Create a simple text file with track data for now
+                const trackData = JSON.stringify(track, null, 2);
+                const blob = new Blob([trackData], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${track.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                alert(`Track data downloaded! In a full implementation, this would be an actual audio file.`);
+            }
+        }
+
+        // Initialize the AI Music Generator
+        const aiGenerator = new AIMusicGenerator();
+    </script>
+</body>
+</html>

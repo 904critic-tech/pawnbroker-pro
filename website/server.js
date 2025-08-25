@@ -11,6 +11,7 @@ app.use(express.static(path.join(__dirname)));
 
 // API Routes
 app.use('/api/music', musicRouter);
+app.use('/api/ai-music', require('./api/ai-music-generator'));
 
 // Serve static files
 app.get('/', (req, res) => {
@@ -39,6 +40,10 @@ app.get('/support-artists.html', (req, res) => {
 
 app.get('/youtube-audio-library.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'youtube-audio-library.html'));
+});
+
+app.get('/ai-music-generator.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'ai-music-generator.html'));
 });
 
 
